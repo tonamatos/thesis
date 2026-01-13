@@ -1,4 +1,4 @@
-name: Debug Deployment
+name: Build and Deploy (Branch Method)
 
 on:
   push:
@@ -6,34 +6,32 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write  # Required to push the PDF to the gh-pages branch
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create Fake Site
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: thesis.tex
+
+      - name: Prepare Deployment Folder
         run: |
           mkdir public
-          echo "<h1>Hello World</h1>" > public/index.html
+          cp index.html public/
+          mv thesis.pdf public/
+          # If you have an images folder, uncomment the next line:
+          # cp -r images public/ || true
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: './public'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages  # The action will create this branch for you
+          force_orphan: true        # Keeps the deployment branch clean and small
