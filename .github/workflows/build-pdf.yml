@@ -1,0 +1,36 @@
+name: Build and Deploy PDF
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v3
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-full
+
+      - name: Compile LaTeX
+        run: |
+          latexmk -pdf -interaction=nonstopmode thesis.tex
+
+      - name: Prepare deployment folder
+        run: |
+          mkdir deploy
+          cp index.html deploy/
+          cp thesis.pdf deploy/
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: deploy
+          force_orphan: true   # ensures gh-pages is clean each time
