@@ -1,4 +1,4 @@
-name: Build and Deploy PDF
+name: Build and Deploy LaTeX PDF
 
 on:
   push:
@@ -7,30 +7,38 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - name: Check out main
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Install TeX Live
+      # Optional: shows file tree in logs
+      - name: Debug - List Files
         run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-full
+          echo "Current working directory:"
+          pwd
+          echo "File structure:"
+          ls -R
 
-      - name: Compile LaTeX
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: thesis.tex  # <- Use your filename here
+
+      - name: Prepare Deployment Folder
         run: |
-          latexmk -pdf -interaction=nonstopmode thesis.tex
+          mkdir public
+          cp index.html public/
+          mv thesis.pdf public/   # Created automatically by the action
 
-      - name: Prepare deployment folder
-        run: |
-          mkdir deploy
-          cp index.html deploy/
-          cp thesis.pdf deploy/
+          # If you eventually add images/fonts/css for the landing page, include:
+          # cp -r images public/ || true
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: deploy
-          force_orphan: true   # ensures gh-pages is clean each time
+          publish_dir: ./public
