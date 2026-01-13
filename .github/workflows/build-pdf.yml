@@ -25,8 +25,7 @@ jobs:
           mkdir public
           cp index.html public/
           mv thesis.pdf public/
-          # If you have an images folder, uncomment the next line:
-          # cp -r images public/ || true
+          touch public/.nojekyll  # <--- THIS IS THE MAGIC LINE
 
       - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
