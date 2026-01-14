@@ -3,7 +3,7 @@
 <head>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta charset="UTF-8">
-<title>Tona's Thesis Progress</title>
+<title>Thesis Tracker</title>
 <style>
   body {
     font-family: sans-serif;
@@ -27,8 +27,9 @@
   .section { margin: 25px 0; }
 
   .label {
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 6px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -41,7 +42,7 @@
 
   .bar-bg {
     width: 100%;
-    height: 14px;
+    height: 6px;
     background: #ddd;
     border-radius: 6px;
     overflow: hidden;
@@ -111,40 +112,144 @@
 <body>
 <div id="container">
 
-<h1>Tona's Thesis Progress</h1>
-<p>Current progress by section.</p>
+<h1>Tona's Thesis Progress Tracker</h1>
 
 <div class="section">
   <div class="label">
-    1. Introduction — Draft
+    1 Introduction
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section">
+  <div class="label">
+    2 Descriptive Combinatorics
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.1 A short proof of the L0 dichotomy
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.2 A Ramsey-type theorem for E0 trees
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.3 Dicholoring theorems and NP-completeness
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.4 The Cantor Game
   </div>
   <div class="bar-bg"><div class="bar stage-draft"></div></div>
 </div>
 
 <div class="section">
   <div class="label">
-    2. Related Work — Outline
+    3 Deep Computations
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.1 Introduction
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.2 Connections to learning theory
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.3 The Bourgain-Fremlin-Talagrand theorems
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.4 The non-independence property
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.5 Compositional Computation Structures
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.6 Quantum logics
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section">
+  <div class="label">
+    4 Group Actions on Graphs
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.1 Introduction
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.2 Border tracing in arbitrary adjacency graphs
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.3 Recursive constructions
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.4 Amoeba trees
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.5 Infinitary amoeba graphs
   </div>
   <div class="bar-bg"><div class="bar stage-outline"></div></div>
 </div>
 
 <div class="section">
   <div class="label">
-    3. Methods — Not started
-  </div>
-  <div class="bar-bg"><div class="bar stage-not"></div></div>
-</div>
-
-<div class="section">
-  <div class="label">
-    4. Results — Not started
-  </div>
-  <div class="bar-bg"><div class="bar stage-not"></div></div>
-</div>
-
-<div class="section">
-  <div class="label">
-    5. Conclusion — Not started
+    5 Closing Remarks and Open Problems
   </div>
   <div class="bar-bg"><div class="bar stage-not"></div></div>
 </div>
