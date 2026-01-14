@@ -9,7 +9,7 @@
     font-family: sans-serif;
     margin: 0;
     padding: 40px 0;
-    background-image: url('https://images.pexels.com/photos/7967622/pexels-photo-7967622.jpeg');
+    background-image: url('https://images.pexels.com/photos/7598077/pexels-photo-7598077.jpeg');
     background-size: cover;
     background-position: center;
   }
@@ -55,15 +55,55 @@
   .stage-reviewed { width: 80%; }
   .stage-approved { width: 100%; }
 
-  #streak { font-size: 1.1rem; margin-top: 35px; }
+  #streak { 
+    text-align: center; 
+    font-size: 1rem; 
+    color: #666;
+    margin-top: 40px; 
+  }
+
+  #last-updated {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;   /* tight spacing to the streak */
+    margin-bottom: 25px;
+    font-style: italic;
+  }
+
+  #meta {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-family: monospace; /* Adds a technical 'latex source' feel */
+  }
+
   #download {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 10px 20px;
+    display: block;
+    width: fit-content;
+    margin: 20px auto 40px auto; /* Top, Right, Bottom, Left */
+    padding: 12px 25px;
     background: #333;
     color: white;
     text-decoration: none;
     border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+
+  #download:hover {
+    background: #555;
+  }
+
+  /* Lighter, smaller, and centered copyright */
+  .copyright {
+    text-align: center;
+    color: #aaa;      /* Lighter gray */
+    font-size: 0.8rem; /* Smaller font */
+    margin-top: 50px;
+    margin-bottom: 0;
   }
 </style>
 </head>
@@ -109,31 +149,45 @@
   <div class="bar-bg"><div class="bar stage-not"></div></div>
 </div>
 
-<p id="streak">Streak: loading…</p>
+<p id="streak">Analyzing work history...</p>
+<p id="meta">Loading metadata...</p>
 
-<a id="download" href="thesis.pdf">Download Latest PDF</a>
+<a id="download" href="thesis.pdf">See Latest PDF 📄</a>
 
-<p>2026 © Tonatiuh Matos Wiederhold</p>
+<p class="copyright">2026 © Tonatiuh Matos Wiederhold</p>
 
 <script>
 // --- Automatic streak counter ---
 const repo = 'tonamatos/thesis';
 
 async function fetchStreak() {
-  const res = await fetch(`https://api.github.com/repos/${repo}/commits`);
+  // Request 100 commits to get a longer history and accurate count
+  const res = await fetch(`https://api.github.com/repos/${repo}/commits?per_page=100`);
   const data = await res.json();
-  const today = new Date().toDateString();
+  
+  // 1. Calculate Streak
   const dates = data.map(c => new Date(c.commit.author.date).toDateString());
-
   let streak = 0;
   let current = new Date();
-
+  
+  // Check previous days
   while (dates.includes(current.toDateString())) {
     streak++;
     current.setDate(current.getDate() - 1);
   }
+  document.getElementById('streak').textContent = `Consecutive days of writing activity: ${streak}`;
 
-  document.getElementById('streak').textContent = `Streak: ${streak} day(s)`;
+  // 2. Metadata (Date + Total Commits)
+  if (data.length > 0) {
+    const lastDate = new Date(data[0].commit.author.date).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric'
+    });
+    
+    // If we hit the limit of 100, show "100+"
+    const count = data.length >= 100 ? "100+" : data.length;
+    
+    document.getElementById('meta').textContent = `Last updated: ${lastDate} • ${count} Git commits`;
+  }
 }
 
 fetchStreak();

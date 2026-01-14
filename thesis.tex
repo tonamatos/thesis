@@ -1,39 +1,46 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass{ut-thesis}
 
-\usepackage{lipsum}
-\usepackage{graphicx}
-\usepackage{hyperref}
+%% --- Packages ---
+\usepackage{graphicx}       % For loading images
+\usepackage{lineno}         % For line numbering
+\usepackage{lipsum}         % For testing (delete later)
 
-\title{Thesis Build Test}
-\author{Your Name}
-\date{\today}
+%% --- Configuration ---
+\graphicspath{ {./images/} }
+
+% Metadata
+\author{Tonatiuh Matos Wiederhold}
+\title{Thesis Title}
+\degree{Doctor of Philosophy}
+\department{Department of Mathematics}
+\gradyear{2026}
 
 \begin{document}
 
-\maketitle
+  %% --- Front Matter ---
+  \frontmatter
+  \maketitle
 
-\begin{abstract}
-This is a placeholder abstract. It exists only to test PDF generation, GitHub Actions, and deployment to the \texttt{gh-pages} branch.
-\end{abstract}
+  \begin{abstract}
+    This is the abstract.
+  \end{abstract}
 
-\section{Introduction}
+  \tableofcontents
+  \listoffigures
 
-\lipsum[1]
+  %% --- Main Matter ---
+  \mainmatter
 
-\section{Background}
+  % Turn on line numbering for drafts.
+  \linenumbers
 
-\lipsum[2-3]
+  % Chapters
+  \include{chapters/01_introduction}
+  \include{chapters/02_theory}
 
-\section{Methods}
-
-\lipsum[4]
-
-\section{Results}
-
-\lipsum[5]
-
-\section{Conclusion}
-
-\lipsum[6]
+  %% --- Back Matter ---
+  \backmatter
+  % \bibliographystyle{plain}
+  % \bibliography{bibliography/references}
 
 \end{document}
