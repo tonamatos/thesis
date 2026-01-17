@@ -12,6 +12,8 @@ The latest compiled PDF and progress tracker are available here:
 
 I use `ut-thesis`, documented [here](https://ctan.org/tex-archive/macros/latex/contrib/ut-thesis/) and with source code found [here](https://github.com/jessexknight/ut-thesis).
 
+I also use my own custom style file found [here](https://github.com/tonamatos/tonas-latex), imported as a submodule.
+
 ## Automation
 This project uses GitHub Actions to:
 1. Compile `thesis.tex` into a PDF on every push.
