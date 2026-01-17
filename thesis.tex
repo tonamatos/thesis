@@ -1,27 +1,17 @@
 \documentclass{ut-thesis}
 
-%% --- Packages ---
-\usepackage{graphicx}       % For loading images
-\usepackage{lineno}         % For line numbering
-\usepackage{lipsum}         % For testing (delete later)
-\usepackage[hidelinks]{hyperref}
+% --- Master style package ---
+\usepackage{common/tonas-thesis}
 
-%% --- Configuration ---
+% --- Configuration ---
 \graphicspath{ {./images/} }
 
-% Metadata
+% --- Metadata ---
 \author{Tonatiuh Matos Wiederhold}
 \title{Thesis Title}
 \degree{Doctor of Philosophy}
 \department{Department of Mathematics}
 \gradyear{2026}
-
-%% --- Custom Environments ---
-\newenvironment{publications}
-  {\chapter*{List of Publications}
-   \addcontentsline{toc}{chapter}{List of Publications}
-   \noindent The contents of this thesis have been published in the following articles:}
-  {}
 
 \begin{document}
 
