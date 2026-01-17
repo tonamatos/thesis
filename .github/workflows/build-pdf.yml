@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          submodules: recursive  # To include style files
+          fetch-depth: 0         # Ensures version history works
 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
