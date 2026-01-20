@@ -47,16 +47,23 @@ Indeed, it straightforward to verify that $\Fer(P_\mathbb Z)=\Aut(P_\mathbb Z)$.
 Notice that the basic open set $[(0\ 1)(2)]$ is disjoint from $\Fer(G)$ since the only automorphism interchanging 0 and 1 is a reflection (which doesn't fix the element 2), and thus $(0\ 1)\notin\overline{\Fer(G)}$.
 
 \begin{lemma}
-    Let $\Gamma\leq S_X$ and $\varphi\in S_X$. Then $\varphi\in\overline{\Gamma}$ if and only if for every finite $F\subseteq X$, there is $\sigma\in\Gamma$ such that $\varphi\restriction F=\sigma\restriction F$.
+    Let $\Gamma\leq S_X$ and $\varphi\in S_X$.
+    Then $\varphi\in\overline{\Gamma}$ if and only if for every finite $F\subseteq X$, there is $\sigma\in\Gamma$ such that $\varphi\restriction F=\sigma\restriction F$.
 \end{lemma}
 
 \begin{proof}
-    For the forward direction, take $\varphi$ and $F$ as above. Clearly, $[\varphi\restriction F]$ is a basic open neighborhood of $\varphi$ and hence must intersect $\Gamma$. Any $\sigma$ witnessing this has the sought property.
+    For the forward direction, take $\varphi$ and $F$ as above.
+    Clearly, $[\varphi\restriction F]$ is a basic open neighborhood of $\varphi$ and hence must intersect $\Gamma$.
+    Any $\sigma$ witnessing this has the sought property.
     
-    Conversely, take an arbitrary $t\in\omega^{<\omega}$ extended by $\varphi$. Pick $\sigma\in\Gamma$ with $\varphi\restriction \dom t=\sigma\restriction\dom t$. Clearly, $\sigma\in\Gamma\cap[t]$, proving that $\varphi\in\overline{\Gamma}$.
+    Conversely, take an arbitrary $t\in\omega^{<\omega}$ extended by $\varphi$.
+    Pick $\sigma\in\Gamma$ with $\varphi\restriction \dom t=\sigma\restriction\dom t$.
+    Clearly, $\sigma\in\Gamma\cap[t]$, proving that $\varphi\in\overline{\Gamma}$.
 \end{proof}
 
-A group action on $X$ is called \emph{$n$-transitive} if $|X|\geq n$ and for any two pairwise distinct $n$-tuples $(x_1,\dots,x_n)$ and $(y_1,\dots,y_n)$, there is a group element $g$ such that $gx_i=y_i$ for all $1\leq i\leq n$. Notice that $1$-transitive is just the usual definition of \emph{transitive}, i.e.\ that there is a single orbit. If for all $n\geq1$, $\Fer(G)$ acts $n$-transitively on $X$, we say $\Fer(G)$ is \emph{highly transitive}.
+A group action on $X$ is called \emph{$n$-transitive} if $|X|\geq n$ and for any two pairwise distinct $n$-tuples $(x_1,\dots,x_n)$ and $(y_1,\dots,y_n)$, there is a group element $g$ such that $gx_i=y_i$ for all $1\leq i\leq n$.
+Notice that $1$-transitive is just the usual definition of \emph{transitive}, i.e.\ that there is a single orbit.
+If for all $n\geq1$, $\Fer(G)$ acts $n$-transitively on $X$, we say $\Fer(G)$ is \emph{highly transitive}.
 
 \begin{proposition}\label{prop:char_local}
     The following are equivalent.
@@ -68,27 +75,43 @@ A group action on $X$ is called \emph{$n$-transitive} if $|X|\geq n$ and for any
 \end{proposition}
 
 \begin{proof}
-    The implication [1$\implies$2] follows from the previous lemma. Assume (2) and let $n\geq1$ and $(x_1,\dots,x_n)$ and $(y_1,\dots,y_n)$ be two pairwise distinct. Let $F:=\{x_i:1\leq i\leq n\}$, then fix a bijection $\omega\setminus F\to\omega\setminus\{y_i:1\leq i\leq n\}$ and define $\varphi$ such that it agrees with said bijection and in addition satisfies $\varphi(x_i)=y_i$. By (2), some $\sigma\in\Fer(G)$ has the desired property.
+    The implication [1$\implies$2] follows from the previous lemma.
+    Assume (2) and let $n\geq1$ and $(x_1,\dots,x_n)$ and $(y_1,\dots,y_n)$ be two pairwise distinct.
+    Let $F:=\{x_i:1\leq i\leq n\}$, then fix a bijection $\omega\setminus F\to\omega\setminus\{y_i:1\leq i\leq n\}$ and define $\varphi$ such that it agrees with said bijection and in addition satisfies $\varphi(x_i)=y_i$.
+    By (2), some $\sigma\in\Fer(G)$ has the desired property.
 
-    Finally, assume (3), let $\varphi$ be an arbitrary permutation on $X$ and $F=\{x_1,\dots,x_n\}\subseteq X$. Apply (3) to the tuples $(x_1,\dots,x_n)$ and $(\varphi(x_1),\dots,\varphi(x_n))$ to get $\sigma\in\Fer(G)$. It follows that $\sigma$ agrees with $\varphi$ on $F$. Since $F$ was arbitrary, by the previous lemma, $G$ must be a local amoeba.
+    Finally, assume (3), let $\varphi$ be an arbitrary permutation on $X$ and $F=\{x_1,\dots,x_n\}\subseteq X$.
+    Apply (3) to the tuples $(x_1,\dots,x_n)$ and $(\varphi(x_1),\dots,\varphi(x_n))$ to get $\sigma\in\Fer(G)$.
+    It follows that $\sigma$ agrees with $\varphi$ on $F$.
+    Since $F$ was arbitrary, by the previous lemma, $G$ must be a local amoeba.
 \end{proof}
 
-I point out that in the example of the bi-infinite path, $\Fer(P_\mathbb Z)$ acts transitively on $P_\mathbb Z$ but not 2-transitively, as the same aforementioned example clearly shows, namely the pairs $(0,2)$ and $(1,2)$. In such cases, one could use the largest $n$ for which the group acts $n$-transitively on $G$ to compare how close $G$ is to being a local amoeba.
+I point out that in the example of the bi-infinite path, $\Fer(P_\mathbb Z)$ acts transitively on $P_\mathbb Z$ but not 2-transitively, as the same aforementioned example clearly shows, namely the pairs $(0,2)$ and $(1,2)$.
+In such cases, one could use the largest $n$ for which the group acts $n$-transitively on $G$ to compare how close $G$ is to being a local amoeba.
 
-Denote by $P_{n+1}$ the path on the vertex set $n+1$ with edges given by consecutive pairs of numbers. For a label $i\in X$, denote by $\Fer^i(G)$ the subgroup of $\Fer(G)$ generated by those generators of $\Fer(G)$ that fix $i$. We say a graph $G$ is \emph{stem-symmetric with respect to $i$} (or to the vertex labeled by $i$) if $\Fer^i(G)$ is the symmetric group on $X\setminus\{i\}$.
+Denote by $P_{n+1}$ the path on the vertex set $n+1$ with edges given by consecutive pairs of numbers.
+For a label $i\in X$, denote by $\Fer^i(G)$ the subgroup of $\Fer(G)$ generated by those generators of $\Fer(G)$ that fix $i$.
+We say a graph $G$ is \emph{stem-symmetric with respect to $i$} (or to the vertex labeled by $i$) if $\Fer^i(G)$ is the symmetric group on $X\setminus\{i\}$.
 
-The next result provides an example of a graph where the gap between the automorphism group and the $\Fer$ group is as large as possible. Concretely, the countably infinite path on $X=\omega$, denoted $P_\omega$ where the edges are given by consecutive pairs of naturals, has a trivial automorphism group, but $\Fer(P_\omega)$ is dense in $S_\omega$.
+The next result provides an example of a graph where the gap between the automorphism group and the $\Fer$ group is as large as possible.
+Concretely, the countably infinite path on $X=\omega$, denoted $P_\omega$ where the edges are given by consecutive pairs of naturals, has a trivial automorphism group, but $\Fer(P_\omega)$ is dense in $S_\omega$.
 
-We need the following combinatorial lemma to prove that infinite paths are local amoebas. The only need the fact that finite paths are stem-symmetric with respect to an endpoint.
+We need the following combinatorial lemma to prove that infinite paths are local amoebas.
+The only need the fact that finite paths are stem-symmetric with respect to an endpoint.
 
 \begin{lemma}
     The graph $P_{n+1}$ is stem-symmetric with respect to $k$ if and only if $k\leq n$ and, if $n\geq5$ is odd, $k\neq\frac{n-1}2$.
 \end{lemma}
 
 \begin{proof}
-    We prove the case $k=n$ as the others are similar. Let $1\leq\ell<n$ and notice that the graph $P_{n+1}-(\ell,\ell+1)+(0,\ell+1)$ is a path on $n+1$ vertices and thus isomorphic to $P_{n+1}$. We can find an explicit isomorphism that fixes $n$ and decompose it into transpositions. In symbols, $$\prod_{k=0}^\ell(k\quad\ell-k):(\ell\ (\ell+1)\to0\ (\ell+1)).$$
+    We prove the case $k=n$ as the others are similar.
+    Let $1\leq\ell<n$ and notice that the graph $P_{n+1}-(\ell,\ell+1)+(0,\ell+1)$ is a path on $n+1$ vertices and thus isomorphic to $P_{n+1}$.
+    We can find an explicit isomorphism that fixes $n$ and decompose it into transpositions.
+    In symbols, $$\prod_{k=0}^\ell(k\quad\ell-k):(\ell\ (\ell+1)\to0\ (\ell+1)).$$
     
-    The second step is realizing that these permutations indeed generate the symmetric group on (the set) $n$. This is straightforward and can be done in many ways. For example, every transposition of the form $(0\ \ell)$, for $1\leq\ell<n$, is in $\Fer^n(P_{n+1})$ by an inductive argument on $\ell$, taking conjugates and noticing that the transposition in question is the left-most factor in the $\ell$-th permutation above.
+    The second step is realizing that these permutations indeed generate the symmetric group on (the set) $n$.
+    This is straightforward and can be done in many ways.
+    For example, every transposition of the form $(0\ \ell)$, for $1\leq\ell<n$, is in $\Fer^n(P_{n+1})$ by an inductive argument on $\ell$, taking conjugates and noticing that the transposition in question is the left-most factor in the $\ell$-th permutation above.
 \end{proof}
 
 \begin{proposition}
@@ -96,11 +119,19 @@ We need the following combinatorial lemma to prove that infinite paths are local
 \end{proposition}
 
 \begin{proof}
-    Let $F\subseteq\omega$ be finite and $\varphi\in S_\omega$. Define $n:=\max(F\cup\varphi[F])+1$ and notice that $t:=\varphi\restriction F$ is a bijection between finite subsets of $n$. In particular, there exists a bijection $s:n\setminus F\to n\setminus t[F]$. Now define $\sigma:X\to X$ by $$\sigma(x):=\begin{cases}
+    Let $F\subseteq\omega$ be finite and $\varphi\in S_\omega$.
+    Define $n:=\max(F\cup\varphi[F])+1$ and notice that $t:=\varphi\restriction F$ is a bijection between finite subsets of $n$.
+    In particular, there exists a bijection $s:n\setminus F\to n\setminus t[F]$.
+    Now define $\sigma:X\to X$ by $$\sigma(x):=\begin{cases}
         s(x)&x\in n\setminus F\\
         t(x)&x\in F\\
         x&x\geq n
-    \end{cases}$$ Routine arguments show that $\sigma\in S_X$. Now consider the induced subgraph $P_{n+1}$ and the permutation $\sigma\restriction(n+1)$. Observe that this permutation fixes the endpoint of the path, $n$, by definition. Thus by the previous lemma, there is a sequence $f_0,\dots,f_m$ of generators of $\Fer(P_{n+1})$, all of which fix $n$, such that $\sigma\restriction(n+1)=f_0\cdots f_m$.
+    \end{cases}$$ Routine arguments show that $\sigma\in S_X$.
+    Now consider the induced subgraph $P_{n+1}$ and the permutation $\sigma\restriction(n+1)$.
+    Observe that this permutation fixes the endpoint of the path, $n$, by definition.
+    Thus by the previous lemma, there is a sequence $f_0,\dots,f_m$ of generators of $\Fer(P_{n+1})$, all of which fix $n$, such that $\sigma\restriction(n+1)=f_0\cdots f_m$.
 
-    For each $i<m$, we can extend $f_i$ to a permutation $\overline{f_i}$ on $X$ by fixing every label $x>n$. Clearly, each $\overline{f_i}$ is a member of $\Fer(P_\omega)$ and thus $\sigma=\overline{f_0}\cdots\overline{f_m}\in\Fer(P_\omega)$. Finally, the choice of $\sigma$ makes it evident that $\sigma\restriction F=t=\varphi\restriction F$, and thus $P_\omega$ is a local amoeba by Proposition~\ref{prop:char_local}.
+    For each $i<m$, we can extend $f_i$ to a permutation $\overline{f_i}$ on $X$ by fixing every label $x>n$.
+    Clearly, each $\overline{f_i}$ is a member of $\Fer(P_\omega)$ and thus $\sigma=\overline{f_0}\cdots\overline{f_m}\in\Fer(P_\omega)$.
+    Finally, the choice of $\sigma$ makes it evident that $\sigma\restriction F=t=\varphi\restriction F$, and thus $P_\omega$ is a local amoeba by Proposition~\ref{prop:char_local}.
 \end{proof}
