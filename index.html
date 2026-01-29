@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta charset="UTF-8">
+<title>Thesis Tracker</title>
+<style>
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 40px 0;
+    background-image: url('https://images.pexels.com/photos/7598077/pexels-photo-7598077.jpeg');
+    background-size: cover;
+    background-position: center;
+  }
+
+  #container {
+    max-width: 700px;
+    margin: auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.85); /* translucent box */
+    border-radius: 12px;
+  }
+
+  h1 { margin-top: 0; }
+
+  .section { margin: 25px 0; }
+
+  .label {
+    font-weight: normal;
+    margin-bottom: 6px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .label img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .bar-bg {
+    width: 100%;
+    height: 6px;
+    background: #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .bar { height: 100%; background: #4caf50; width: 0%; }
+
+  .stage-not { width: 0%; }
+  .stage-outline { width: 20%; }
+  .stage-draft { width: 50%; }
+  .stage-reviewed { width: 80%; }
+  .stage-approved { width: 100%; }
+
+  #streak { 
+    text-align: center; 
+    font-size: 1rem; 
+    color: #666;
+    margin-top: 40px; 
+  }
+
+  #last-updated {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;   /* tight spacing to the streak */
+    margin-bottom: 25px;
+    font-style: italic;
+  }
+
+  #meta {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-family: monospace; /* Adds a technical 'latex source' feel */
+  }
+
+  #download {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 40px auto; /* Top, Right, Bottom, Left */
+    padding: 12px 25px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+
+  #download:hover {
+    background: #555;
+  }
+
+  /* Lighter, smaller, and centered copyright */
+  .copyright {
+    text-align: center;
+    color: #aaa;      /* Lighter gray */
+    font-size: 0.8rem; /* Smaller font */
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
+</style>
+</head>
+
+<body>
+<div id="container">
+
+<h1>Tona's Thesis Progress Tracker</h1>
+
+<div class="section">
+  <div class="label">
+    1 Introduction
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section">
+  <div class="label">
+    2 Descriptive Combinatorics
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.1 A concise proof of the L0 dichotomy
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.2 A Ramsey-type theorem for E0 trees
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.3 Inexistence of a basis for digraphs of dichromatic number 3
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    2.4 Uncountable sets and an infinite linear order game
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section">
+  <div class="label">
+    3 Deep Computations
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.1 Introduction
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.2 Connections to learning theory
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.3 The Bourgain-Fremlin-Talagrand theorems
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.4 The non-independence property
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.5 Compositional computation structures
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    3.6 Quantum logics
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section">
+  <div class="label">
+    4 Group Actions on Graphs
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.1 Introduction
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.2 Border tracing in arbitrary adjacency graphs
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.3 Recursive constructions
+  </div>
+  <div class="bar-bg"><div class="bar stage-draft"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.4 Amoeba trees
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<div class="section" style="margin-left: 20px;">
+  <div class="label">
+    4.5 Infinitary amoeba graphs
+  </div>
+  <div class="bar-bg"><div class="bar stage-outline"></div></div>
+</div>
+
+<div class="section">
+  <div class="label">
+    5 Closing Remarks and Open Problems
+  </div>
+  <div class="bar-bg"><div class="bar stage-not"></div></div>
+</div>
+
+<p id="streak">Analyzing work history...</p>
+<p id="meta">Loading metadata...</p>
+
+<a id="download" href="thesis.pdf">See Latest PDF 📄</a>
+
+<p class="copyright">2026 © Tonatiuh Matos Wiederhold</p>
+
+<script>
+// --- Automatic streak counter ---
+const repo = 'tonamatos/thesis';
+
+async function fetchStreak() {
+  // Request 100 commits to get a longer history and accurate count
+  const res = await fetch(`https://api.github.com/repos/${repo}/commits?per_page=100`);
+  const data = await res.json();
+  
+  // 1. Calculate Streak
+  const dates = data.map(c => new Date(c.commit.author.date).toDateString());
+  let streak = 0;
+  let current = new Date();
+  
+  // Check previous days
+  while (dates.includes(current.toDateString())) {
+    streak++;
+    current.setDate(current.getDate() - 1);
+  }
+  document.getElementById('streak').textContent = `Consecutive days of writing activity: ${streak}`;
+
+  // 2. Metadata (Date + Total Commits)
+  if (data.length > 0) {
+    const lastDate = new Date(data[0].commit.author.date).toLocaleDateString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric'
+    });
+    
+    // If we hit the limit of 100, show "100+"
+    const count = data.length >= 100 ? "100+" : data.length;
+    
+    document.getElementById('meta').textContent = `Last updated: ${lastDate} • ${count} Git commits`;
+  }
+}
+
+fetchStreak();
+</script>
+
+</div>
+</body>
+</html>
