@@ -1,9 +1,6 @@
 \documentclass{ut-thesis}
-
-% --- Master style package ---
 \usepackage{common/tonas-thesis}
 
-% --- Configuration ---
 \graphicspath{ {./images/} }
 
 % --- Metadata ---
@@ -15,50 +12,46 @@
 
 \begin{document}
 
-  %% --- Front Matter ---
-  \frontmatter
-  %\maketitle
+%% --- Front Matter ---
+\frontmatter
+%\maketitle
 
-  %\begin{abstract}
-  %  This is the abstract.
-  %\end{abstract}
+%\begin{abstract}
+%  This is the abstract.
+%\end{abstract}
 
-  %\begin{acknowledgements}
-  %  These are the acknowledgements.
-  %\end{acknowledgements}
+%\begin{acknowledgements}
+%  These are the acknowledgements.
+%\end{acknowledgements}
 
-  %% --- publications ---
-  \begin{publications}
-    % You can use the exact formatting from your .bib file here
+\begin{publications}
     \begin{itemize}
-      \item Section~\ref{sec:cantor_game}: Adapted from \cite{MatosWiederholdSalvetti2025}, where we solved a problem of Brian and Clontz.
-      \item Chapter~\ref{ch:deep_computations}: Primarily based on my contributions to \cite{Duenezetal2026}, specifically regarding the separation of learnability classes with computational structures, and the connections to other fields.
-      \item Section~\ref{sec:border_tracing}: Focuses solely on my contributions to two main algorithms, their analysis, development and implementation detailed in \cite{WiederholdMatosWiederhold2026}.
-      \item Section~\ref{sec:recursive_constructions}: Based on both the joint work and the sections and main results I contributed to \cite{Eslavaetal2025} and \cite{Caroetal2023}.
-      \item Section~\ref{sec:amoeba_trees}: Based on \cite{GomezetalPreprint}, specifically on my contributions to several conjectures and practical implementations.      
+        \item Section~\ref{sec:cantor_game}: Adapted from \cite{MatosWiederholdSalvetti2025}, where we solved a problem of Brian and Clontz.
+        \item Chapter~\ref{ch:deep_computations}: Primarily based on my contributions to \cite{Duenezetal2026}, specifically regarding the separation of learnability classes with computational structures, and the connections to other fields.
+        \item Section~\ref{sec:border_tracing}: Focuses solely on my contributions to two main algorithms, their analysis, development and implementation detailed in \cite{WiederholdMatosWiederhold2026}.
+        \item Section~\ref{sec:recursive_constructions}: Based on both the joint work and the sections and main results I contributed to \cite{Eslavaetal2025} and \cite{Caroetal2023}.
+        \item Section~\ref{sec:amoeba_trees}: Based on \cite{GomezetalPreprint}, specifically on my contributions to several conjectures and practical implementations.      
     \end{itemize}
-  \end{publications}
+\end{publications}
 
-  \tableofcontents
-  %\listoffigures
+\tableofcontents
+%\listoffigures
 
-  %% --- Main Matter ---
-  \mainmatter
+\mainmatter
 
-  % Turn on line numbering for drafts.
-  %\linenumbers
+% Turn on line numbering for drafts.
+%\linenumbers
 
-  % Chapters
-  %\include{chapters/01_introduction}
-  \include{chapters/02_descriptive_combinatorics.tex}
-  \include{chapters/03_deep_computations.tex}
-  \include{chapters/04_combinatorics.tex}
-  %\include{chapters/05_open_problems.tex}
+%\include{chapters/01_introduction}
+\include{chapters/02_descriptive_combinatorics.tex}
+\include{chapters/03_deep_computations.tex}
+\include{chapters/04_combinatorics.tex}
+%\include{chapters/05_open_problems.tex}
 
-  %% --- Back Matter ---
-  \backmatter
-  %\nocite{*}
-  \bibliographystyle{plainurl}
-  \bibliography{bibliography/references}
+\backmatter
+
+%\nocite{*}
+\bibliographystyle{plainurl}
+\bibliography{bibliography/references}
 
 \end{document}
