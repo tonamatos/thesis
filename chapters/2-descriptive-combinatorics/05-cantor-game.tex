@@ -2,37 +2,48 @@
 
 \section{Uncountable sets and an infinite linear order game}\label{sec:cantor_game}
 
-This section addresses a question by Will Brian and Steven Clontz regarding an infinite game, called \emph{Baker's game}.
-In their paper \cite{brian-clontz}, they show that when playing the game in the reals, Player II has a winning strategy if and only if the payoff set is countable.
-It makes sense to play this game in more general linear orders, and so they ask if it is possible for Player II to have a winning strategy on an uncountable payoff set instead, or if this characterization somehow only holds in the reals.
+This section addresses a question by Will Brian and Steven Clontz regarding an infinite game of perfect information with two players, called \emph{Baker's game}.
 
-In collaboration with the other author of \cite{MatosWiederholdSalvetti2025}, I provided a positive answer to the existence of winning strategies on uncountable sets.
-Furthermore, we constructed a dense linear order of arbitrary infinite size on which Player II has a winning strategy on \textbf{every} payoff set.
-This construction demonstrates the complexity of generalizing the Brian-Clontz characterization.
+Games have many useful applications in fields like topology and set theory.
+\textcolor{orange}{I want to add a comment connecting this to Section~\ref{sec:ramsey} once it is written}
+Leaving many details out of this famous example, the Banach--Mazur game (see \cite{oxtoby1957}) is played by two players who alternate turns picking subsets of $\omega^\omega$, forming a descending chain $W_0\supseteq W_1\supseteq\cdots$.
+A previously agreed upon set $S\subseteq\omega^\omega$ constitutes the winning condition:
+Player I wins if there is an element $x\in S$ such that $x\in W_n$ for all $n$; otherwise, Player II wins.
+More generally, a well-known result is that Player II has a winning strategy if and only if $S$ is of the first category.
+In particular, Player II wins whenever $S$ is countable.
+
+The game I study in this section, \emph{Baker's game}, is similar:
+Two players take turns selecting real numbers; Player I tried to ensure that some element in the fixed set $S$ remains in between all of these real numbers.
+In \cite{brian-clontz}, the authors show that Player II has a winning strategy if and only if the set $S$ is countable.
+It makes sense to play this game in more general linear orders, and so they ask if it is possible for Player II to have a winning strategy on an uncountable set $S$ instead, or if this property somehow only holds in the reals, thus providing a characterization of the reals in these terms.
+
+In collaboration with the other author of \cite{MatosWiederholdSalvetti2025}, we showed the existence of a dense linear order of arbitrary infinite cardinality on which Player II has a winning strategy on \textbf{every} set $S$, including uncountable ones.
+This construction demonstrates that the outcome of Baker's game is highly sensitive to the order type of the underlying space and not merely a matter of cardinality.
+Concretely, the Brian--Clontz characterization does not extend to arbitrary dense linear orders.
 
 \subsection{The Cantor Game}
 
-In \cite{baker}, Matthew Baker introduced the following game on the real numbers:
+In \cite{baker}, Matthew Baker introduced the following game on the real numbers.
 Fix a subset $S\subseteq\mathbb{R}$.
 Player I starts by picking a real number $a_0$.
 Then, Player II picks a real number $b_0$ such that $a_0<b_0$.
 In the $n$-th turn, Player I picks a real number $a_n$ such that $a_{n-1}<a_n<b_{n-1}$ and then Player II picks a real number $b_n$ such that $a_n<b_n<b_{n-1}$.
-After $\omega$-many turns they form two sequences of real numbers $\{a_n\}$ and $\{b_n\}$ such that $a_0<a_1<\cdots<b_1<b_0$.
+After $\omega$-many turns they form two sequences of real numbers $\{a_n\}$ and $\{b_n\}$ such that $a_0<a_1<\cdots<a_n<\cdots<b_n<\cdots<b_1<b_0$.
 Player I wins if and only if there exists $x\in S$ such that $a_n<x<b_n$ for all $n<\omega$.
-Otherwise, that Player II wins (there are no ties).
-Such game can be defined on more general linear orders.
-Proposition~\ref{prop:arrow} generalizes the following observation when playing the game in any dense linear order.
+Otherwise, Player II wins.
+It should be noted that the $[a_n,b_n]$ form a nested set of intervals, and thus there always exists real number $x$ with the property that for all $n<\omega$ $a_n<x<b_n$.
+Proposition~\ref{prop:arrow} generalizes the following observation when playing the game in an arbitrary dense linear order.
   
 \begin{proposition}[\cite{baker}]\label{prop:countable win}
     If $S$ is countable, then Player II has a winning strategy in the Cantor Game.
 \end{proposition}
 
-The so called \emph{Cantor Game} was introduced as a game-theoretic way of proving that $\mathbb{R}$ is uncountable, which follows by the previous observation.
+The so-called \emph{Cantor Game} was introduced as a game-theoretic way of proving that $\mathbb{R}$ is uncountable, which follows by the previous observation.
 Baker also proved that if $S$ contains a perfect set, then Player I has a winning strategy.
 Later in \cite{cantor}, M.D.\ Ladue (a student of Baker) proved that Player I has a winning strategy if and only if the set $S$ contains a perfect set.
-The question of whether the converse of proposition \ref{prop:countable win} is true remained open until 2022.
+The question of whether the converse of Proposition~\ref{prop:countable win} is true remained open until 2022.
 In \cite{brian-clontz}, Brian and Clontz used elementary submodels to prove the converse statement of proposition \ref{prop:countable win} above.
-  
+
 \begin{question}[\cite{brian-clontz}]\label{question:brian-clontz}
     Is there a linear order $(X,<)$ and an uncountable $S\subseteq X$ on which Player II has a winning strategy?
 \end{question}
@@ -48,7 +59,7 @@ I include the proof for the reader's convenience.
 
 \begin{theorem}[\cite{todorcevic_6}]\label{thm:todorcevic}
     Let $X$ be a linearly ordered set.
-    The following are equivalent:
+    The following are equivalent.
     \begin{enumerate}[label=(\roman*)]
         \item $X$ is a countable union of well-ordered sets.
         \item $X$ is $\sigma$-scattered and $\omega_1^*$-free.
@@ -58,12 +69,13 @@ I include the proof for the reader's convenience.
 \begin{proof}
     $(i)\Rightarrow(ii)$ is clear, so I focus on $(ii)\Rightarrow(i)$.
     It suffices to assume that $X$ is scattered (and $\omega_1^*$-free).
-    Define the following equivalence relation on $X$: $x\sim y$ if and only if the closed interval $[x,y]$ is a countable union of well-ordered sets.
-    Notice that every equivalence class $\mathcal{C}$ is convex, i.e., if $x,y\in\mathcal{C}$ and $x<z<y$, then $z\in\mathcal{C}$.
+    Define the following relation on $X$: $x\sim y$ if and only if the closed interval $[x,y]$ is a countable union of well-ordered sets.
+    Routine arguments show that $\sim$ is an equivalence relation.
+    Also, every equivalence class $\mathcal{C}$ is convex, i.e., if $x,y\in\mathcal{C}$ and $x<z<y$, then $z\in\mathcal{C}$.
     Let $[x]$ be the equivalence class of $x$.
     Since every equivalence class is convex, the order $[x]<[y]$ if and only if $x<y$ is well-defined.
-    Hence, the quotient $X/\!\sim$ can be seen as a subspace of $X$.
-    Thus, $X/\!\sim$ is also scattered by assumption.
+    Hence, the quotient order $X/\!\sim$ is isomorphic to a subspace of $X$.
+    It follows that $X/\!\sim$ is scattered by assumption.
     \begin{claim}
         $[x]_{\geq}:=\{y\in[x]:y\geq x\}$ is a countable union of well-ordered sets for all $x$.
     \end{claim}
@@ -93,12 +105,12 @@ I include the proof for the reader's convenience.
         Then, $[x,y]\subseteq [x]_\geq\cup[y]_\leq$ which implies that $[x,y]$ is a countable union of well-ordered sets by the previous two claims.
         Therefore, $[x]=[y]$.
     \end{claimproof}
-    This last claim shows that $X$ must have a single equivalence class, since otherwise $X/\!\sim$ would contain a copy of the rationals.
+    This last claim shows that $X$ must have a single equivalence class, since a nontrivial scattered dense order contains a copy of $\mathbb{Q}$.
 \end{proof}
 
 If $S$ is a countable union of well-ordered subsets of an $\omega_1$-free set $X$, then $S$ must be countable.
 Also, it is clear that a subset $S$ of $\mathbb{R}$ is countable if and only if $S$ is a countable union of well-ordered sets.
-This idea, in combination with both the previous theorem and the first fact mentioned in this paragraph, is generalized by the following.
+This idea, in combination with the preceding theorem, is generalized by the following.
 
 \begin{corollary}\label{cor:sigma-countable}
     If $X$ is an $\omega_1$-free and $\omega_1^*$-free linearly ordered set, then the following are equivalent for any $S\subseteq X$.
@@ -169,11 +181,11 @@ Notice that an uncountable conversely well-ordered set $S$ has the property that
 \begin{proof}
     Take $X=\kappa^*\times\mathbb Q$ ordered lexicographically.
     Concretely, given $x=(\alpha,p)$ and $y=(\beta, q)$ elements of $X$, $x\leq y$ if either $\beta<\alpha$ or $\alpha=\beta$ and $p<_\mathbb Qq$.
-    Since the rationals are countable and $\kappa$ is infinite, clearly $X$ has the desired size.
+    Since the rationals are countable and $\kappa$ is infinite, $X$ has the desired size.
     The fact that $X$ is dense follows from the fact that $\mathbb Q$ is dense and unbounded.
 
     Now let $S\subseteq X$ and define, for each $\alpha<\kappa$, $S_\alpha=\{\alpha\}\times\mathbb Q$.
-    Clearly, each $S_\alpha$ is countable, and thus Player II has a winning strategy for $BG(X,S_\alpha)$, by virtue of Proposition~\ref{prop:arrow}.
+    As each $S_\alpha$ is countable, Player II has a winning strategy for $BG(X,S_\alpha)$, by virtue of Proposition~\ref{prop:arrow}.
     Since $S=\bigcup_{\alpha<\kappa}S_\alpha$ and the $S_\alpha$ are ordered the way that Theorem~\ref{thm:blocks} requires, the result follows.
 \end{proof}
 
@@ -184,7 +196,7 @@ By the previous results such orderings must be $\omega_1$-free and $\omega_1^*$-
 Separable and even ccc linear orderings have this property.
 The separable case (the reals) was established in \cite{brian-clontz}.
 Then, the next step is to study dense linear orders that are $\omega_1$-free, $\omega_1^*$-free but not separable.
-The typical example of such ordering is the Aronszajn ordering.
+A classical example of such ordering is the Aronszajn ordering.
 
 \begin{definition}
     An \emph{Aronszajn line (A-line)} is an uncountable linearly ordered set that is $\omega_1$-free, $\omega_1^*$-free and contains no uncountable subset of the reals.
@@ -194,7 +206,7 @@ Following \cite{A-orderings}, define a proper decomposition for A-lines.
 Let $A$ be a dense Aronszajn line.
 Let $D_0:=\emptyset$.
 Given a countable $D_\alpha\subseteq A$, consider the equivalence relation on $A\backslash D_\alpha$: $x\sim_\alpha y$ if and only if there is no $z\in D_\alpha$ such that $x<z<y$.
-Notice that each $\sim_\alpha$ class is convex.
+Each $\sim_\alpha$ class is convex.
 Let $T_\alpha$ be the set of all $\sim_\alpha$ classes and let $D_\alpha'$ be a selector of the $\sim_\alpha$ classes.
 Since $D_\alpha$ is countable and dense in $D_{\alpha+1}:=D_\alpha\cup D_\alpha'$, then $D_{\alpha+1}$ must be countable because $A$ does not contain uncountable separable subsets.
 Given $D_\alpha$ for $\alpha<\gamma$ and $\gamma$ limit, let $D_\gamma=\bigcup_{\alpha<\gamma}D_\alpha$.
@@ -213,10 +225,10 @@ Another class of lines where a similar decomposition can be performed is the cla
 \end{definition}
 
 Define a \emph{proper decomposition} for the nowhere separable Souslin continuum $L$ as follows.
-let $D_0:=D\neq\emptyset$ be any countable set.
+Let $D_0:=D\neq\emptyset$ be any countable set.
 Given a countable $D_\alpha\subseteq L$ consider the equivalence relation on $L\backslash\overline{D_\alpha}$:
 $x\sim_\alpha y$ if and only if there is no $z\in D_\alpha$ such that $x<z<y$.
-Notice that each $\sim_\alpha$ class is convex.
+Again, each $\sim_\alpha$ class is convex.
 Let $T_\alpha$ be the set of all $\sim_\alpha$ classes and let $D_\alpha'$ be a selector of the $\sim_\alpha$ classes.
 Since $L$ has the ccc, then $T_\alpha$ is countable.
 Let $D_{\alpha+1}=D_\alpha\cup D_\alpha'$.
@@ -235,14 +247,14 @@ For $\gamma<\omega_1$ limit let $D_\gamma=\bigcup_{\alpha<\gamma}D_\alpha$.
     \end{claim}
     \begin{claimproof}
         Let $x_0\in D_\alpha$.
-        Since $L$ is nowhere separable, $\overline{D_\alpha}$ is nowhere-dense so pick $y_1\in (L\backslash\overline{D_\alpha})\cap (-\infty, x_0)$ and $y_1\in (L\backslash\overline{D_\alpha})\cap (x_0,\infty)$.
+        Since $L$ is nowhere separable, $\overline{D_\alpha}$ is nowhere-dense so pick $y_1\in (L\backslash\overline{D_\alpha})\cap (-\infty, x_0)$ and $y_2\in (L\backslash\overline{D_\alpha})\cap (x_0,\infty)$.
         Then, $[y_1]_\alpha,[y_2]_\alpha\in T_\alpha$.
     \end{claimproof}
     For each $\xi<\omega_1$ let $I_{\xi+1}^1\in T_{\xi+1}$ such that $I_{\xi+1}^1\cap I_{\xi+1}^0=\emptyset$.
     Then, $\{I_{\xi+1}^1:\xi<\omega_1\}$ is an uncountable pairwise disjoint family of open sets, contradicting ccc.
 \end{proof}
 
-Using a proper decomposition to show the following remains an open question of great interests to the authors of \cite{MatosWiederholdSalvetti2025}.
+Using a proper decomposition to show the following remains an open question of great interest to the authors of \cite{MatosWiederholdSalvetti2025}.
 
 \begin{conjecture}
     Let $L$ be a nowhere separable Souslin continuum.
