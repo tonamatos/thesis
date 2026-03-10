@@ -152,7 +152,7 @@ Let $X$ be a perfect Polish space.
 
 A large family of graphs with strong balanceability properties is defined and explored in Section~\ref{subsec:fer}.
 
-\subsection{Feasible edge-replacements}\label{subsec:fer}
+\subsection{The group of feasible edge-replacements}\label{subsec:fer}
 
 Consider this combinatorial puzzle:
 a graph is given; one may remove an edge and add it wherever there is no edge (trivially, one can add it back to its original position), but the new graph must be isomorphic to the previous graph.
@@ -379,7 +379,7 @@ I call these graphs \emph{rigid}.
 One of the main concerns of this active field of research is finding and classifying interesting examples of graphs that are local amoebas.
 For instance, constructing trees with arbitrary large maximum degree that are local amoebas is a curious problem, whose solution was the main precursor of \cite{Eslavaetal2025}, which I present in Section~\ref{subsec:new_recursive}.
 
-\subsection{}\label{subsec:new_recursive}
+\subsection{Local amoeba trees with large maximum degree}\label{subsec:new_recursive}
 
 Intuitively, if one is trying to transform one graph into another by means of feasible edge-replacements, it may come in handy to have isolated vertices that allow new positions for graphs.
 I previously mentioned that complete graphs are rigid graphs, meaning they have no non-trivial feasible edge-replacements.
@@ -407,16 +407,12 @@ Notably, if a value of $t$ exists such that Definition~\ref{def:global_amoeba} h
     \end{enumerate}
 \end{theorem}
 
+A well-known fact about finite trees is that they have at least two vertices of degree 1.
+Joined with the observation that if $T$ is a local amoeba, then $\Fer(T)$ consists of a single orbit (it is in fact, the whole symmetric group), it is clear that condition (3) of Theorem~\ref{thm:classification_global} is satisfied.
+
 \begin{corollary}\label{cor:local_trees_are_global}
     If $T$ is a finite tree that is a local amoeba, then it is a global amoeba.
 \end{corollary}
-
-\begin{proof}
-    Let $T$ be a finite tree.
-    An elementary fact about finite trees is that they have at least two vertices of degree 1.
-    If $T$ is a local amoeba, then $\Fer(T)$ consists of a single orbit (it is in fact, the whole symmetric group).
-    In particular, condition (3) of Theorem~\ref{thm:classification_global} is satisfied, and thus $T$ is a global amoeba.
-\end{proof}
 
 The connectedness of $T$ is indispensable.
 For example, a matching (a set of pairwise disjoint edges) forms a global amoeba, since every vertex has degree 1, but not a local amoeba (it is, in fact, rigid).
@@ -428,7 +424,7 @@ For example, a matching (a set of pairwise disjoint edges) forms a global amoeba
     \label{fig:Tk}
 \end{figure}
 
-The construction I describe now (see Figure~\ref{fig_Tk}), loosely inspired by the Fibonacci sequence, illustrates the main results of \cite{Eslavaetal2025}.
+The construction I describe now (see Figure~\ref{fig:Tk}), loosely inspired by the Fibonacci sequence, illustrates the main results of \cite{Eslavaetal2025}.
 Start by defining $T_1$ and $T_2$ to each be the tree consisting of a single edge, in other words, $T_1\simeq T_2\simeq K_2$.
 Now, suppose that $T_{k-1}$ and $T_{k-2}$ have already been constructed.
 In each of these trees, select a vertex of maximum degree.
@@ -436,13 +432,12 @@ The tree $T_k$ is the result of joining $T_{k-1}$ and $T_{k-2}$ by the edge conn
 The choice of the vertex of maximum degree is irrelevant, as one can easily verify: either such vertex is unique, or there are exactly two such vertices that are similar (that is, they can be interchanged via an automorphism), and thus the resulting sequence of graphs is unique up to isomorphisms.
 
 The sequence of graphs $\{T_k:k\in\mathbb{N}\}$ is a particular case of a more general scheme of recursive constructions studied in \cite[Section~3]{Eslavaetal2025}.
-I choose a succint presentation in this thesis, and as such the constructions and results about them are not presented in their full generality.
 
-\begin{theorem}
+\begin{theorem}[{\cite[Theorem~9]{Eslavaetal2025}}]\label{thm:fibonacci_is_local}
     For every $k\in\mathbb{N}$, $T_k$ is a local amoeba.
 \end{theorem}
 
-An independent contribution of mine answers the following question and I wrote it as \cite[Section~5]{Eslavaetal2025}.
+An independent contribution of mine answers the following question which I developed in \cite[Section~5]{Eslavaetal2025}.
 The proof that a finite graph $G$ is a local amoeba often involves a counting argument: one shows that $\Fer(G)$ has $|X|!$ elements and then, given that $\Fer(G)$ is contained in the symmetric group on $X$, $\Fer(G)$ must be equal to $S_X$.
 There are two disadvantages with this.
 First, given an arbitrary permutation $\sigma\in S_X$ (that is, an arbitrary copy of $G$ on the same vertex set), the proof generally offers no method of finding the sequence of feasible edge-replacements.
