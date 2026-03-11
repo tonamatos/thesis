@@ -379,6 +379,21 @@ I call these graphs \emph{rigid}.
 One of the main concerns of this active field of research is finding and classifying interesting examples of graphs that are local amoebas.
 For instance, constructing trees with arbitrary large maximum degree that are local amoebas is a curious problem, whose solution was the main precursor of \cite{Eslavaetal2025}, which I present in Section~\ref{subsec:new_recursive}.
 
+In terms of Group Theory, $\Fer(G)$ carries all of the expressive power of finite groups.
+Precisely, we can show that there is no theorem of the form ``for every finite graph $G$, the group $\Fer(G)$ has property $\varphi$,'' where $\varphi$ is a non-trivial property about groups.
+
+After Frucht's 1939 breakthrough showing that every finite group is the automorphism group of some finite graph, he extended this result to the more restrictive class of cubic graphs (graphs in which every vertex has degree 3) in 1949 (see \cite{Frucht1949}).
+This result, often referred to as Frucht's Theorem, demonstrates that for any finite group $G$, there exists a cubic graph $X$ such that $\Aut(X)\cong G$.
+
+For a cubic graph $G$, and more generally for a $k$-regular graph with $k\geq2$, $G$ is rigid,
+that is $\Fer(G)=\Aut(G)$.
+This is a direct consequence of the fact that applying a non-trivial feasible edge-replacement changes the degree of at least one vertex (by 1).
+Put succintly:
+
+\begin{proposition}
+    For every finite group $\Gamma$, there is a graph $G$ such that $\Gamma$ is isomorphic to $\Fer(G)$.
+\end{proposition}
+
 \subsection{Local amoeba trees with large maximum degree}\label{subsec:new_recursive}
 
 Intuitively, if one is trying to transform one graph into another by means of feasible edge-replacements, it may come in handy to have isolated vertices that allow new positions for graphs.
@@ -439,9 +454,14 @@ The sequence of graphs $\{T_k:k\in\mathbb{N}\}$ is a particular case of a more g
 
 An independent contribution of mine answers the following question which I developed in \cite[Section~5]{Eslavaetal2025}.
 The proof that a finite graph $G$ is a local amoeba often involves a counting argument: one shows that $\Fer(G)$ has $|X|!$ elements and then, given that $\Fer(G)$ is contained in the symmetric group on $X$, $\Fer(G)$ must be equal to $S_X$.
-There are two disadvantages with this.
-First, given an arbitrary permutation $\sigma\in S_X$ (that is, an arbitrary copy of $G$ on the same vertex set), the proof generally offers no method of finding the sequence of feasible edge-replacements.
-In other words, this proving method shows the existence of a solution to the puzzle, without giving an algorithm to find it.
-Second, counting methods don't generalize to infinite graphs.
-I address this in Section~\ref{sec:infinitary_amoeba_graphs}.
+There are two disadvantages with this method.
+
+\begin{itemize}
+    \item Given an arbitrary permutation $\sigma\in S_X$ (that is, an arbitrary copy of $G$ on the same vertex set), the proof generally offers no method of finding the sequence of feasible edge-replacements.
+    In other words, this proving method shows the existence of a solution to the puzzle, without giving an algorithm to find it.
+    The algorithm presented in this section resolves this for an infinite family of trees.
+    
+    \item Counting methods don't generalize to infinite graphs.
+    I address this in Section~\ref{sec:infinitary_amoeba_graphs}.
+\end{itemize}
 
