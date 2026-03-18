@@ -11,7 +11,7 @@ I do not go into the details of what those properties are, beyond what is needed
 The interested reader will find a thorough discussion and complete characterization of these graphs in \cite[Section~2]{unavoidable_chromatic}.
 
 \begin{definition}\label{def:balancing_num}
-    Suppose that a finite graph $G$ has an edge-colouring $c:E(G)\to2$ in two colours.
+    Suppose that a finite graph $G$ has an edge-colouring $c\colon E(G)\to2$ in two colours.
     This coloured graph is called \emph{balanced} if the number of edges of each colour differ by at most one; that is, if $G$ has an even number of edges, there are exactly as many edges of each colour.
 
     A finite graph $G$ is called \emph{balanceable} if in any $2$-colouring of the complete graph $K_n$, with sufficiently many edges of each colour and $n$ sufficiently large, one can find a balanced copy of $G$.
@@ -45,26 +45,29 @@ Interestingly, the balancing number may or may not depend on $n$, as the followi
     
     Indeed, it is obvious that the balancing number cannot be less than 1, as $C_4$ has four edges, and hence a balanced copy needs two of each colour.
 
-    As for the upper bound, let $n\geq 4$ and fix an arbitrary edge colouring $c:E(K_n)\to\{\text{red},\text{blue}\}$ with at least two edges of each colour.
+    As for the upper bound, let $n\geq 4$ and fix an arbitrary edge colouring $c\colon E(K_n)\to\{\text{red},\text{blue}\}$ with at least two edges of each colour.
     
     First, suppose there is a vertex $x\in V(K_n)$ all of whose neighbours are joined with edges of the same colour (say red).
     Then, if there are two blue edges in $K_n$ that intersect, they form a blue path of vertices $p_0,p_1,p_2$, neither of which can be $x$ by assumption.
     The edges $(x,p_0),(p_0,p_1),(p_1,p_2),(p_2,x)$ are red, blue, blue, red, respectively, and thus form a balanced copy of $C_4$.
-    If no two blue edges intersect, then the edges joining the endpoints of any two blue edges (of which there must be at least two) must be all red, and therefore one can form a balanced copy of $C_4$.
+    If no two blue edges intersect, then the edges joining the endpoints of any two blue edges (of which there must be at least two) must be all red, which we use to form a balanced copy of $C_4$.
     
     Now, consider the case when every vertex has red and blue incident edges.
-    Continue by selecting a red edge $xy$ and partitioning $V(K_n)\setminus\{x,y\}$ into four classses depending on the value of the pair $(c(wx),c(wy))$.
+    Continue by fixing a red edge $xy$ and partitioning the vertices $w\in V(K_n)\setminus\{x,y\}$ into four classses depending on the value of the pair $(c(wx),c(wy))$.
     There are two colours, hence four possible values for this pair; let us abbreviate the classes as $RR$ for those vertices $w$ with pair $(\text{red},\text{red})$ and similarly, $RB,BR$ and $BB$.
-    By assumption, some blue edge is incident in $x$ and thus $BR\cup BB\neq\emptyset$; similarly, $RB\cup BB\neq\emptyset$.
-    The same reason says that $V(K_n)\setminus\{x,y\}$ cannot be contained in a single class from $RB,BR$ or $RR$.
+    By assumption, $x$ and $y$ have blue incident edges and thus $V(K_n)\setminus\{x,y\}\notin\{RR,RB,BR\}$.
     If $V(K_n)\setminus\{x,y\}=BB$, then any red edge different from $xy$ must be disjoint from $xy$ and forms a balanced copy of $C_4$ by connecting said edge to $xy$ (via blue edges).
-    Therefore, there must be at least two nonempty classes.
-    If $w\in RR$ and $w'\in BB$, or if $w\in RB$ and $w'\in BR$, then $x,w,y,w'$ form a balanced $4$-cycle.
-    
+    We can therefore assume that at least two of the four classes are nonempty, giving six sub-cases to analyze:
 
-    Let's assume that $w\notin BB$ \ref{}.
+    If there are $w\in RR$ and $z\in BB$, or if there are $w\in RB$ and $z\in BR$, then $(x,w,y,z)$ is a balanced $4$-cycle; if $w\in RB$ and $z\in BB$, then either $(x,w,z,y)$ (whenever $wz$ is blue) or $(x,y,w,z)$ (whenever $wz$ is red) is a balanced $4$-cycle; the case $w\in BR$ and $z\in BB$ is symmetric by flipping the possible colours of $wz$; if $w\in RR$, $z\in RB\cup BR$ and $wz$ is blue, then either $(x,y,z,w)$ (whenever $z\in RB$) or $(x,y,w,z)$ (whenever $z\in BR$) is a balanced $4$-cycle.
     
-    \item The graph consisting of four disjoint edges, $4K_2$, has balancing number $n-1$. Concretely, when $n\geq 10$, $\bal(n,4K_2)=n-1$.
+    The only case that is not yet covered so far is when $w\in RR$, $z\in RB$ (or, respectively, when $z\in BR$) and $wz$ is a red edge.
+    Invoking our assumption one last time, there must be a blue edge incident in $w$, say $ww'$.
+    Crucially, we may assume that $w'\in RR$ since any other possibility is covered by the preceding discussions.
+    Finally, the cycle $(w,w',y,z)$ (or, respectively $(w,w',x,z)$, when $z\in BR$) is balanced.
+    
+    \item The graph consisting of four disjoint edges, $4K_2$, has balancing number $n-1$.
+    Concretely, when $n\geq 10$, $\bal(n,4K_2)=n-1$.
     This is \cite[Theorem~2.3]{Caro_small_balanceable}.
 
     \item When $n\geq5$, $\bal(n,K_{1,4})=n-1$.
@@ -75,7 +78,8 @@ Interestingly, the balancing number may or may not depend on $n$, as the followi
     Consider a colouring of $K_{2n}$ where we split the vertex set into two disjoint sets $A$ and $B$ of size $n$.
     We colour every edge connecting vertices in $A$ red, and edges connecting vertices in $B$ blue; edges connecting $A$ with $B$ are also red.
     Suppose a balanced copy $C$ of $K_5$ sits in $K_{2n}$ with vertex set $V(C)\subseteq V(K_{2n})$; then five of its ten edges must be blue.
-    The vertex set $V(C)\cap B$ induces a complete graph (a clique in $K_{2n}$) such that an edge $xy\in E(C)$ is blue if and only if $\{x,y\}\subseteq B$. Since no complete graph has five edges, this is a contradiction.
+    The vertex set $V(C)\cap B$ induces a complete graph (a clique in $K_{2n}$) such that an edge $xy\in E(C)$ is blue if and only if $\{x,y\}\subseteq B$.
+    Since no complete graph has five edges, this is a contradiction.
     
     This example illustrates the characterization provided by Theorem~\ref{thm:bal_char}.
     The preceding argument shows that that $K_5$ fails the second condition of the theorem; it is straightforward (albeit unnecessary) to show that it also fails the first.
@@ -138,16 +142,36 @@ Let $X$ be a perfect Polish space.
 \end{lemma}
 
 \begin{proof}
-    
+    Since $R$ and $B$ possess the Baire property, there must be open sets of edges $O_A,O_B\subseteq[X]^2$ such that $A\Delta O_A$ and $B\Delta O_B$ are meagre.
+    The fact that $A$ and $B$ are disjoint implies that $O_A\cap O_B\subseteq(A\Delta O_A)\cup(B\Delta O_B)$, and hence meagre as well.
+    By the Baire category theorem, $O_A$ and $O_B$ are disjoint open sets.
+
+    Now let $\pi\colon X^2\to[X]^2$ be the quotient map and appreciate that $$\mathcal O_A:=\pi^{-1}[A]\qquad\mathcal O_B:=\pi^{-1}[B]$$ are disjoint, symmetric open subsets of the Polish space $X^2\setminus\{(x,x):x\in X\}$.
+    Since $X$ is perfect, there are open pairwise disjoint sets $U_A^0,V_A^0,U_B^0,V_B^0\subseteq X$ such that $$V_A^0\times U_A^0,U_A^0\times V_A^0\subseteq\mathcal O_A\qquad V_B^0\times U_B^0,U_B^0\times V_B^0\subseteq\mathcal O_B.$$ So set $U_A:=U_A^0\cap V_A^0$ and $U_B:=U_B^0\cap V_B^0$, and notice that since $\mathcal O_A$ and $\mathcal O_B$ are disjoint, so are $U_A$ and $U_B$ open, disjoint and nonempty.
+
+    Also, notice that $[U_A]^2\subseteq O_A$ and $[U_B]^2\subseteq O_B$.
+    Finally, $[U_A]^2\setminus A\subseteq O_A\setminus A\subseteq A\Delta O_A$, and similarly $[U_B]^2\setminus B$, is meagre.
 \end{proof}
 
 \begin{theorem}\label{thm:inf_const_bal}
-    Suppose $\chi:[X]^2\to2$ is a Baire measurable function with non-meager fibres (the colour classes).
+    Suppose $\chi\colon[X]^2\to2$ is a Baire measurable function with non-meager fibres (the colour classes).
     Then, there is a colour $i<2$, a vertex $c\in X$, and a Cantor set $C\subseteq X$ such that for all $x\in C$, $\chi(\{c,x\})=i$, and such that $[C]^2$ contains an uncountable matching of colour $1-i$.
 \end{theorem}
 
 \begin{proof}
-    
+    Suppose that $\chi\colon[X]^2\to\{\text{red},\text{blue}\}$ is a Baire measurable function with non-meager fibres.
+    Apply Lemma~\ref{lemma:graph_localization} to $A:=\chi^{-1}\{\text{red}\}$ and $B:=\chi^{-1}\{\text{blue}\}$ to obtain disjoint open sets $U_R$ and $U_B$ with $A$ comeagre in $[U_R]^2$ and $B$ comeagre in $[U_B]^2$.
+
+    Since $\chi$ is Baire measurable, the sets of edges of each colour in $U_R\times U_B$ have the Baire property, so on some nonempty open set $U'_R\times U'_B\subseteq U_R\times U_B$, either the set of blue edges or the set of red edges is comeager.
+    Without loss of generality, suppose it is blue.
+
+    By the Kuratowski-Ulam theorem, the set $$B:=\{y\in U'_B:\{x\in U'_R:\chi(x,y)=\text{blue}\}\text{ is comeagre in }U'_R\}$$ is comeagre in $U'_B$, in particular nonempty, so choose $c\in B$ such that $S_c:=\{x\in U'_R:\chi(x,y)=\text{blue}\}$ is comeagre in $U'_R$.
+
+    Since the set of red edges is comeagre in $U'_R$ and $\chi$ has the Baire property, Galvin's theorem gives a Cantor set $C_0\subseteq U'_R$ such that $[C_0]^2$ is red.
+    Now find a Cantor set $C$ contained in $C_0\cap S_c$ and observe that $[C]^2$ is red and every edge $(c,x)$ for $x\in C$ is blue.
+
+    Fix a homeomorphism $\varphi\colon 2^\omega\to C$.
+    It follows that $\{(\varphi(0^\frown x),\varphi(1^\frown x):x\in 2^\omega)\}$ is a red matching.
 \end{proof}
 
 A large family of graphs with strong balanceability properties is defined and explored in Section~\ref{subsec:fer}.
@@ -244,13 +268,13 @@ Is it possible to transform one into the other by a sequence of feasible edge-re
 
 For a set $X$, denote by $S_X$ the set of all bijections (also called \emph{permutations}) $X\to X$.
 Endow this set with the topology inherited from the Tychonoff product $X^X$, with $X$ taken as discrete.
-Let $G$ be a graph defined on a set $V$ with a labeling $\lambda:V\to X$.
+Let $G$ be a graph defined on a set $V$ with a labeling $\lambda\colon V\to X$.
 When clear from context, I will identify a permutation $\sigma\in S_X$ with the induced mapping $V\to V$ given by $\lambda^{-1}\circ\sigma\circ\lambda$.
 
 Suppose that $\overline G$ denotes the graph complement of $G$ (that is, the graph obtained from switching every adjacency and every non-adjacency in $G$) and let $(e,f)\in E(G)\times E(\overline G)$.
-I use the phrase ``$\sigma:(e\to f)$ is a \emph{feasible edge-replacement}'' to abbreviate the fact that $\sigma$ is a graph isomorphism between $G$ and $G-e+f$.
-If $\sigma$ is an automorphism of $G$, I write $\sigma:(\emptyset\to\emptyset)$ (I employ the symbol $\emptyset$ to signal that no edge is being moved).
-Denote by $\Fer(G)$ the group generated by all $\sigma$ for which there are $e$ and $f$ such that $\sigma:(e\to f)$ is a feasible edge-replacement.
+I use the phrase ``$\sigma::(e\to f)$ is a \emph{feasible edge-replacement}'' to abbreviate the fact that $\sigma$ is a graph isomorphism between $G$ and $G-e+f$.
+If $\sigma$ is an automorphism of $G$, I write $\sigma::(\emptyset\to\emptyset)$ (I employ the symbol $\emptyset$ to signal that no edge is being moved).
+Denote by $\Fer(G)$ the group generated by all $\sigma$ for which there are $e$ and $f$ such that $\sigma::(e\to f)$ is a feasible edge-replacement.
 These $\sigma$ are called \emph{canonical generators} of $\Fer(G)$.
 Canonical generators include automorphisms and permutations that correspond to moving one edge.
 The group $\Fer(G)$ contains elements that can correspond to a \emph{sequence} of edge movements.
@@ -260,17 +284,63 @@ It is convenient to represent a sequence of feasible edge-replacements by multip
 This requires defining some more symbols.
 There is however a technical caveat: the labels of the graph's vertices change after each canonical generator gets applied (since the original labels get permuted); but having a list of edge replacements in the graph's original labeling is desirable, for example, if one wishes to execute a solution to a puzzle by purely moving edges without having to keep track of what the corresponding permutations are (not to mention the extra effort needed to figure out what those permutations are in the first place).
 One way to circumvent this is to define the multiplication abstractly by means of recursion (by ``abstractly,'' I mean that defining the operation does not actually require knowledge of the graph $G$ on which it is defined).
-The following recursive definition is crucial to carrying out these calculations in an object-oriented programming framework.
+The following definition is crucial to carrying out these calculations in an object-oriented programming framework.
+
+Suppose thet $\sigma\colon X\to X$ is a bijection, refered to as a \emph{label permutation}, and that $x,y,w,z\in X$.
+An \emph{edge-replacement} is a tuple of the form $(\sigma, (x, y, w, z))$ and we always use the symbol $\sigma::(xy\to wz)$ to represent it.
+Intuitively, once we connect this notion to actual graphs, this will refer to applying the permutation $\sigma$ to the labels of the vertices and moving the edge $xy$ to the position of the non-edge $wz$.
+If $\{x,y\}=\{w,z\}$, we use $\sigma::(\emptyset\to\emptyset)$ to emphasize that no edge has been moved.
+
+A \emph{sequence of edge-replacements} is a tuple $(\sigma,(x_i,y_i,w_i,z_i)_{i\leq n})$ where $\sigma$ is again a label permutation, and $\{x_i,y_i,w_i,z_i:i\leq n\}\subseteq X$.
+We employ the symbol $$\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)$$ to refer to this object.
+
+Now suppose that \begin{align*}
+    \sigma&::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)\qquad\text{ and}\\
+    \rho&::(a_0b_0\to c_0d_0)(a_1b_1\to c_1d_1)\cdots(a_mb_m\to c_md_m)
+\end{align*}
+are both sequences of feasible edge-replacements.
+Then the \emph{product} of the two (important: in the order as they are written), is \begin{align*}
+    \rho\cdot\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots\\
+    \cdots(x_ny_n\to w_nz_n)(\sigma^{-1}(a_0)\sigma^{-1}(b_0)\to \sigma^{-1}(c_0)\sigma^{-1}(d_0))\cdots\\
+    \cdots(\sigma^{-1}(a_m)\sigma^{-1}(b_m)\to\sigma^{-1}(c_m)\sigma^{-1}(d_m)).
+\end{align*}
+
+In other words, the inverse permutation must be applied to the second sequence of labels to ensure that the final labeling is consistent with the original labeling of the graph.
+This is because, after applying each sequence of edge-replacements, the permutation shuffles the labels.
+This relabeling also has a very natural categorical interpretation.
+Each edge-replacement corresponds to a morphism between labeled graphs, and a sequence of feasible edge replacements corresponds to compositions of such morphisms.
+Expressing all edge replacements relative to the original labeling requires conjugating later morphisms by the permutations induced by earlier ones.
+
+\subsection{Applying feasible edge-replacements to a labeled graph}
+
+Suppose that $G=(V,E)$ is a graph with vertex set $V$ and edge set $E$, and that $\lambda\colon V\to X$ is any bijection, called a \emph{labeling of $G$}.
+We call the pair $(G,\lambda)$ a \emph{labeled graph}.
+Every permutation of the labels $\sigma\colon X\to X$ induces a graph isomorphism of $G$ $$\varphi_\sigma:=\lambda^{-1}\circ\sigma\circ\lambda\colon V\to V;$$ and every graph isomorphism of $G$ of the form $\varphi\colon V\to V$, that is, on the same vertex set, induces a permutation $$\sigma_\varphi:=\varphi^{-1}\circ\lambda\circ\varphi\colon X\to X.$$ In other words, the image of $G$ under $\varphi$, $\varphi[G]$, is a graph on $V$ isomorphic to $G$.
+
+Let $\overline G$ denote the complement graph of $G$, and suppose that $(e,f)\in G\times\overline G$.
+An edge-replacement $\sigma::(e\to f)$ is called a \emph{feasible edge-replacement of $G$} (or a \emph{\tfer object of $G$}, for short) if $\varphi_\sigma[G]=G-e+f$.
+Informally, applying the permutation $\sigma$ to the labeled vertices of $G$ produces the same graph on $V$ as removing the edge $e$ and adding the edge $f$.
+
+We denote the set of all label permutations on $X$ by $S_X$, that is, the symmetric group on $X$.
+As usual, the group of automorphisms of $G$, by composition, is written as $\Aut(G)$.
+
+\begin{proposition}~ 
+    \begin{enumerate}
+        \item For any $\sigma\in S_X$, $\sigma\in\Aut(G)$ if and only if $\sigma::(\emptyset\to\emptyset)$ is a \tfer object of $G$.
+
+        \item For any \tfer object $\sigma::(e\to f)$, there are exactly $|\Aut(G)|$ many permutations $\rho\in S_x$ such that $\rho::(e\to f)$.
+    \end{enumerate}
+\end{proposition}
 
 \begin{definition}\label{def:fer_multiplication}
-    Suppose that $x,y,z,w,a,b,c,d$, and possibly adding subscripts, are elements (labels of vertices of some graph $G$) of some set $X$.
-    If $\sigma,\rho\in S_X$, I declare the symbol $\sigma:(\emptyset\to\emptyset)$ to be a \texttt{fer} \emph{object}.
-    If \begin{align*}
-        \sigma&:(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)\qquad\text{ and}\\
-        \rho&:(a_0b_0\to c_0d_0)(a_1b_1\to c_1d_1)\cdots(a_mb_m\to c_md_m)
+    Suppose that $x,y,z,w,a,b,c,d$, and possibly adding subscripts, are all elements (tipically, labels of vertices of some graph $G$) of some set $X$.
+    If $\sigma,\rho\in S_X$, I declare the symbol $\sigma::(\emptyset\to\emptyset)$ to be a \texttt{fer} \emph{object}.
+    Whenever \begin{align*}
+        \sigma&::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)\qquad\text{ and}\\
+        \rho&::(a_0b_0\to c_0d_0)(a_1b_1\to c_1d_1)\cdots(a_mb_m\to c_md_m)
     \end{align*}
-    are \texttt{fer} objects, then the \texttt{fer} \emph{product} of the two (important: in the order they are written), is the symbols \begin{align*}
-        \rho\cdot\sigma:(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots\\
+    are \texttt{fer} objects, then the \texttt{fer} \emph{product} of the two (important: in the order they are written), is the symbol \begin{align*}
+        \rho\cdot\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots\\
         \cdots(x_ny_n\to w_nz_n)(\sigma^{-1}(a_0)\sigma^{-1}(b_0)\to \sigma^{-1}(c_0)\sigma^{-1}(d_0))(\sigma^{-1}(a_1)\sigma^{-1}(b_1)\to\sigma^{-1}(c_1)\sigma^{-1}(d_1))\cdots\\
         \cdots(\sigma^{-1}(a_m)\sigma^{-1}(b_m)\to\sigma^{-1}(c_m)\sigma^{-1}(d_m))    
     \end{align*}
@@ -280,12 +350,12 @@ The following recursive definition is crucial to carrying out these calculations
 So that this definition becomes useful not just for a programmer but for studying the mathematical objects in question, it is imperative to observe that the preceding abstract definition is in fact consistent with the operations we are interested in.
 
 \begin{remark}
-    Let $G$ be a graph and suppose that $\sigma:(xy\to wz)$ and $\rho:(ab\to cd)$ are feasible edge-replacements.
+    Let $G$ be a graph and suppose that $\sigma::(xy\to wz)$ and $\rho::(ab\to cd)$ are feasible edge-replacements.
     Then the product of these two as \texttt{fer} objects is a sequence of feasible edge-replacements, where $(xy\to zw)(\sigma^{-1}(a)\sigma^{-1}(b)\to\sigma^{-1}(c)\sigma^{-1}(d))$ is the corresponding sequence of edge-replacements needed to get from $G$ to the copy of $G$ on $V$ obtained after applying the permutation $\rho\cdot\sigma$ to the labels of its vertices.
 \end{remark}
 
 For instance, a solution to the puzzle is shown in Figure~\ref{fig:4_cycles_solution}, where each caption shows the canonical generator needed to obtain that step of the solution; and the element of $\Fer(G)$ that solves the puzzle (with the same labels as in the figure) is the product of the three generators, resulting in
-$$(2\ 3):(1\ 2\to1\ 3)(0\ 1\to0\ 2)(2\ 3\to1\ 2).$$
+$$(2\ 3)::(1\ 2\to1\ 3)(0\ 1\to0\ 2)(2\ 3\to1\ 2).$$
 It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, as two edges necessarily change position.
 
 \begin{figure}[htbp]
@@ -317,7 +387,7 @@ It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, a
         % Add your edges here
         \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
     \end{tikzpicture}
-    \caption{$(2\ 3):(1\ 2\to1\ 3)$} \label{step:1}
+    \caption{$(2\ 3)::(1\ 2\to1\ 3)$} \label{step:1}
 \end{subfigure}
 % --- STEP 2 ---
 \begin{subfigure}[b]{0.21\textwidth}
@@ -331,7 +401,7 @@ It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, a
         % Add your edges here
         \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
     \end{tikzpicture}
-    \caption{$(1\ 3):(0\ 1\to0\ 3)$} \label{step:2}
+    \caption{$(1\ 3)::(0\ 1\to0\ 3)$} \label{step:2}
 \end{subfigure}
 % --- STEP 3 ---
 \begin{subfigure}[b]{0.21\textwidth}
@@ -345,7 +415,7 @@ It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, a
         % Add your edges here
         \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
     \end{tikzpicture}
-    \caption{$(2\ 3):(1\ 2\to1\ 3)$} \label{step:3}
+    \caption{$(2\ 3)::(1\ 2\to1\ 3)$} \label{step:3}
 \end{subfigure}
 
 \caption{A sequence of feasible edge-replacements.}
@@ -465,3 +535,206 @@ There are two disadvantages with this method.
     I address this in Section~\ref{sec:infinitary_amoeba_graphs}.
 \end{itemize}
 
+\subsection{A recursive algorithm for Fibonacci-type trees}\label{subsec:algorithm_Tk}
+
+We now describe an algorithm that, given any permutation $\sigma \in S_X$ on the vertices of $T_k$, produces an explicit sequence of feasible edge-replacements whose composition realises $\sigma$.
+Throughout this section we fix a labeling of $T_k$ and write $n = n(k) = 2F_k$ for its order, where $F_k$ is the $k$-th Fibonacci number.
+
+\paragraph{Recursive decomposition of $T_k$.}
+The proof of Theorem~\ref{thm:fibonacci_is_local} proceeds by induction and uses the following structural decomposition, which we now make explicit so that the algorithm can be stated precisely.
+
+For $k \ge 5$, the tree $T_k$ is built from four subtrees $H_1, J_1, H_2, J_2$ with
+$$
+    H_1 \cong T_{k-3},\quad
+    J_1 \cong T_{k-2},\quad
+    H_2 \cong T_{k-3},\quad
+    J_2 \cong T_{k-4},
+$$
+whose vertex sets are pairwise disjoint, by adding three edges:
+$$
+    T_k
+    \;=\;
+    \bigl((H_1 \cup J_1) + v_a v_b\bigr)
+    \cup
+    \bigl((H_2 \cup J_2) + v_c v_d\bigr)
+    + v_b v_c,
+$$
+where $v_a, v_b, v_c, v_d$ are the vertices of maximum degree in $H_1, J_1, H_2, J_2$, respectively.
+We call $a = \lambda(v_a),\, b = \lambda(v_b),\, c = \lambda(v_c),\,d = \lambda(v_d)$ the \emph{roots} of $T_k$ and denote by
+$$
+    A = \lambda(V(H_1)),\quad
+    B = \lambda(V(J_1)),\quad
+    C = \lambda(V(H_2)),\quad
+    D = \lambda(V(J_2))
+$$
+the corresponding label sets.
+These four sets partition $X$, and $b$ is the label of the unique vertex of maximum degree in $T_k$.
+We fix once and for all a label $y_0 \in B \setminus \{b\}$.
+
+Two feasible edge-replacements in $T_k$ play a distinguished role.
+\begin{itemize}
+    \item The replacement $cd \to ad$ induces a bijection $\rho \colon A \to C$ that extends to the isomorphism $H_1 \xrightarrow{\;\sim\;} H_2$ sending $v_a \mapsto v_c$, while fixing $B \cup D$ pointwise.
+    
+    \item The replacement $ab \to ac$ induces a bijection $\varphi \colon B \to C \cup D$ that extends to the isomorphism $(H_2 \cup J_2)+v_cv_d \;\cong\; J_1$ sending $v_b \mapsto v_c$, while fixing $A$ pointwise.
+\end{itemize}
+Both $\rho$ and $\varphi$ are therefore elements of $\mathcal{E}_{T_k}$, each corresponding to a single feasible edge-replacement.
+
+\paragraph{The algorithm.}
+It suffices to produce a \tFer object for every transposition of the form $(y_0, x)$ with $x \in X \setminus \{y_0\}$, since any permutation $\sigma \in S_X$ can be written as a product of such transpositions via its cycle decomposition:
+$$
+    (a_0, a_1, \ldots, a_m)
+    \;=\;
+    (y_0, a_0)(y_0, a_1) \cdots (y_0, a_m)(y_0, a_0).
+$$
+The function $\RecFer(x, k)$, given in Algorithm~\ref{alg:RecursiveFer}, returns a \tFer object for $(y_0, x)$ by induction on $k$, using the decomposition above.
+The four cases correspond to which of the label sets $A, B, C, D$ the input $x$ belongs to.
+The key identities driving each case are:
+\begin{align*}
+    x \in A \cup B &\implies (y_0, x) \in \tfer^b(T_{k-1}),
+    \quad\text{by the stem-symmetry of } T_{k-1},\\
+    x = b &\implies (y_0, b) = \varphi^{-1}(y_0,\, \varphi^{-1}(b))\,\varphi, \\
+    x \in C &\implies (y_0, x) = \rho^{-1}(y_0,\, \rho^{-1}(x))\,\rho,
+    \quad \rho^{-1}(x) \in A, \\
+    x \in D&\implies (y_0, x) = (y_0, x_0)(x, x_0)(y_0, x_0),
+    \quad x_0 \in C \text{ a fixed neighbor of } c.
+\end{align*}
+
+\begin{algorithm}[ht]
+    \DontPrintSemicolon
+    \caption{Factoring a permutation into a \tFer sequence for $T_k$.}
+    \label{alg:RecursiveFer}
+    \SetKwFunction{FRF}{RecursiveFer}
+    \SetKwProg{Fn}{Function}{:}{}
+    @cache\tcp*{Memoize over all $(x,k)$ pairs across the entire execution.}
+    \Fn{\FRF{$x$, $k$}}{
+        \lIf{$k \le 4$}{\KwRet $\texttt{hashMap}[(y_0,x)]$}
+        Let $a,b,c,d$ and $A,B,C,D$ be the roots and label sets of $T_k$\;
+        \uIf{$x \in A \cup B$}{
+            \KwRet \FRF{$x$,\,$k-1$}\;
+        }\uElseIf{$x = b$}{
+            \KwRet $\varphi *$ \FRF{$\varphi^{-1}(b)$,\,$k$} $* \varphi^{-1}$\;
+        }\uElseIf{$x \in C$}{
+            \KwRet $\rho *$ \FRF{$\rho^{-1}(x)$,\,$k-1$} $* \rho^{-1}$\;
+        }\Else{
+            \tcp{$x \in D$}
+            Let $x_0 \in C$ be a fixed neighbor of $c$\;
+            $F_0 \leftarrow$ \FRF{$x_0$,\,$k$}\;
+            $F_1 \leftarrow$ \FRF{$x-c$,\,$k-2$} $+\, c$\tcp*{Shift all labels by $c$.}
+            \KwRet $F_0 * F_1 * F_0$\;
+        }
+    }
+    \smallskip
+    \KwIn{$k$,\; permutation $\sigma \in S_X$.}
+    \tcc{Step 1. Decompose $\sigma$ into transpositions $(y_0,x)$.}
+    $\mathrm{trans} \leftarrow [\,]$\;
+    \For{$(a_0,\ldots,a_m)$ cycle of $\sigma$}{
+        Append $(y_0,a_i)$ for $i=0,\ldots,m$, then append $(y_0,a_0)$\;
+    }
+    \tcc{Step 2. Compute a \tFer object per transposition (memoized).}
+    \For{$(y_0,x) \in \mathrm{trans}$}{
+        $\texttt{hashMap}[(y_0,x)] \leftarrow$ \FRF{$x$,\,$k$}\;
+    }
+    \tcc{Step 3. Form the product.}
+    \KwOut{$F = \prod_{(y_0,x)\,\in\,\mathrm{trans}} \texttt{hashMap}[(y_0,x)]$}
+\end{algorithm}
+
+\paragraph{The shallow transposition improvement.}
+The $D$-case triple product $$(y_0,x)=(y_0,x_0)(x,x_0)(y_0,x_0),$$ if applied naively, doubles the contribution of $(y_0,x_0)$ at every recursion level and leads to a sequence length satisfying
+$\ell(k) = \Theta(k^2)$.
+This can be improved by observing that every transposition $(y_0,x)$ can instead be built by \emph{tracing the unique path} from $x$ to $y_0$ in $T_k$.
+Each step of this path crosses exactly one subtree boundary, and each boundary crossing can be implemented using a constant number of feasible edge-replacements: either a single application of $\rho$ or $\varphi$, which are each induced by a single edge-replacement.
+Since the depth of $T_k$ is $O(k)$ and the path from $x$ to $y_0$ crosses at most $O(k)$ subtree boundaries, the resulting sequence for $(y_0,x)$ has length $O(k)$.
+We refer to this as the \emph{shallow transposition routine}.
+
+\paragraph{Correctness and complexity.}
+
+\begin{theorem}[Correctness]\label{thm:algorithm_correct}
+    For every $k \ge 1$ and every permutation $\sigma \in S_X$ on the vertices of $T_k$, Algorithm~\ref{alg:RecursiveFer} terminates and outputs a sequence of feasible edge-replacements of $T_k$ whose composition is $\sigma$.
+\end{theorem}
+
+\begin{proof}
+    We prove by strong induction on $k$ that $\RecFer(x,k)$ returns a \tFer object whose permutation is $(y_0,x)$ and whose edge-replacement sequence is feasible in $T_k$.
+
+    For $k \le 4$ this holds by assumption on the precomputed base cases.
+    Let $k \ge 5$ and suppose the claim holds for all smaller values.
+    We check each case.
+
+    \emph{Case $x \in A \cup B$.}
+    The labels $A \cup B = \lambda(V(T_{k-1}))$ form the vertex set of the subtree $H = (H_1 \cup J_1) + v_a v_b \cong T_{k-1}$, and $y_0 \in B\subseteq A \cup B$.
+    By the induction hypothesis, $\RecFer(x, k-1)$ produces a feasible sequence in $T_{k-1}$ realising $(y_0,x)$.
+    Any feasible edge-replacement of a subgraph $H \subseteq T_k$ that fixes the label $b$ of the connecting vertex $v_b$ is also a feasible edge-replacement of $T_k$ (this is the content of \cite[Lemma~1]{Eslavaetal2025}).
+    Since every element of $\tfer^b(T_{k-1})$ fixes $b$, the sequence remains feasible in $T_k$.
+
+    \emph{Case $x = b$.}
+    We have $\varphi^{-1}(b) \in A \cup B$ (since $\varphi \colon B \to C \cup D$ maps $v_b \mapsto v_c$ and hence $b \mapsto c \notin B$, so $\varphi^{-1}(b) \in A$).
+    The recursive call $\RecFer(\varphi^{-1}(b), k)$ falls into the $A \cup B$ case and is correct by the above.
+    The conjugation identity $(y_0, b) = \varphi^{-1} \cdot (y_0, \varphi^{-1}(b)) \cdot \varphi$
+    holds in $S_X$, and $\varphi$ corresponds to a single feasible edge-replacement, so the concatenated sequence is feasible.
+
+    \emph{Case $x \in C$.}
+    Since $\rho \colon A \to C$ is a bijection and $\rho^{-1}(x) \in A \subseteq A \cup B$, the recursive call falls into the $A \cup B$ case.
+    The conjugation identity $(y_0, x) = \rho^{-1} \cdot (y_0, \rho^{-1}(x)) \cdot \rho$ holds in $S_X$, and $\rho$ is a single feasible edge-replacement.
+
+    \emph{Case $x \in D$.}
+    Since $x_0 \in C$, the object $F_0 = \RecFer(x_0, k)$ is correct by the $C$-case above.
+    The shift $\RecFer(x-c, k-2) + c$ embeds the subtree $J_2 \cong T_{k-2}$ (with labels shifted by $c$) into $D$; by the induction hypothesis this produces a feasible sequence for $(x_0, x)$ within $D$, which remains
+    feasible in $T_k$ by the same extension lemma.
+    The identity $(y_0,x)=(y_0,x_0)(x,x_0)(y_0,x_0)$ holds in $S_X$ since $y_0, x_0, x$ are distinct, and the corresponding concatenation of three feasible sequences is feasible.
+    
+    Having verified all cases of $\RecFer$, the correctness of the main program follows: Steps~1--3 apply the standard factorisation of $\sigma$ into transpositions $(y_0, x_i)$ and compose the corresponding \tFer
+    objects, yielding a feasible sequence for $\sigma$.
+\end{proof}
+
+\begin{corollary}[{\cite[Theorem~9]{Eslavaetal2025}}]\label{cor:Tk_local_amoeba}
+    For every $k \ge 1$, $T_k$ is a local amoeba.
+\end{corollary}
+
+\begin{proof}
+    By Theorem~\ref{thm:algorithm_correct}, for every $\sigma \in S_X$ there exists a sequence of feasible edge-replacements of $T_k$ whose composition is $\sigma$, and hence $\sigma \in \tfer(T_k)$.
+    Therefore $\tfer(T_k) = S_X \cong S_n$, which is the definition of a local amoeba.
+\end{proof}
+
+\begin{theorem}[Complexity]\label{thm:algorithm_complexity}
+    Using the shallow transposition routine, Algorithm~\ref{alg:RecursiveFer} runs in time and space $O(n \log n)$, where $n = 2F_k = |V(T_k)|$.
+\end{theorem}
+
+\begin{proof}
+    Since $n = 2F_k$ and $F_k = \Theta(\phi^k)$ for the golden ratio $\phi$, we have $k = \Theta(\log n)$.
+
+    \medskip
+    \noindent\textit{Template count per transposition.}
+    With the shallow transposition routine, $\RecFer(x,k)$ traces the path from $x$ to $y_0$ in $T_k$, contributing $O(1)$ templates per recursion level.
+    The path crosses at most $k$ subtree boundaries, giving $\len(\RecFer(x,k)) = O(k)$ for every $x$.
+
+    \medskip
+    \noindent\textit{Number of distinct memoized calls.}
+    With a global cache shared across all transpositions, every call is identified by a pair $(x, q)$ with $q \le k$.
+    For fixed $q$ the number of possible values of $x$ is $n(q) = 2F_q$.
+    Since
+    $$
+        \sum_{q=1}^{k} n(q)
+        \;=\;
+        2\sum_{q=1}^{k} F_q
+        \;=\; 2(F_{k+2}-1)
+        \;=\; O(F_k) = O(n),
+    $$
+    the cache contains $O(n)$ distinct entries.
+
+    \medskip
+    \noindent\textit{Total cost.}
+    Each of the $O(n)$ cached calls performs $O(k)$ work, giving total template cost $O(nk) = O(n \log n)$.
+    Steps~1 and~3 (cycle decomposition and the final product) each take $O(n)$.
+    Hence the total running time and space are both $O(n \log n)$.
+
+    \medskip
+    \noindent\textit{Comparison with the published bound.}
+    The analysis in \cite[Theorem~11]{Eslavaetal2025} establishes a $\Theta(n^2)$ bound by tracking the cost of $\RecFer(x,k)$ for a single transposition with a cold cache and then multiplying by the $O(n)$
+    transpositions in the worst-case permutation.
+    This is correct as stated, but it does not account for the savings from the global memoization shared across all transpositions in a single run of the algorithm, nor does it use the shallow transposition
+    routine.
+    The bound $O(n \log n)$ is therefore a genuine improvement in the algorithm, rather than a mere reanalysis.
+\end{proof}
+ 
+\begin{remark}
+    The space bound $O(n \log n)$ is consistent with the space complexity stated in \cite[Theorem~11]{Eslavaetal2025}, which already observes $O(n \log n)$ space; the contribution here is that the same quantity also bounds the running time.
+\end{remark}
