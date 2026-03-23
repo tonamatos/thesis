@@ -34,20 +34,16 @@ For adjacent tiles~$t, t'$ with $z(t) = (q_1, q_2, \dots, q_k)$ and $t' = q_i$, 
 Thus the cyclic order~$z(t)$ is represented by the sequence $(0, 1, 2, \dots, k{-}1)$, and any closed path
 $(t_1, t_2, \dots, t_n)$ has a \emph{Freeman chain code} $(f(t_1,t_2),\; f(t_2,t_3),\; \dots,\; f(t_{n-1},t_n),\; f(t_n,t_1))$.
 This encoding is the natural extension of the classical Freeman chain code for $4$- and $8$-neighbours on the square grid~\cite{gonzalez2018}.
-%
-% If you include Fig. 12 from the paper, uncomment:
-% Figure~\ref{fig:freeman_codes} shows the Freeman codes for the edge-
-% and vertex-adjacencies on the standard triangular tiling under the
-% counterclockwise orientation.
-%
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[width=0.85\textwidth]{fig_freeman_codes}
-%   \caption{Freeman codes for the edge- and vertex-neighbours in the
-%     standard triangular tiling, providing the counterclockwise
-%     orientation.  Reproduced from~\cite{WiederholdMatosWiederhold2026}.}
-%   \label{fig:freeman_codes}
-% \end{figure}
+
+Figure~\ref{fig:freeman_codes} shows the Freeman codes for the edge- and vertex-adjacencies on the standard triangular tiling under the counterclockwise orientation.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{fig_freeman_codes}
+    \caption{Freeman codes for the edge- and vertex-neighbours in the standard triangular tiling, providing the counterclockwise orientation.
+    Reproduced from~\cite{WiederholdMatosWiederhold2026}.}
+    \label{fig:freeman_codes}
+\end{figure}
 
 \subsection{The algorithm}
 
@@ -107,20 +103,15 @@ Set $b \leftarrow f(t_n, t_{n-1})$.\;
 
 The algorithm has linear time complexity in the length of the output list~$\mathrm{Cont}$: at each step, locating the previous tile in the cyclic order and scanning for the next object tile each require at most~$k$ comparisons.
 
-%
-% If you include Fig. 11 or Fig. 13 from the paper, uncomment:
-% Figure~\ref{fig:border_mesh_example} illustrates the border meshes
-% obtained by Algorithm~\ref{alg:border-tracing} for a connected object
-% with a hole, using the counterclockwise orientation.
-%
-% \begin{figure}[ht]
-%   \centering
-%   \includegraphics[width=0.75\textwidth]{fig_border_mesh_example}
-%   \caption{Border meshes of a connected object in the edge-adjacency
-%     graph of a hexagonal tiling under the counterclockwise orientation.
-%     Reproduced from~\cite{WiederholdMatosWiederhold2026}.}
-%   \label{fig:border_mesh_example}
-% \end{figure}
+Figure~\ref{fig:border_mesh_example} illustrates the border meshes obtained by Algorithm~\ref{alg:border-tracing} for a connected object with a hole, using the counterclockwise orientation.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{fig_border_mesh_example}
+    \caption{Border meshes of a connected object in the edge-adjacency graph of a hexagonal tiling under the counterclockwise orientation.
+    Reproduced from~\cite{WiederholdMatosWiederhold2026}.}
+    \label{fig:border_mesh_example}
+\end{figure}
 
 Under the counterclockwise (respectively, clockwise) orientation, and for an $A$-connected object~$\mathcal{C}$ with edge-connected background, the contour produced by Algorithm~\ref{alg:border-tracing} (starting from edge\-neigh\-bours $t_0 \in \mathcal{C}$, $q \notin \mathcal{C}$) satisfies the following properties proved in~\cite{WiederholdMatosWiederhold2026}:
 \begin{enumerate}
