@@ -30,7 +30,7 @@ In other words, any $2$-coloring of $K_n$ with more than $\bal(n,G)$ edges in ea
     \end{enumerate}
 \end{theorem}
 
-There are more subtle aspects to distinguish in a graph other than whether it is balanceable or not.
+We can study more specific aspects of graphs than whether they are balanceable or not.
 Interestingly, the balancing number may or may not depend on $n$, as the following examples demonstrate.
 
 \begin{proposition}\label{prop:balC_4_is_one}
@@ -39,13 +39,13 @@ Interestingly, the balancing number may or may not depend on $n$, as the followi
 \end{proposition}
 
 \begin{proof}    
-    Indeed, it is obvious that the balancing number cannot be less than 1, as $C_4$ has four edges, and hence a balanced copy needs two of each colour.
+    Indeed, it is obvious that the balancing number cannot be less than 1, as $C_4$ has four edges, and hence a balanced copy needs two edges of each colour.
 
     As for the upper bound, let $n\geq 4$ and fix an arbitrary edge colouring $c\colon E(K_n)\to\{\text{red},\text{blue}\}$ with at least two edges of each colour.
     First, suppose there is a vertex $x\in V(K_n)$ all of whose neighbours are joined with edges of the same colour (say red).
     Then, if there are two blue edges in $K_n$ that intersect, they form a blue path of vertices $p_0,p_1,p_2$, neither of which can be $x$ by assumption.
     The edges $(x,p_0),(p_0,p_1),(p_1,p_2),(p_2,x)$ are red, blue, blue, red, respectively, and thus form a balanced copy of $C_4$.
-    If no two blue edges intersect, then the edges joining the endpoints of any two blue edges (of which there must be at least two) must be all red, which we use to form a balanced copy of $C_4$.
+    If no two blue edges intersect, then the edges joining the endpoints of two particular blue edges (of which there must be at least two) must be all red, which we use to form a balanced copy of $C_4$.
     
     Now, consider the case when every vertex has red and blue incident edges.
     Continue by fixing a red edge $xy$ and partitioning the vertices $w\in V(K_n)\setminus\{x,y\}$ into four classses depending on the value of the pair $(c(wx),c(wy))$.
@@ -132,7 +132,7 @@ The moreover part is \cite[Theorem~5.1]{Caroetal2023}.
 The implication (3)$\implies$(1) is immediate, as the bound in (3) does not depend on $n$.
 
 If one wishes to study an analogue notion for infinite graphs, one has to define what it means for a large complete graph to have ``sufficiently many edges of each colour.''
-In \cite[Section~4]{bowen2020unavoidable}, the authors study a somewhat similar (albeit different) notion of balanceability and suggest an approach to generalizing these ideas to the infinite case.
+In \cite[Section~4]{bowen2020unavoidable}, the authors study a somewhat similar notion of balanceability and suggest an approach to generalizing these ideas to the infinite case.
 I draw inspiration from this approach and adapt some of the ideas to our theory.
 Namely, that ``sufficiently many edges of each colour'' corresponds to non-meagre colour classes in a Polish space.
 The basic notions regarding graphs defined on Polish spaces is covered in Section~\ref{sec:descr_combi_background}.
@@ -141,16 +141,16 @@ I prove an analog of Theorem~\ref{thm:constant_bal} that says that if the colour
 
 \begin{lemma}\label{lemma:graph_localization}
     Let $X$ be a perfect Polish space.
-    Given non-meagre disjoint sets $R,B\subseteq[X]^2$ with the Baire property, there are disjoint open sets $U_R,U_B\subseteq X$ such that $R$ and $B$ are comeagre in $[U_R]^2$ and $[U_B]^2$, respectively.
+    Given non-meagre disjoint sets $A,B\subseteq[X]^2$ with the Baire property, there are disjoint open sets $U_A,U_B\subseteq X$ such that $A$ and $B$ are comeagre in $[U_A]^2$ and $[U_B]^2$, respectively.
 \end{lemma}
 
 \begin{proof}
-    Since $R$ and $B$ possess the Baire property, there must be open sets of edges $O_A,O_B\subseteq[X]^2$ such that $A\Delta O_A$ and $B\Delta O_B$ are meagre.
-    The fact that $A$ and $B$ are disjoint implies that $O_A\cap O_B\subseteq(A\Delta O_A)\cup(B\Delta O_B)$, and hence meagre as well.
-    By the Baire category theorem, $O_A$ and $O_B$ are disjoint open sets.
+    Since $A$ and $B$ possess the Baire property, there are open sets of edges $O_A,O_B\subseteq[X]^2$ such that $A\Delta O_A$ and $B\Delta O_B$ are meagre.
+    The fact that $A$ and $B$ are disjoint implies that $O_A\cap O_B\subseteq(A\Delta O_A)\cup(B\Delta O_B)$, and hence $O_A\cap O_B$ is meagre as well.
+    Thus, by the Baire category theorem, $O_A$ and $O_B$ are disjoint open sets.
 
-    Now let $\pi\colon X^2\to[X]^2$ be the quotient map and appreciate that $$\mathcal O_A:=\pi^{-1}[A]\qquad\mathcal O_B:=\pi^{-1}[B]$$ are disjoint, symmetric open subsets of the Polish space $X^2\setminus\{(x,x):x\in X\}$.
-    Since $X$ is perfect, there are open pairwise disjoint sets $U_A^0,V_A^0,U_B^0,V_B^0\subseteq X$ such that $$V_A^0\times U_A^0,U_A^0\times V_A^0\subseteq\mathcal O_A\qquad V_B^0\times U_B^0,U_B^0\times V_B^0\subseteq\mathcal O_B.$$ So set $U_A:=U_A^0\cap V_A^0$ and $U_B:=U_B^0\cap V_B^0$, and notice that since $\mathcal O_A$ and $\mathcal O_B$ are disjoint, so are $U_A$ and $U_B$ open, disjoint and nonempty.
+    Now let $\pi\colon X^2\to[X]^2$ be the quotient map and appreciate that $$\mathcal O_A:=\pi^{-1}[A]\quad\text{ and }\quad\mathcal O_B:=\pi^{-1}[B]$$ are disjoint, symmetric open subsets of the Polish space $X^2\setminus\{(x,x):x\in X\}$.
+    Since $X$ is perfect, there are open pairwise disjoint sets $U_A^0,V_A^0,U_B^0,V_B^0\subseteq X$ such that $$V_A^0\times U_A^0,\; U_A^0\times V_A^0\subseteq\mathcal O_A\quad\text{ and }\quad V_B^0\times U_B^0,\; U_B^0\times V_B^0\subseteq\mathcal O_B.$$ So set $U_A:=U_A^0\cap V_A^0$ and $U_B:=U_B^0\cap V_B^0$, and notice that since $\mathcal O_A$ and $\mathcal O_B$ are open and disjoint, so are $U_A$ and $U_B$ open, disjoint and nonempty.
 
     Also, notice that $[U_A]^2\subseteq O_A$ and $[U_B]^2\subseteq O_B$.
     Finally, $[U_A]^2\setminus A\subseteq O_A\setminus A\subseteq A\Delta O_A$, and similarly $[U_B]^2\setminus B$, is meagre.
@@ -177,17 +177,15 @@ I prove an analog of Theorem~\ref{thm:constant_bal} that says that if the colour
     It follows that $\{(\varphi(0^\frown x),\varphi(1^\frown x):x\in 2^\omega)\}$ is a red matching.
 \end{proof}
 
-A large family of graphs with strong balanceability properties is defined and explored in Section~\ref{subsec:fer}.
+\subsection{The group of feasible edge replacements}\label{subsec:fer}
 
-\subsection{The group of feasible edge-replacements}\label{subsec:fer}
-
-Consider this combinatorial puzzle:
-a graph is given; one may remove an edge and add it wherever there is no edge (trivially, one can add it back to its original position), but the new graph must be isomorphic to the previous graph.
-Such an action is called a \emph{feasible edge-replacement}, which is formalized after these examples.
+I start this subsection by setting up a combinatorial puzzle.
+A graph is given, and one may remove an edge and add it wherever there is no edge (trivially, one can add it back to its original position), but the new graph must be isomorphic to the starting graph.
+Such an action is called a \emph{feasible edge replacement}, which is formalized after these examples.
 Can one attain every possible configuration of the graph by repeateadly changing edges like this?
 It is clear that the answer depends on the structure of the particular starting graph.
 For instance, a cycle of four edges has no valid non-trivial movements since, having removed an edge, the only possibility that preserves the cycle is putting the edge back from where it was taken.
-Graphically, Figure~\ref{fig:4_cycles} depicts two isomorphic graphs that cannot be transformed into each other by feasible edge-replacements.
+Graphically, Figure~\ref{fig:4_cycles} depicts two isomorphic graphs that cannot be transformed into each other by feasible edge replacements.
 
 \begin{figure}[htbp]
 \centering
@@ -228,8 +226,8 @@ Graphically, Figure~\ref{fig:4_cycles} depicts two isomorphic graphs that cannot
 \label{fig:4_cycles}
 \end{figure}
 
-The two paths in Figure~\ref{fig:4_paths} are isomorphic.
-Is it possible to transform one into the other by a sequence of feasible edge-replacements?
+Now for the puzzle: the two paths in Figure~\ref{fig:4_paths} are isomorphic.
+Is it possible to transform one into the other by a sequence of feasible edge replacements?
 
 \begin{figure}[htbp]
 \centering
@@ -269,98 +267,186 @@ Is it possible to transform one into the other by a sequence of feasible edge-re
 \label{fig:4_paths}
 \end{figure}
 
-For a set $X$, denote by $S_X$ the set of all bijections (also called \emph{label permutations}) $X\to X$.
-Under the operation of composition, $S_X$ forms a group called the \emph{symmetric group on $X$}.
-Endow this set with the topology inherited from the Tychonoff product $X^X$, with $X$ taken as discrete.
-Let $G$ be a graph defined on a set $V$ with a labeling $\lambda\colon V\to X$.
-When clear from context, I will identify a permutation $\sigma\in S_X$ with the induced mapping $V\to V$ given by $\lambda^{-1}\circ\sigma\circ\lambda$.
+\begin{definition}[Labeled graph]\label{def:labeled-graph}
+    For a set $X$, whose elements are called \emph{labels}, denote by $S_X$ the set of all bijections, called \emph{label permutations}, $X\to X$.
+    Under the operation of composition, $S_X$ forms a group called the \emph{symmetric group on $X$}.
+    As usual, we use the notation $\rho\cdot\sigma:=\rho\circ\sigma$ for the group operation.
+    Endow this set with the topology inherited from the Tychonoff product $X^X$, with $X$ taken as discrete.
+    Let $G$ be a graph defined on a vertex set $V$ and let $\lambda\colon V\to X$ be a bijection, called a \emph{labeling} of $G$.
+    For the sake of simplicity, I will always write vertices as $v_\ell\in V$ where $\lambda(v_\ell)=\ell\in X$ is the label.
 
-Suppose that $\overline G$ denotes the graph complement of $G$ (that is, the graph obtained from switching every adjacency and every non-adjacency in $G$) and let $(e,f)\in E(G)\times E(\overline G)$.
-I use the phrase ``$\sigma::(e\to f)$ is a \emph{feasible edge-replacement}'' to abbreviate the fact that $\sigma$ is a graph isomorphism between $G$ and $G-e+f$.
-If $\sigma$ is an automorphism of $G$, I write $\sigma::(\emptyset\to\emptyset)$ (I employ the symbol $\emptyset$ to signal that no edge is being moved).
-Denote by $\Fer(G)$ the group generated by all $\sigma$ for which there are $e$ and $f$ such that $\sigma::(e\to f)$ is a feasible edge-replacement.
-These $\sigma$ are called \emph{canonical generators} of $\Fer(G)$.
-Canonical generators include automorphisms and permutations that correspond to moving one edge.
-The group $\Fer(G)$ contains elements that can correspond to a \emph{sequence} of edge movements.
-
-As usual, the group of automorphisms of $G$, under composition, is written as $\Aut(G)$, and we let $$A(G):=\{\sigma\in S_X:\varphi_\sigma\in\Aut(G)\}\simeq\Aut(G)$$ be the subgroup of label permutations that correspond to the automorphisms of $G$.
-Hence, the following subgroup relations hold.
-$$A(G)\leq\Fer(G)\leq S_X.$$
-
-It is convenient to represent a sequence of feasible edge-replacements by multiplying their corresponding permutations (which, as standard in Algebra, is written right-to-left) and concatenating the list of edges in the order they should get replaced (which, as standard in English, is written left-to-right).
-This requires defining some more symbols.
-There is however a technical caveat: the labels of the graph's vertices change after each canonical generator gets applied (since the original labels get permuted); but having a list of edge replacements in the graph's original labeling is desirable, for example, if one wishes to execute a solution to a puzzle by purely moving edges without having to keep track of what the corresponding permutations are (not to mention the extra effort needed to figure out what those permutations are in the first place).
-One way to circumvent this is to define the multiplication abstractly by means of recursion (by ``abstractly,'' I mean that defining the operation does not actually require knowledge of the graph $G$ on which it is defined).
-The following definition is crucial to carrying out these calculations in an object-oriented programming framework.
-
-Suppose thet $\sigma\colon X\to X$ is a bijection, refered to as a \emph{label permutation}, and that $x,y,w,z\in X$.
-An \emph{edge-replacement} is a tuple of the form $(\sigma, (x, y, w, z))$ and we always use the symbol $\sigma::(xy\to wz)$ to represent it.
-Intuitively, once we connect this notion to actual graphs, this will refer to applying the permutation $\sigma$ to the labels of the vertices and moving the edge $xy$ to the position of the non-edge $wz$.
-If $\{x,y\}=\{w,z\}$, we use $\sigma::(\emptyset\to\emptyset)$ to emphasize that no edge has been moved.
-
-A \emph{sequence of edge-replacements} is a tuple $(\sigma,(x_i,y_i,w_i,z_i)_{i\leq n})$ where $\sigma$ is again a label permutation, and $\{x_i,y_i,w_i,z_i:i\leq n\}\subseteq X$.
-We employ the symbol $$\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)$$ to refer to this object.
-
-Now suppose that \begin{align*}
-    \sigma&::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)\qquad\text{ and}\\
-    \rho&::(a_0b_0\to c_0d_0)(a_1b_1\to c_1d_1)\cdots(a_mb_m\to c_md_m)
-\end{align*}
-are both sequences of feasible edge-replacements.
-Then the \emph{product} of the two (important: in the order as they are written), is \begin{align*}
-    \rho\cdot\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots\\
-    \cdots(x_ny_n\to w_nz_n)(\sigma^{-1}(a_0)\sigma^{-1}(b_0)\to \sigma^{-1}(c_0)\sigma^{-1}(d_0))\cdots\\
-    \cdots(\sigma^{-1}(a_m)\sigma^{-1}(b_m)\to\sigma^{-1}(c_m)\sigma^{-1}(d_m)).
-\end{align*}
-
-In other words, the inverse permutation must be applied to the second sequence of labels to ensure that the final labeling is consistent with the original labeling of the graph.
-This is because, after applying each sequence of edge-replacements, the permutation shuffles the labels.
-This relabeling also has a very natural categorical interpretation.
-Each edge-replacement corresponds to a morphism between labeled graphs, and a sequence of feasible edge replacements corresponds to compositions of such morphisms.
-Expressing all edge replacements relative to the original labeling requires conjugating later morphisms by the permutations induced by earlier ones.
-
-\subsection{Applying feasible edge-replacements to a labeled graph}
-
-Suppose that $G=(V,E)$ is a graph with vertex set $V$ and edge set $E$, and that $\lambda\colon V\to X$ is any bijection, called a \emph{labeling of $G$}.
-We call the pair $(G,\lambda)$ a \emph{labeled graph}.
-Every permutation of the labels $\sigma\colon X\to X$ induces a graph isomorphism of $G$ $$\varphi_\sigma:=\lambda^{-1}\circ\sigma\circ\lambda\colon V\to V;$$ and every graph isomorphism of $G$ of the form $\varphi\colon V\to V$, that is, on the same vertex set, induces a permutation $$\sigma_\varphi:=\varphi^{-1}\circ\lambda\circ\varphi\colon X\to X.$$ In other words, the image of $G$ under $\varphi$, $\varphi[G]$, is a graph on $V$ isomorphic to $G$.
-
-Let $\overline G$ denote the complement graph of $G$, and suppose that $(e,f)\in G\times\overline G$.
-An edge-replacement $\sigma::(e\to f)$ is called a \emph{feasible edge-replacement of $G$} (or a \emph{\tfer object of $G$}, for short) if $\varphi_\sigma[G]=G-e+f$.
-Informally, applying the permutation $\sigma$ to the labeled vertices of $G$ produces the same graph on $V$ as removing the edge $e$ and adding the edge $f$.
-
-\begin{proposition}~ 
-    \begin{enumerate}
-        \item For any $\sigma\in S_X$, $\sigma\in A(G)$ if and only if $\sigma::(\emptyset\to\emptyset)$ is a \tfer object of $G$.
-
-        \item For any \tfer object $\sigma::(e\to f)$, there are exactly $|\Aut(G)|$ many permutations $\rho\in S_x$ such that $\rho::(e\to f)$.
-    \end{enumerate}
-\end{proposition}
-
-\begin{definition}\label{def:fer_multiplication}
-    Suppose that $x,y,z,w,a,b,c,d$, and possibly adding subscripts, are all elements (tipically, labels of vertices of some graph $G$) of some set $X$.
-    If $\sigma,\rho\in S_X$, I declare the symbol $\sigma::(\emptyset\to\emptyset)$ to be a \texttt{fer} \emph{object}.
-    Whenever \begin{align*}
-        \sigma&::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots(x_ny_n\to w_nz_n)\qquad\text{ and}\\
-        \rho&::(a_0b_0\to c_0d_0)(a_1b_1\to c_1d_1)\cdots(a_mb_m\to c_md_m)
-    \end{align*}
-    are \texttt{fer} objects, then the \texttt{fer} \emph{product} of the two (important: in the order they are written), is the symbol \begin{align*}
-        \rho\cdot\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to w_1z_1)\cdots\\
-        \cdots(x_ny_n\to w_nz_n)(\sigma^{-1}(a_0)\sigma^{-1}(b_0)\to \sigma^{-1}(c_0)\sigma^{-1}(d_0))(\sigma^{-1}(a_1)\sigma^{-1}(b_1)\to\sigma^{-1}(c_1)\sigma^{-1}(d_1))\cdots\\
-        \cdots(\sigma^{-1}(a_m)\sigma^{-1}(b_m)\to\sigma^{-1}(c_m)\sigma^{-1}(d_m))    
-    \end{align*}
-    which I declare to be a \texttt{fer} object.
+    The pair $(G,\lambda)$ is called a \emph{labeled graph}, and the paremeters $V,E$ and $X$ are considered to be implicit.
 \end{definition}
 
-So that this definition becomes useful not just for a programmer but for studying the mathematical objects in question, it is imperative to observe that the preceding abstract definition is in fact consistent with the operations we are interested in.
+Every label permutation $\sigma\in S_X$ induces the graph isomorphism $\varphi_\sigma:=\lambda^{-1}\circ\sigma\circ\lambda\colon V\to V$ of $G$, and every graph isomorphism of $G$ of the form $\varphi\colon V\to V$ (that is, on the same vertex set) induces a label permutation $\sigma_\varphi:=\lambda\circ\varphi\circ\lambda^{-1}\in S_X$.
+For this reason, label permutations and isomorphisms are often used interchangeably, but I do not follow this convention for the sake of clarity.
 
-\begin{remark}
-    Let $G$ be a graph and suppose that $\sigma::(xy\to wz)$ and $\rho::(ab\to cd)$ are feasible edge-replacements.
-    Then the product of these two as \texttt{fer} objects is a sequence of feasible edge-replacements, where $(xy\to zw)(\sigma^{-1}(a)\sigma^{-1}(b)\to\sigma^{-1}(c)\sigma^{-1}(d))$ is the corresponding sequence of edge-replacements needed to get from $G$ to the copy of $G$ on $V$ obtained after applying the permutation $\rho\cdot\sigma$ to the labels of its vertices.
-\end{remark}
+\begin{center}
+\begin{tikzpicture}[node distance=1cm and 4cm, auto, >=Stealth]
+    % Top Row (Labels X)
+    \node (X1) {$X$};
+    \node (X2) [right=of X1] {$X$};
+    
+    % Bottom Row (Vertices V)
+    \node (V1) [below=of X1] {$V$};
+    \node (V2) [below=of X2] {$V$};
+
+    % Horizontal Arrows
+    \draw[->] (X1) -- node {$\sigma$} (X2);
+    \draw[->] (V1) -- node [swap] {$\varphi_\sigma$} (V2);
+
+    % Vertical Arrows (Connecting the lines via lambda)
+    \draw[->] (V1) -- node {$\lambda$} (X1);
+    \draw[->] (X2) -- node {$\lambda^{-1}$} (V2);
+\end{tikzpicture}
+\end{center}
+
+\begin{lemma}\label{lemma:varphi-iso-iff-image}
+    Let $G$ and $G'$ be graphs on the same vertex set $V$.
+    Given a bijection $\varphi\colon V\to V$, $\varphi$ is an isomorphism between $G$ and $G'$ if and only if $$\varphi[E(G)]=E(G').$$
+\end{lemma}
+
+\begin{proof}
+    This is immediate from the definition of graph isomorphism: $\varphi$ is an isomorphism if and only if $v_iv_j\in E(G)\Leftrightarrow \varphi(v_i)\varphi(v_j)\in E(G')$, which is precisely the statement $\varphi[E(G)]=E(G')$.
+\end{proof}
+
+We adapt the notation from \cite{Caro2020GraphsIU} and all subsequent papers.
+Given a labeled graph $(G,\lambda)$, the \emph{edge-label set of $G$} is defined as
+\[
+    L_G:=\{ij : v_iv_j\in E(G)\},
+\]
+where $ij$ and $ji$ are not distinguished.
+Thus, $L_G$ is the set of labels induced on the edges of $G$ by $\lambda$.
+For each $\sigma\in S_X$, define $G_\sigma$ to be the graph on the same vertex set $V$ with edge set
+\[
+    E(G_\sigma):=\{v_iv_j : \sigma(i)\sigma(j)\in L_G\}.
+\]
+In words, $G_\sigma$ is the unique graph on $V$ satisfying $L_{G_\sigma}=\sigma^{-1}[L_G]$, where $\sigma^{-1}[L_G]:=\{\sigma^{-1}(i)\sigma^{-1}(j):ij\in L_G\}$.
+In particular, $L_{G_\sigma}=L_G$ for every $\sigma\in S_X$ (the set of edge labels is invariant across all copies), and $G_{\text{id}}=G$.
+
+The relationship between $G_\sigma$ and $\varphi_\sigma$ is as follows.
+By Lemma~\ref{lemma:varphi-iso-iff-image}, $\varphi_\sigma$ is an isomorphism $G\to G'$ if and only if $\varphi_\sigma[E(G)]=E(G')$.
+Since $\varphi_\sigma(v_i)=v_{\sigma^{-1}(i)}$, this image equals $\{v_{\sigma^{-1}(i)}v_{\sigma^{-1}(j)}:v_iv_j\in E(G)\}$, whose edge-label set is exactly $\sigma^{-1}[L_G]=L_{G_\sigma}$.
+In summary:
+\begin{equation}\label{eq:gsigma-varphi}
+    \varphi_\sigma \text{ is an isomorphism } G\to G' \quad\Longleftrightarrow\quad G_\sigma = G' \quad\Longleftrightarrow\quad \sigma^{-1}[L_G]=L_{G'}.
+\end{equation}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.2cm and 5cm, auto, >=Stealth]
+    % Top Row (Label level)
+    \node (L1) {$L_G$};
+    \node (L2) [right=of L1] {$L_{G_\sigma}=\sigma^{-1}[L_G]$};
+    
+    % Bottom Row (Graph level)
+    \node (G1) [below=of L1] {$G$};
+    \node (G2) [below=of L2] {$G_\sigma$};
+
+    % Horizontal Arrows
+    \draw[|->] (L1) -- node {$\sigma^{-1}$} (L2);
+    \draw[->] (G1) -- node [swap] {$\varphi_\sigma$} (G2);
+
+    % Vertical Arrows
+    \draw[<->] (G1) -- node {$\lambda$} (L1);
+    \draw[<->] (G2) -- node {$\lambda$} (L2);
+\end{tikzpicture}
+\end{center}
+
+Suppose that $G^c$ denotes the graph complement of $G$ (that is, the graph obtained from switching every adjacency and every non-adjacency in $G$) and let $(e,f)\in E(G)\times E(G^c)$, and $\sigma\in S_X$.
+I use the phrase ``$\sigma::(e\to f)$ is a \emph{feasible edge replacement}'' to abbreviate the fact that $\varphi_\sigma$ is a graph isomorphism between $G$ and $G-e+f$, or equivalently, that $\sigma^{-1}[L_G]=L_{G-e+f}$.\footnote{I delay defining the object $\sigma::(e\to f)$ (Definition~\ref{def:fer-object}), for a few paragraphs, purely for expository purposes, as this requires an additional level of abstraction that would otherwise lack motivation.}
+If $\varphi_\sigma\in\Aut(G)$, I employ the symbol $\sigma::(\emptyset\to\emptyset)$ to signal that no edge is being moved.
+Denote by $\Fer(G)$ the group generated by all $\sigma$ for which there are $e$ and $f$ such that $\sigma::(e\to f)$ is a feasible edge replacement.
+These label permutations $\sigma$ are called the \emph{canonical generators} of $\Fer(G)$, and they include permutations that induce automorphisms on $G$ (which can be visualized as an action that leaves the graph looking identical) and permutations that correspond to moving exactly one edge.
+Thus, intuitively, each element of the group $\Fer(G)$ corresponds to a ``sequence'' of feasible edge replacements.
+
+Let $$A(G):=\{\sigma\in S_X:\varphi_\sigma\in\Aut(G)\}\simeq\Aut(G)$$ be the subgroup of label permutations that correspond to the automorphisms of $G$.
+Hence, the following subgroup structure holds.
+$$1\leq A(G)\leq\Fer(G)\leq S_X,$$ where, as usual, the $1$ on the left represents the trivial subgroup of $S_X$ containing just the identity on $X$.
+
+It is often convenient to represent a sequence of feasible edge replacements (that is, an element of $\Fer(G)$) as a product of canonical generators (which, as standard in Algebra, is written right-to-left) paired with a ``list of instructions'' explaining what edges to replace and in what order (which, as standard in English, is written left-to-right).
+This requires defining some more symbols.
+Before doing this, there is a technical caveat: the labels of the graph's vertices change after each canonical generator gets applied (the labels get permuted); but having the list of edge replacements in the graph's original labeling is desirable if, for example, one wishes to execute a solution to a puzzle by moving edges without having to keep track of what the corresponding permutations are (not to mention the extra effort needed to figure out what those permutations are in the first place).
+To circumvent this, I give the following abstract definition (by ``abstract,'' I mean that the operation does not actually require knowledge of the graph $G$ on which it is defined).
+
+\begin{definition}[Edge replacements as objects]\label{def:fer-object}
+    Suppose that $\sigma\colon X\to X$ is label permutation and that $x,y,z,w\in X$, and possibly adding subscripts, are labels.
+    An \emph{edge replacement} is a tuple of the form $(\sigma, (x, y, z, w))$ and we always use the notation $\sigma::(xy\to zw)$ to represent it.
+
+    If $\{x,y\}=\{z,w\}$, I use the notation $\sigma::(\emptyset\to\emptyset)$ to emphasize that no edge has been moved.
+
+    A \emph{sequence of edge replacements} is a tuple $(\sigma,(x_i,y_i,z_i,w_i)_{i\leq n})$ where $\sigma$ is again a label permutation, and $\{x_i,y_i,z_i,w_i:i\leq n\}\subseteq X$.
+    I employ the symbol $$\sigma::(x_0y_0\to z_0w_0)(x_1y_1\to z_1w_1)\cdots(x_ny_n\to z_nw_n)$$ to refer to this object.
+\end{definition}
+
+Intuitively, $\sigma::(xy\to zw)$ refers to applying the permutation $\sigma$ to the labels of the vertices and moving the edge $v_xv_y$ to the position of the non-edge $v_zv_w$.\footnote{For readers previously familiar with this notion: the notation $\sigma::(xy\to zw)$ denotes that $\sigma\in\Fer_G(xy\to zw)$ in the sense of \cite{Caro2020GraphsIU}.}
+
+\begin{definition}[Concatenating edge replacements]\label{def:concatenation-fer}
+    Now suppose that \begin{align*}
+    f_0=\sigma&::(x_0y_0\to w_0z_0)(x_1y_1\to z_1w_1)\cdots(x_ny_n\to z_nw_n)\qquad\text{ and}\\
+    f_1=\rho&::(a_0b_0\to c_0d_0)(a_1b_1\to c_1d_1)\cdots(a_mb_m\to c_md_m)
+    \end{align*}
+    are both sequences of edge replacements.
+    Then the \emph{product} $f_0*f_1$, is the sequence of edge replacements \begin{align*}
+        f_0*f_1:=\rho\cdot\sigma::(x_0y_0\to w_0z_0)(x_1y_1\to z_1w_1)\cdots\\
+        \cdots(x_ny_n\to z_nw_n)(\sigma^{-1}(a_0)\sigma^{-1}(b_0)\to \sigma^{-1}(c_0)\sigma^{-1}(d_0))\cdots\\
+        \cdots(\sigma^{-1}(a_m)\sigma^{-1}(b_m)\to\sigma^{-1}(c_m)\sigma^{-1}(d_m)).
+    \end{align*}
+\end{definition}
+
+In other words, the inverse permutation must be applied to the second sequence of labels to ensure that the final labeling is consistent with the original labeling of the graph.
+This relabeling also has a very natural categorical interpretation, in the category of labeled graphs $(G,\lambda)$.
+Each edge replacement corresponds to a morphism between labeled graphs, and a sequence of feasible edge replacements corresponds to compositions of such morphisms.
+
+Now, I connect the two notions thus far defined in this subsection and prove that they are indeed consistent with one another.
+The following proposition can be inductively generalized to arbitrary finite sequences of edge replacements.
+
+\begin{proposition}\label{prop:fer-is-well-defined}
+    Let $(G,\lambda)$ be a labeled graph and suppose that $f_0=\sigma::(xy\to wz)$ and $f_1=\rho::(ab\to cd)$ are feasible edge replacements of $G$.
+    Then, their product $$f_0*f_1=\rho\cdot\sigma::(xy\to zw)(\sigma^{-1}(a)\sigma^{-1}(b)\to\sigma^{-1}(c)\sigma^{-1}(d))$$ is such that the induced map $\varphi_{\rho\cdot\sigma}$ is an isomorphism between $G$ and $$(G-v_xv_y+v_zv_w)-v_{\sigma^{-1}(a)}v_{\sigma^{-1}(b)}+v_{\sigma^{-1}(c)}v_{\sigma^{-1}(d)}.$$
+\end{proposition}
+
+Products of feasible edge replacements are called \tfer \emph{objects}, and their label permutations are precisely the elements of $\Fer(G)$.
+The preceding proposition shows that $f_0*f_1$ is a \tfer object, which we prove as follows.
+
+\begin{proof}
+    Denote $G':=G-v_xv_y+v_zv_w$ and $G'':=G-v_av_b+v_cv_d$.
+    At the level of edge labels, this means
+    $$
+        L_{G'}=(L_G\setminus\{xy\})\cup\{zw\}\qquad\text{ and }\qquad L_{G''}=(L_G\setminus\{ab\})\cup\{cd\}.
+    $$
+
+    Since $f_0$ is a feasible edge replacement of $G$, by \eqref{eq:gsigma-varphi}, $G_\sigma=G'$, that is,
+    \begin{equation}\label{eq:f0-label}
+        \sigma^{-1}[L_G]=L_{G'}=(L_G\setminus\{xy\})\cup\{zw\}.
+    \end{equation}
+    Since $f_1$ is a feasible edge replacement of $G$, again by \eqref{eq:gsigma-varphi}, $G_\rho=G''$:
+    \begin{equation}\label{eq:f1-label}
+        \rho^{-1}[L_G]=L_{G''}=(L_G\setminus\{ab\})\cup\{cd\}.
+    \end{equation}
+    
+    The goal is to compute $(\rho\cdot\sigma)^{-1}[L_G]$.
+    Since $(\rho\cdot\sigma)^{-1}=\sigma^{-1}\circ\rho^{-1}$, applying the bijection $\sigma^{-1}$ to both sides of \eqref{eq:f1-label} gives
+    \begin{align}
+        (\rho\cdot\sigma)^{-1}[L_G]
+        &= \sigma^{-1}\bigl[\rho^{-1}[L_G]\bigr] \nonumber\\
+        &= \sigma^{-1}\bigl[(L_G\setminus\{ab\})\cup\{cd\}\bigr] \nonumber\\
+        &= \bigl(\sigma^{-1}[L_G]\setminus\{\sigma^{-1}(a)\sigma^{-1}(b)\}\bigr)\cup\{\sigma^{-1}(c)\sigma^{-1}(d)\}.
+        \label{eq:product-step}
+    \end{align}
+    Substituting \eqref{eq:f0-label} into \eqref{eq:product-step} yields
+    $$
+        (\rho\cdot\sigma)^{-1}[L_G]= \bigl(L_{G'}\setminus\{\sigma^{-1}(a)\sigma^{-1}(b)\}\bigr)\cup\{\sigma^{-1}(c)\sigma^{-1}(d)\} = L_{G'''},
+    $$
+    where $G''':=G'-v_{\sigma^{-1}(a)}v_{\sigma^{-1}(b)}+v_{\sigma^{-1}(c)}v_{\sigma^{-1}(d)}$.
+    By \eqref{eq:gsigma-varphi}, this means $G_{\rho\cdot\sigma}=G'''$ or, in other words, that $\varphi_{\rho\cdot\sigma}$ is an isomorphism $G\to G'''$.
+\end{proof}
+
+With the multiplication I defined in Definition~\ref{def:concatenation-fer}, \tfer objects form their own group structure, which I call the \tFer group; clearly, it is isomorphic to $\Fer(G)$.
+As far as I know, this group is not explicitly defined in the existing body of literature, and doing so has some practical advantages, especially so from an engineering perspective.
 
 For instance, a solution to the puzzle is shown in Figure~\ref{fig:4_cycles_solution}, where each caption shows the canonical generator needed to obtain that step of the solution; and the \tfer object that solves the puzzle (with the same labels as in the figure) is the product of the three generators, resulting in
 $$(2\ 3)::(1\ 2\to1\ 3)(0\ 1\to0\ 2)(2\ 3\to1\ 2).$$
-It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, as two edges necessarily changed position.
+It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, as (at least) two edges must necessarily change their position.
 
 \begin{figure}[htbp]
 \centering
@@ -422,7 +508,7 @@ It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, a
     \caption{$(2\ 3)::(1\ 2\to1\ 3)$} \label{step:3}
 \end{subfigure}
 
-\caption{A sequence of feasible edge-replacements.}
+\caption{A solution to the \tfer puzzle.}
 \label{fig:4_cycles_solution}
 \end{figure}
 
@@ -433,7 +519,7 @@ In symbols, if $A\subseteq X^X$, $\overline A:=\cl(A,X^X)$.
     A graph $G$ is called a \emph{local amoeba} if $\overline{\Fer(G)}=S_X$.
 \end{definition}
 
-Hence, a local amoeba is precisely a graph that can be transformed into any copy of itself on the same vertex set by a (possibly infinite) sequence of feasible edge-replacements.
+Hence, a local amoeba is precisely a graph that can be transformed into any copy of itself on the same vertex set by a (possibly infinite) sequence of feasible edge replacements.
 This graph-theoretic notion and the name \emph{amoeba} first appeared in \cite{unavoidable_chromatic} as an interesting combinatorial object with strong balanceability properties, described in Subsection~\ref{subsec:amoebas_bal}.
 When $X$ is finite, all subsets of $X^X$ are closed and thus the preceding definition simplifies to $\Fer(G)=S_X$, which is the algebraic notion introduced in \cite{Caro2020GraphsIU} as a tool to study these graphs and their properties.
 The currently published body of research studies the case when $X$ is finite.
@@ -449,7 +535,7 @@ Complete graphs are all local amoebas for a rather uninteresting reason: their a
 \end{definition}
 
 One of the main concerns of this active field of research is finding and classifying interesting examples of graphs that are local amoebas.
-For instance, constructing trees with arbitrary large maximum degree that are local amoebas is a curious problem, whose solution was the main precursor of \cite{Eslavaetal2025}, which I present in Section~\ref{subsec:new_recursive}.
+For instance, constructing trees with arbitrary large maximum degree that are local amoebas is a curious problem, whose solution was the main precursor of \cite{Eslavaetal2025}, which I present in Subsection~\ref{subsec:new_recursive}.
 
 In terms of Group Theory, $\Fer(G)$ carries all of the expressive power of finite groups.
 Precisely, one can show that there is no theorem of the form ``for every finite graph $G$, the group $\Fer(G)$ has property $\varphi$,'' where $\varphi$ is a non-trivial property about groups.
@@ -459,24 +545,24 @@ This result, often referred to as Frucht's theorem, demonstrates that for any fi
 
 For a cubic graph $G$, and more generally for a $k$-regular graph with $k\geq2$, $G$ is rigid,
 that is $\Fer(G)=\Aut(G)$.
-This is a direct consequence of the fact that applying a non-trivial feasible edge-replacement changes the degree of at least one vertex (by 1).
+This is a direct consequence of the fact that applying a non-trivial feasible edge replacement changes the degree of at least one vertex (it increases or decreases by exactly one, depending on whether an edge was added or removed to a particular vertex).
 Put succintly:
 
 \begin{proposition}
-    For every finite group $\Gamma$, there is a graph $G$ such that $\Gamma$ is isomorphic to $\Fer(G)$.
+    For any finite group $\Gamma$, there is a graph $G$ such that $\Gamma$ is isomorphic to $\Fer(G)$.
 \end{proposition}
 
 \subsection{Local amoeba trees with large maximum degree}\label{subsec:new_recursive}
 
-Intuitively, if one is trying to transform one graph into another by means of feasible edge-re\-place\-ments, it may come in handy to have isolated vertices that allow new positions for graphs.
-I previously mentioned that complete graphs are rigid graphs, meaning they have no non-trivial feasible edge-replacements.
-Adding isolated vertices to a complete graph destroys its rigidity.
+Intuitively, if one is trying to transform one graph into another by means of feasible edge replacements, it may come in handy to have isolated vertices that allow new positions for the graph.
+I previously mentioned that complete graphs are rigid graphs, meaning they have no non-trivial feasible edge replacements.
+Adding isolated vertices to a complete graph destroys its rigidity, since now new movements are possible.
 
 \begin{definition}\label{def:global_amoeba}
     A finite graph $G$ is called a \emph{global amoeba} if there is a $t\geq1$ such that $G\cup tK_1$ (that is, the graph obtained as the disjoint union of $G$ and $t$ many isolated vertices) is a local amoeba.
 \end{definition}
 
-Perhaps surprisingly, adding isolated vertices does not always increase the amount of feasible edge-replacements; in fact, there is no general logical implication between a graph $G$ being a local amoeba and being a global amoeba.\footnote{With this in mind, one might try to suggest more descriptive names for these graphs that do not hint at this inexisting causal link, but the author chose to respect the terminology from the well-established literature.}
+Perhaps surprisingly, adding isolated vertices to an arbitrary graph does not necessarily increase the amount of feasible edge replacements; in fact, there is no general logical implication between a graph $G$ being a local amoeba and being a global amoeba.\footnote{With this in mind, one might try to suggest more descriptive names for these graphs that do not hint at this inexisting causal link, but the author chose to respect the terminology from the well-established literature.}
 One case where such an implication does exist is for trees (see Corollary~\ref{cor:local_trees_are_global}).
 
 The main result of \cite{Caroetal2023} is the following classification of global amoebas.
@@ -494,19 +580,21 @@ Notably, if a value of $t$ exists such that Definition~\ref{def:global_amoeba} h
     \end{enumerate}
 \end{theorem}
 
-A well-known fact about finite trees is that they have at least two vertices of degree 1.
-Joined with the observation that if $T$ is a local amoeba, then $\Fer(T)$ consists of a single orbit (it is in fact, the whole symmetric group), it is clear that condition (3) of Theorem~\ref{thm:classification_global} is satisfied for any tree $T$.
+A well-known fact about any finite tree $T$ with at least an edge is that it must have at least two vertices of degree 1.
+Recalling that if $T$ is a local amoeba, then $\Fer(T)$ consists of a single orbit (it is in fact, the whole symmetric group), it is clear that condition (3) of Theorem~\ref{thm:classification_global} is satisfied for any tree $T$ that happens to be a local amoeba.
 
 \begin{corollary}\label{cor:local_trees_are_global}
-    If $T$ is a finite tree that is a local amoeba, then it is a global amoeba.
+    If $T$ is a finite tree for which $\Fer(T)$ acts transitively on $T$ (for example if $T$ is a local amoeba), then $T$ is a global amoeba.
 \end{corollary}
 
 The connectedness of $T$ is indispensable.
 For example, a matching (a set of pairwise disjoint edges) forms a global amoeba, since every vertex has degree 1, but not a local amoeba (it is, in fact, rigid).
+The acyclic hypothesis on $T$ is also crucial: any cycle $C$ is rigid but $\Fer(C)$ acts transitively on it.
 
 Figure~\ref{fig:global_non_local} depicts the smallest tree $T$ that is a global amoeba but not a local amoeba.
 Interestingly, its \tFer group is transitive (that is, it consists of a single orbit).
-There are also global amoeba trees whose \tFer group is not transitive, and the smallest such example has two orbits, shown as different colours in Figure~\ref{fig:multi_orbit_tree}.
+There are also global amoeba trees whose \tFer group is not transitive, and the smallest such example has two orbits, depicted in Figure~\ref{fig:multi_orbit_tree} with vertices coloured by orbit under the action of the \tFer group.\footnote{Recall from elementary Group Theory that the set of orbits of a group action forms a partition of the set.
+Thus, in this example, two vertices have the same colour if and only if there is a \tfer object that sends one to the other.}
 The main conjecture of Section~\ref{sec:amoeba_trees} is that the \tFer groups of all global amoeba trees have at most two orbits.
 
 \begin{figure}[htbp]
@@ -514,24 +602,24 @@ The main conjecture of Section~\ref{sec:amoeba_trees} is that the \tFer groups o
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{global_non_local_tree.pdf}
-        \caption{Smallest non-local global amoeba tree.}
+        \caption{The smallest non-local global amoeba tree.}
         \label{fig:global_non_local}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{multi_orbit_tree.pdf}
-        \caption{Smallest global amoeba tree on which \tFer does not act transitively.}
+        \caption{The smallest global amoeba tree on which \tFer does not act transitively.}
         \label{fig:multi_orbit_tree}
     \end{subfigure}
-    \caption{Vertices in (b) are coloured by their respective orbit under the action of the \tFer group.}
+    \caption{The smallest global amoeba trees with these properties.}
     \label{fig:fer_group_trees}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{fibonacci_trees.png}
-    \caption{$T_k$ for $1\leq k \leq 5$.}
+    \caption{Fibonacci-type trees $T_k$, for $1\leq k\leq5$.}
     \label{fig:Tk}
 \end{figure}
 
@@ -553,9 +641,9 @@ The proof that a finite graph $G$ is a local amoeba often involves a counting ar
 There are two disadvantages with this method.
 
 \begin{itemize}
-    \item Given an arbitrary permutation $\sigma\in S_X$ (that is, an arbitrary copy of $G$ on the same vertex set), the proof generally offers no method of finding the sequence of feasible edge-replacements.
+    \item Given an arbitrary permutation $\sigma\in S_X$ (that is, an arbitrary copy of $G$ on the same vertex set), the proof generally offers no method of finding the sequence of feasible edge replacements.
     In other words, this proving method shows the existence of a solution to the puzzle, without giving an algorithm to find it.
-    The algorithm presented in Section~\ref{subsec:algorithm_Tk} resolves this for an infinite family of trees.
+    The algorithm presented in Subsection~\ref{subsec:algorithm_Tk} resolves this for an infinite family of trees.
     
     \item Counting methods don't generalize to infinite graphs.
     I address this in Section~\ref{sec:infinitary_amoeba_graphs}.
@@ -568,10 +656,10 @@ A few more notions come in handy not just for the upcoming section, but also for
     The subgroup of $\Gamma$ generated by the canonical generators of $\Gamma$ that fix $i$ is denoted by $\Fer^i(G)$.
     That is, in symbols, $\Fer^i(G):=\Gamma\cap\Stab_\Gamma(i)$.
 
-    We say a graph $G$ is \emph{stem-symmetric with respect to $i$} (equivalently, \emph{stem-symmetric with respect to the vertex $\lambda(i)$}) if $\Fer^i(G)=\{\varphi\in S_X:\varphi(i)=i\}$.
+    We say a graph $G$ is \emph{stem-symmetric with respect to the label $i$} (equivalently, \emph{stem-symmetric with respect to the vertex $\lambda(i)$}) if $\Fer^i(G)=\{\varphi\in S_X:\varphi(i)=i\}$.
 \end{definition}
 
-In other words, a finite graph $G=(V,E)$ is stem-symmetric with respect to a vertex $v$ if, for any isomorphism $\varphi\colon V\to V$ of $G$ that fixes $v$, one can attain the graph $\varphi[G]$ by a sequence of \tfer objects that all fix the label of $v$.
+In other words, a finite graph $G=(V,E)$ is stem-symmetric with respect to a vertex $v$ if, for any isomorphism $\varphi\colon V\to V$ of $G$ that fixes $v$, one can attain the graph $G_\varphi$ by a sequence of \tfer objects that all fix the label of $v$.
 
 To convince the reader that this defines a non-trivial condition on $G$, consider the example of a path $P_n$ on an odd number of vertices $n\geq3$.
 Let $k=\frac{n-1}2$ be the midpoint.
@@ -580,7 +668,7 @@ Given a canonical generator $\sigma::(e\to f)\in\Fer^k(P_n)$, the only choice of
 This proves that $\Fer^k(P_n)=A(P_n)\simeq S_2$, but as per a previous discussion, $\Fer(P_n)=S_n$ (all paths are local amoebas).
 For a concrete example, the transposition that interchanges the endpoints, $(0\ (n-1))$ fixes the midpoint, but is not attainable as a sequence of \tfer objects that all fix the midpoint.
 Therefore, $P_n$ is not stem-symmetric with respect to $k$.
-The situation is different when fixing a different vertex in a path.
+The situation is different when picking a different vertex $k$ in a path.
 
 \begin{lemma}\label{lemma:path-stem-symmetric}
     For every $n\in\mathbb N$, the path $P_{n+1}$ is stem-symmetric with respect to the endpoint $n$.
@@ -598,7 +686,7 @@ The situation is different when fixing a different vertex in a path.
 
 \subsection{A recursive algorithm for Fibonacci-type trees}\label{subsec:algorithm_Tk}
 
-I now describe an algorithm that, given any permutation $\sigma \in S_X$ on the vertices of $T_k$, produces an explicit sequence of feasible edge-replacements whose composition realises $\sigma$.
+I now describe an algorithm that, given any permutation $\sigma\in S_X$ on the vertices of $T_k$, produces an explicit sequence of feasible edge replacements whose composition realises $\sigma$.
 Throughout this section, fix a labeling of $T_k$ and write $n = n(k) = 2F_k$ for its order, where $F_k$ is the $k$-th Fibonacci number.
 
 \paragraph{Recursive decomposition of $T_k$.}
@@ -632,7 +720,7 @@ the corresponding label sets.
 These four sets partition $X$, and $b$ is the label of the unique vertex of maximum degree in $T_k$.
 Now fix once and for all a label $y_0 \in B \setminus \{b\}$.
 
-Two feasible edge-replacements in $T_k$ play a distinguished role.
+Two feasible edge replacements in $T_k$ play a distinguished role.
 \begin{itemize}
     \item The replacement $cd\to ad$ induces a bijection $\rho\colon A\to C$ that extends to the isomorphism $H_1\to H_2$ sending $v_a\mapsto v_c$, while fixing $B \cup D$ pointwise.
     
@@ -703,18 +791,18 @@ The key identities driving each case are:
 The $D$-case triple product $$(y_0,x)=(y_0,x_0)(x,x_0)(y_0,x_0),$$ if applied naively, doubles the contribution of $(y_0,x_0)$ at every recursion level and leads to a sequence length satisfying
 $\ell(k) = \Theta(k^2)$.
 This can be improved by observing that every transposition $(y_0,x)$ can instead be built by \emph{tracing the unique path} from $x$ to $y_0$ in $T_k$.
-Each step of this path crosses exactly one subtree boundary, and each boundary crossing can be implemented using a constant number of feasible edge-replacements: either a single application of $\rho$ or $\varphi$, which are each induced by a single edge-replacement.
+Each step of this path crosses exactly one subtree boundary, and each boundary crossing can be implemented using a constant number of feasible edge replacements: either a single application of $\rho$ or $\varphi$, which are each induced by a single edge replacement.
 Since the depth of $T_k$ is $O(k)$ and the path from $x$ to $y_0$ crosses at most $O(k)$ subtree boundaries, the resulting sequence for $(y_0,x)$ has length $O(k)$.
 We refer to this as the \emph{shallow transposition routine}.
 
 \paragraph{Correctness and complexity.}
 
 \begin{theorem}[Correctness]\label{thm:algorithm_correct}
-    For every $k \ge 1$ and every permutation $\sigma \in S_X$ on the vertices of $T_k$, Algorithm~\ref{alg:RecursiveFer} terminates and outputs a sequence of feasible edge-replacements of $T_k$ whose permutation is $\sigma$.
+    For every $k \ge 1$ and every permutation $\sigma \in S_X$ on the vertices of $T_k$, Algorithm~\ref{alg:RecursiveFer} terminates and outputs a sequence of feasible edge replacements of $T_k$ whose permutation is $\sigma$.
 \end{theorem}
 
 \begin{proof}
-    I prove by strong induction on $k$ that $\RecFer(x,k)$ returns a \tfer object whose permutation is $(y_0,x)$ and whose edge-replacement sequence is feasible in $T_k$.
+    I prove by strong induction on $k$ that $\RecFer(x,k)$ returns a \tfer object whose permutation is $(y_0,x)$ and whose edge replacement sequence is feasible in $T_k$.
 
     For $k\leq 4$ this holds by assumption on the precomputed base cases.
     Let $k\geq 5$ and suppose the claim holds for all smaller values.
@@ -722,18 +810,18 @@ We refer to this as the \emph{shallow transposition routine}.
     \emph{Case $x \in A \cup B$.}
     The labels $A \cup B = \lambda[V(T_{k-1})]$ form the vertex set of the subtree $H = (H_1 \cup J_1) + v_a v_b \cong T_{k-1}$, and $y_0 \in B\subseteq A \cup B$.
     By the induction hypothesis, $\RecFer(x, k-1)$ produces a feasible sequence in $T_{k-1}$ realising $(y_0,x)$.
-    Any feasible edge-replacement of a subgraph $H \subseteq T_k$ that fixes the label $b$ of the connecting vertex $v_b$ is also a feasible edge-replacement of $T_k$ (this is the content of \cite[Lemma~5]{Eslavaetal2025}).
+    Any feasible edge replacement of a subgraph $H \subseteq T_k$ that fixes the label $b$ of the connecting vertex $v_b$ is also a feasible edge replacement of $T_k$ (this is the content of \cite[Lemma~5]{Eslavaetal2025}).
     Since every element of $\Fer^b(T_{k-1})$ fixes $b$, the sequence remains feasible in $T_k$.
 
     \emph{Case $x = b$.}
     We have $\varphi^{-1}(b) \in A \cup B$ (since $\varphi \colon B \to C \cup D$ maps $v_b \mapsto v_c$ and hence $b \mapsto c \notin B$, so $\varphi^{-1}(b) \in A$).
     The recursive call $\RecFer(\varphi^{-1}(b), k)$ falls into the $A \cup B$ case and is correct by the above.
     The conjugation identity $(y_0, b) = \varphi^{-1} \cdot (y_0, \varphi^{-1}(b)) \cdot \varphi$
-    holds in $S_X$, and $\varphi$ corresponds to a single feasible edge-replacement, so the concatenated sequence is feasible.
+    holds in $S_X$, and $\varphi$ corresponds to a single feasible edge replacement, so the concatenated sequence is feasible.
 
     \emph{Case $x \in C$.}
     Since $\rho \colon A \to C$ is a bijection and $\rho^{-1}(x) \in A \subseteq A \cup B$, the recursive call falls into the $A \cup B$ case.
-    The conjugation identity $(y_0, x) = \rho^{-1} \cdot (y_0, \rho^{-1}(x)) \cdot \rho$ holds in $S_X$, and $\rho$ is a single feasible edge-replacement.
+    The conjugation identity $(y_0, x) = \rho^{-1} \cdot (y_0, \rho^{-1}(x)) \cdot \rho$ holds in $S_X$, and $\rho$ is a single feasible edge replacement.
 
     \emph{Case $x \in D$.}
     Since $x_0 \in C$, the object $F_0 = \RecFer(x_0, k)$ is correct by the $C$-case above.
@@ -750,7 +838,7 @@ We refer to this as the \emph{shallow transposition routine}.
 \end{corollary}
 
 \begin{proof}
-    By Theorem~\ref{thm:algorithm_correct}, for every $\sigma\in S_X$ there exists a sequence of feasible edge-replacements of $T_k$ whose permutation is $\sigma$, and hence $\sigma\in\Fer(T_k)$.
+    By Theorem~\ref{thm:algorithm_correct}, for every $\sigma\in S_X$ there exists a sequence of feasible edge replacements of $T_k$ whose permutation is $\sigma$, and hence $\sigma\in\Fer(T_k)$.
     Therefore $\Fer(T_k)=S_X$, which is the definition of a local amoeba.
 \end{proof}
 

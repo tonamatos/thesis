@@ -14,44 +14,14 @@
 
 %% --- Front Matter ---
 \frontmatter
-%\maketitle
+\maketitle
 
-%\begin{abstract}
-%  This is the abstract.
-%\end{abstract}
-
-%\begin{acknowledgements}
-%  These are the acknowledgements.
-%\end{acknowledgements}
-
-\begin{publications}
-\begin{itemize}
-    \item I presented the original proof exhibited in Section~\ref{sec:concise_L0} at the Fields Institute 2025 Set Theory Seminar on March 28th.
-
-    \item Section~\ref{sec:cantor_game}:
-    Adapted from \cite{MatosWiederholdSalvetti2025}, where we solved a problem of Brian and Clontz.
-    I presented the main result at the 2023 Summer Meeting of the Canadian Mathematical Society in Ottawa.
-    
-    \item Chapter~\ref{ch:deep_computations}:
-    Primarily based on my contributions to \cite{Duenezetal2026}, specifically regarding the separation of learnability classes with computational structures, and the connections to other fields.
-    The contents were presented at the Fields Institute 2026 Set Theory Seminar on January 30th by myself, and continued on February 6th by one of the coauthors.
-    The background was also heavily influenced by a series of four talks we gave at the same seminar in 2024 about Rosenthal compacta.
-    
-    \item Section~\ref{sec:border_tracing}: Focuses solely on my contributions to two main algorithms, their analysis and development as detailed in \cite{WiederholdMatosWiederhold2026}.
-    The implementation is open source and can be found in \cite{wiederhold2026border_repo}.
-    
-    \item Section~\ref{sec:recursive_constructions}:
-    Based on both the joint work and the sections and main results I contributed to \cite{Eslavaetal2025} and \cite{Caroetal2023}.
-    I presented the first results at the 2022 Summer Meeting of the Canadian Mathematical Society in St John's.
-    The material presented in this section consists largely of my own generalizations, which are not to be found in the currently published body of research.
-    
-    \item Section~\ref{sec:amoeba_trees}:
-    Based on \cite{GomezetalPreprint}, specifically on my contributions to several proofs, conjectures and practical implementations.
-\end{itemize}
-\end{publications}
+\input{chapters/0-preamble/0-abstract.tex}
+\input{chapters/0-preamble/1-acknowledgements.tex}
+\input{chapters/0-preamble/2-publications.tex}
 
 \tableofcontents
-%\listoffigures
+\listoffigures
 
 \mainmatter
 
@@ -66,7 +36,7 @@
 
 \backmatter
 
-%\nocite{*}
+\nocite{*}
 \bibliographystyle{plainurl}
 \bibliography{bibliography/references}
 
