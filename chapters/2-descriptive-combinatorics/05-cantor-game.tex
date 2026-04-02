@@ -29,6 +29,76 @@ In the $n$-th turn, Player I picks a real number $a_n$ such that $a_{n-1}<a_n<b_
 After $\omega$-many turns they form two sequences of real numbers $\{a_n\}$ and $\{b_n\}$ such that $a_0<a_1<\cdots<a_n<\cdots<b_n<\cdots<b_1<b_0$.
 Player I wins if and only if there exists $x\in S$ such that $a_n<x<b_n$ for all $n<\omega$.
 Otherwise, Player II wins.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+
+    % Main horizontal real line
+    \draw[black!40, -] (-5.5,0) -- (5.5,0);
+
+    % Define distances - n=0 to n=3
+    \def\dist{4.5} 
+    \def\scale{0.5}
+
+    % --- Nodes and Labels ---
+    
+    % n=0
+    \node[vertex] (a0) at (-\dist,0) {};
+    \node[vlabel, below=4pt of a0] {$a_0$};
+    \node[vertex] (b0) at (\dist,0) {};
+    \node[vlabel, below=4pt of b0] {$b_0$};
+
+    % n=1
+    \node[vertex] (a1) at (-\dist*\scale,0) {};
+    \node[vlabel, below=4pt of a1] {$a_1$};
+    \node[vertex] (b1) at (\dist*\scale,0) {};
+    \node[vlabel, below=4pt of b1] {$b_1$};
+
+    % n=2
+    \node[vertex] (a2) at (-\dist*\scale*\scale,0) {};
+    \node[vlabel, below=4pt of a2] {$a_2$};
+    \node[vertex] (b2) at (\dist*\scale*\scale,0) {};
+    \node[vlabel, below=4pt of b2] {$b_2$};
+
+    % n=3
+    \node[vertex] (a3) at (-\dist*\scale*\scale*\scale,0) {};
+    \node[vlabel, below=4pt of a3] {$a_3$};
+    \node[vertex] (b3) at (\dist*\scale*\scale*\scale,0) {};
+    \node[vlabel, below=4pt of b3] {$b_3$};
+
+    % Central Ellipses (the limit)
+    \fill[black] (-0.15,0) circle (0.8pt);
+    \fill[black] (0,0)    circle (0.8pt);
+    \fill[black] (0.15,0)  circle (0.8pt);
+
+    % --- Mirror Image Arched Arrows ---
+    % out=angle determines the exit trajectory, in=angle determines the entry.
+    \tikzset{
+        arxA/.style={-{Latex[scale=0.8]}, black!70, thin, out=45, in=135, shorten >= 1.5pt},
+        arxB/.style={-{Latex[scale=0.8]}, black!70, thin, out=-135, in=-45, shorten >= 1.5pt}
+    }
+
+    % Player I moves (Top side, curving Right)
+    \draw[arxA] (a0.north) to (a1.north);
+    \draw[arxA] (a1.north) to (a2.north);
+    \draw[arxA] (a2.north) to (a3.north);
+    % Final fading arrow for Player I
+    \draw[arxA, dashed] (a3.north) to (-0.2, 0.1);
+
+    % Player II moves (Bottom side, curving Left)
+    % Note: we draw from b_n to b_{n+1} so the arrow points toward the center
+    \draw[arxB] (b0.south) to (b1.south);
+    \draw[arxB] (b1.south) to (b2.south);
+    \draw[arxB] (b2.south) to (b3.south);
+    % Final fading arrow for Player II
+    \draw[arxB, dashed] (b3.south) to (0.2, -0.1);
+
+    \end{tikzpicture}
+    \caption{The nested construction of intervals in the Cantor Game.}
+    \label{fig:cantor_game}
+\end{figure}
+
 It should be noted that the $[a_n,b_n]$ form a nested set of intervals, and thus there always exists real number $x$ with the property that for all $n<\omega$, $a_n<x<b_n$.
 Proposition~\ref{prop:arrow} generalizes the following observation when playing the game in an arbitrary dense linear order.
   
@@ -53,7 +123,7 @@ Recall that a linearly ordered set is \emph{scattered} if it does not contain a 
 A linearly ordered set is said to be \emph{$\sigma$-scattered} if it is a countable union of scattered sets.
 Given an order type $\gamma$, say that a linearly ordered set is \emph{$\gamma$-free} if it does not contain a copy of $\gamma$.
 The following result can be found in \cite{partition}.
-I include the proof for the reader's convenience.
+We include the proof for the reader's convenience.
 
 \begin{theorem}[\cite{todorcevic_6}]\label{thm:todorcevic}
     Let $X$ be a linearly ordered set.
@@ -65,7 +135,7 @@ I include the proof for the reader's convenience.
 \end{theorem}
 
 \begin{proof}
-    $(i)\Rightarrow(ii)$ is clear, so I focus on $(ii)\Rightarrow(i)$.
+    $(i)\Rightarrow(ii)$ is clear, so we focus on $(ii)\Rightarrow(i)$.
     It suffices to assume that $X$ is scattered (and $\omega_1^*$-free).
     Define the following relation on $X$: $x\sim y$ if and only if the closed interval $[x,y]$ is a countable union of well-ordered sets.
     Routine arguments show that $\sim$ is an equivalence relation.
@@ -94,7 +164,7 @@ I include the proof for the reader's convenience.
         Since $[y_{n+1},y_n]$ is a countable union of well-ordered sets for all $n<\omega$, then $[x]_{\leq}$ is a countable union of well-ordered sets.
     \end{claimproof}
     The previous two claims imply that $[x]$ is a countable union of well-ordered sets for all $x\in X$.
-    Now I show that actually $X=[x]$ for some $x$.
+    Now we show that actually $X=[x]$ for some $x$.
     \begin{claim}
         $(X/\!\sim,<)$ is dense, i.e., if $[x]<[y]$ then there is $z\in Z$ such that $[x]<[z]<[y]$.
     \end{claim}
@@ -120,7 +190,7 @@ This idea, in combination with the preceding theorem, is generalized by the foll
 \end{corollary}
 
 \subsection{Baker's game on linear orders}\label{sec:linear}
-I define a variation of Baker's game in an arbitrary dense linear order $(X,<)$.
+We define a variation of Baker's game in an arbitrary dense linear order $(X,<)$.
 Given $S\subseteq X$, denote by $BG(X,S)$ the game where two players take turns selecting elements $a_n,b_n$ of $X$ as in the Cantor Game for the reals.
 Player I wins if after $\omega$-many turns there is an $x\in S$ such that for all $n<\omega$, $a_n<x<b_n$, and Player II wins otherwise.
 The density condition ensures the game never reaches a stalemate.
@@ -141,7 +211,7 @@ Observe that every countable set $S$ satisfies the subsequent proposition.
 
 In general, $S$ being a countable union of well-ordered sets does not imply that $S$ is countable (unless it contains no copies of $\omega_1$).
 The previous proposition implies that if $S$ is an (uncountable) well-ordered set, then Player II has a winning strategy for $BG(X,S)$.
-I now show that if $S$ is conversely well-ordered, then Player II has a winning strategy for $BG(X,S)$.
+We now show that if $S$ is conversely well-ordered, then Player II has a winning strategy for $BG(X,S)$.
 Notice that an uncountable conversely well-ordered set $S$ has the property that $S$ cannot be written as a countable union of well-ordered sets, so this result shows that, in general, the converse of Proposition ~\ref{prop:arrow} is false.
 
 \begin{theorem}\label{thm:blocks}
