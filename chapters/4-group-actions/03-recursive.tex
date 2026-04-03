@@ -188,83 +188,20 @@ For instance, a cycle of four edges has no valid non-trivial movements since, ha
 Graphically, Figure~\ref{fig:4_cycles} depicts two isomorphic graphs that cannot be transformed into each other by feasible edge replacements.
 
 \begin{figure}[htbp]
-\centering
-% Left Subfigure: "U-shape" path
-\begin{subfigure}[b]{0.4\textwidth}
     \centering
-    \begin{tikzpicture}[scale=2]
-        % Define coordinates for a square
-        \node[vertex] (TL) at (0,1) {};
-        \node[vertex] (TR) at (1,1) {};
-        \node[vertex] (BL) at (0,0) {};
-        \node[vertex] (BR) at (1,0) {};
-
-        % Draw the path: Left, Top, Right
-        \draw[thick] (BL) -- (TL) -- (TR) -- (BR) -- (BL);
-    \end{tikzpicture}
-\end{subfigure}
-\hfill
-% Right Subfigure: "Z-shape" / Diagonals
-\begin{subfigure}[b]{0.4\textwidth}
-    \centering
-    \begin{tikzpicture}[scale=2]
-        % Define coordinates for a square
-        \node[vertex] (TL) at (0,1) {};
-        \node[vertex] (TR) at (1,1) {};
-        \node[vertex] (BL) at (0,0) {};
-        \node[vertex] (BR) at (1,0) {};
-
-        % Draw the path: Bottom-Left to Top-Left, Top-Left to Bottom-Right, Bottom-Right to Top-Right
-        % Based on your description: "top edge and the two diagonals"
-        \draw[thick] (BL) -- (TR); % Diagonal 1
-        \draw[thick] (TR) -- (TL); % Top edge
-        \draw[thick] (TL) -- (BR); % Diagonal 2
-        \draw[thick] (BL) -- (BR);
-    \end{tikzpicture}
-\end{subfigure}
-\caption{Two $4$-cycles on the same vertex set.}
-\label{fig:4_cycles}
+    \input{figures/4-cycles.tex}
+    \caption{Two $4$-cycles on the same vertex set.}
+    \label{fig:4_cycles}
 \end{figure}
 
 Now for the puzzle: the two paths in Figure~\ref{fig:4_paths} are isomorphic.
 Is it possible to transform one into the other by a sequence of feasible edge replacements?
 
 \begin{figure}[htbp]
-\centering
-% Left Subfigure: "U-shape" path
-\begin{subfigure}[b]{0.4\textwidth}
     \centering
-    \begin{tikzpicture}[scale=2]
-        % Define coordinates for a square
-        \node[vertex] (TL) at (0,1) {};
-        \node[vertex] (TR) at (1,1) {};
-        \node[vertex] (BL) at (0,0) {};
-        \node[vertex] (BR) at (1,0) {};
-
-        % Draw the path: Left, Top, Right
-        \draw[thick] (BL) -- (TL) -- (TR) -- (BR);
-    \end{tikzpicture}
-\end{subfigure}
-\hfill
-% Right Subfigure: "Z-shape" / Diagonals
-\begin{subfigure}[b]{0.4\textwidth}
-    \centering
-    \begin{tikzpicture}[scale=2]
-        % Define coordinates for a square
-        \node[vertex] (TL) at (0,1) {};
-        \node[vertex] (TR) at (1,1) {};
-        \node[vertex] (BL) at (0,0) {};
-        \node[vertex] (BR) at (1,0) {};
-
-        % Draw the path: Bottom-Left to Top-Left, Top-Left to Bottom-Right, Bottom-Right to Top-Right
-        % Based on your description: "top edge and the two diagonals"
-        \draw[thick] (BL) -- (TR); % Diagonal 1
-        \draw[thick] (TR) -- (TL); % Top edge
-        \draw[thick] (TL) -- (BR); % Diagonal 2
-    \end{tikzpicture}
-\end{subfigure}
-\caption{Two paths of length $3$ on the same vertex set.}
-\label{fig:4_paths}
+    \input{figures/4-paths.tex}
+    \caption{Two paths of length $3$ on the same vertex set.}
+    \label{fig:4_paths}
 \end{figure}
 
 \begin{definition}[Labeled graph]\label{def:labeled-graph}
@@ -281,25 +218,12 @@ Is it possible to transform one into the other by a sequence of feasible edge re
 Every label permutation $\sigma\in S_X$ induces the graph isomorphism $\varphi_\sigma:=\lambda^{-1}\circ\sigma\circ\lambda\colon V\to V$ of $G$, and every graph isomorphism of $G$ of the form $\varphi\colon V\to V$ (that is, on the same vertex set) induces a label permutation $\sigma_\varphi:=\lambda\circ\varphi\circ\lambda^{-1}\in S_X$.
 For this reason, label permutations and isomorphisms are often used interchangeably, but I do not follow this convention for the sake of clarity.
 
-\begin{center}
-\begin{tikzpicture}[node distance=1cm and 4cm, auto, >=Stealth]
-    % Top Row (Labels X)
-    \node (X1) {$X$};
-    \node (X2) [right=of X1] {$X$};
-    
-    % Bottom Row (Vertices V)
-    \node (V1) [below=of X1] {$V$};
-    \node (V2) [below=of X2] {$V$};
-
-    % Horizontal Arrows
-    \draw[->] (X1) -- node {$\sigma$} (X2);
-    \draw[->] (V1) -- node [swap] {$\varphi_\sigma$} (V2);
-
-    % Vertical Arrows (Connecting the lines via lambda)
-    \draw[->] (V1) -- node {$\lambda$} (X1);
-    \draw[->] (X2) -- node {$\lambda^{-1}$} (V2);
-\end{tikzpicture}
-\end{center}
+\begin{figure}[ht]
+    \centering
+    \input{figures/square-lambda-sigma-phi.tex}
+    \caption{Relationship between label permutations and isomorphisms.}
+    \label{fig:square-lambda-sigma-phi}
+\end{figure}
 
 \begin{lemma}\label{lemma:varphi-iso-iff-image}
     Let $G$ and $G'$ be graphs on the same vertex set $V$.
@@ -332,25 +256,12 @@ In summary:
     \varphi_\sigma \text{ is an isomorphism } G\to G' \quad\Longleftrightarrow\quad G_\sigma = G' \quad\Longleftrightarrow\quad \sigma^{-1}[L_G]=L_{G'}.
 \end{equation}
 
-\begin{center}
-\begin{tikzpicture}[node distance=1.2cm and 5cm, auto, >=Stealth]
-    % Top Row (Label level)
-    \node (L1) {$L_G$};
-    \node (L2) [right=of L1] {$L_{G_\sigma}=\sigma^{-1}[L_G]$};
-    
-    % Bottom Row (Graph level)
-    \node (G1) [below=of L1] {$G$};
-    \node (G2) [below=of L2] {$G_\sigma$};
-
-    % Horizontal Arrows
-    \draw[|->] (L1) -- node {$\sigma^{-1}$} (L2);
-    \draw[->] (G1) -- node [swap] {$\varphi_\sigma$} (G2);
-
-    % Vertical Arrows
-    \draw[<->] (G1) -- node {$\lambda$} (L1);
-    \draw[<->] (G2) -- node {$\lambda$} (L2);
-\end{tikzpicture}
-\end{center}
+\begin{figure}[ht]
+    \centering
+    \input{figures/square-lambda-L_G.tex}
+    \caption{Relationship between label permutations isomorphisms, and the set $L_G$.}
+    \label{fig:square-lambda-L_G}
+\end{figure}
 
 Suppose that $G^c$ denotes the graph complement of $G$ (that is, the graph obtained from switching every adjacency and every non-adjacency in $G$) and let $(e,f)\in E(G)\times E(G^c)$, and $\sigma\in S_X$.
 I use the phrase ``$\sigma::(e\to f)$ is a \emph{feasible edge replacement}'' to abbreviate the fact that $\varphi_\sigma$ is a graph isomorphism between $G$ and $G-e+f$, or equivalently, that $\sigma^{-1}[L_G]=L_{G-e+f}$.\footnote{I delay defining the object $\sigma::(e\to f)$ (Definition~\ref{def:fer-object}), for a few paragraphs, purely for expository purposes, as this requires an additional level of abstraction that would otherwise lack motivation.}
@@ -449,67 +360,10 @@ $$(2\ 3)::(1\ 2\to1\ 3)(0\ 1\to0\ 2)(2\ 3\to1\ 2).$$
 It is worth noting that the permutation $(2\ 3)$ is not a canonical generator, as (at least) two edges must necessarily change their position.
 
 \begin{figure}[htbp]
-\centering
-
-% --- STEP 0 ---
-\begin{subfigure}[b]{0.21\textwidth}
     \centering
-    \begin{tikzpicture}[scale=1.2]
-        \node[vertex, label={[vlabel]above left:$v_1$}] (v1) at (0,1) {};
-        \node[vertex, label={[vlabel]above right:$v_2$}] (v2) at (1,1) {};
-        \node[vertex, label={[vlabel]below left:$v_0$}] (v0) at (0,0) {};
-        \node[vertex, label={[vlabel]below right:$v_3$}] (v3) at (1,0) {};
-        
-        % Add your edges here
-        \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
-    \end{tikzpicture}
-    \caption{Starting graph} \label{step:0}
-\end{subfigure}
-% --- STEP 1 ---
-\begin{subfigure}[b]{0.21\textwidth}
-    \centering
-    \begin{tikzpicture}[scale=1.2]
-        \node[vertex, label={[vlabel]above left:$v_1$}] (v1) at (0,1) {};
-        \node[vertex, label={[vlabel]above right:$v_3$}] (v3) at (1,1) {};
-        \node[vertex, label={[vlabel]below left:$v_0$}] (v0) at (0,0) {};
-        \node[vertex, label={[vlabel]below right:$v_2$}] (v2) at (1,0) {};
-        
-        % Add your edges here
-        \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
-    \end{tikzpicture}
-    \caption{$(2\ 3)::(1\ 2\to1\ 3)$} \label{step:1}
-\end{subfigure}
-% --- STEP 2 ---
-\begin{subfigure}[b]{0.21\textwidth}
-    \centering
-    \begin{tikzpicture}[scale=1.2]
-        \node[vertex, label={[vlabel]above left:$v_3$}] (v3) at (0,1) {};
-        \node[vertex, label={[vlabel]above right:$v_1$}] (v1) at (1,1) {};
-        \node[vertex, label={[vlabel]below left:$v_0$}] (v0) at (0,0) {};
-        \node[vertex, label={[vlabel]below right:$v_2$}] (v2) at (1,0) {};
-        
-        % Add your edges here
-        \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
-    \end{tikzpicture}
-    \caption{$(1\ 3)::(0\ 1\to0\ 3)$} \label{step:2}
-\end{subfigure}
-% --- STEP 3 ---
-\begin{subfigure}[b]{0.21\textwidth}
-    \centering
-    \begin{tikzpicture}[scale=1.2]
-        \node[vertex, label={[vlabel]above left:$v_2$}] (v2) at (0,1) {};
-        \node[vertex, label={[vlabel]above right:$v_1$}] (v1) at (1,1) {};
-        \node[vertex, label={[vlabel]below left:$v_0$}] (v0) at (0,0) {};
-        \node[vertex, label={[vlabel]below right:$v_3$}] (v3) at (1,0) {};
-        
-        % Add your edges here
-        \draw[thick] (v0) -- (v1) -- (v2) -- (v3);
-    \end{tikzpicture}
-    \caption{$(2\ 3)::(1\ 2\to1\ 3)$} \label{step:3}
-\end{subfigure}
-
-\caption{A solution to the \tfer puzzle.}
-\label{fig:4_cycles_solution}
+    \input{figures/4-cycles-solution.tex}
+    \caption{A solution to the \tfer puzzle.}
+    \label{fig:4_cycles_solution}
 \end{figure}
 
 For the remainder of the chapter, topological closures are always taken in the containing space $X^X$.

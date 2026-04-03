@@ -1,0 +1,19 @@
+% figures/square-lambda-sigma-phi.tex
+
+\begin{tikzpicture}[node distance=1cm and 4cm, auto, >=Stealth]
+    % Top Row (Labels X)
+    \node (X1) {$X$};
+    \node (X2) [right=of X1] {$X$};
+    
+    % Bottom Row (Vertices V)
+    \node (V1) [below=of X1] {$V$};
+    \node (V2) [below=of X2] {$V$};
+
+    % Horizontal Arrows
+    \draw[->] (X1) -- node {$\sigma$} (X2);
+    \draw[->] (V1) -- node [swap] {$\varphi_\sigma$} (V2);
+
+    % Vertical Arrows (Connecting the lines via lambda)
+    \draw[->] (V1) -- node {$\lambda$} (X1);
+    \draw[->] (X2) -- node {$\lambda^{-1}$} (V2);
+\end{tikzpicture}

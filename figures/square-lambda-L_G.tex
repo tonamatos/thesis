@@ -1,0 +1,19 @@
+% figures/square-lambda-L_G.tex
+
+\begin{tikzpicture}[node distance=1.2cm and 5cm, auto, >=Stealth]
+    % Top Row (Label level)
+    \node (L1) {$L_G$};
+    \node (L2) [right=of L1] {$L_{G_\sigma}=\sigma^{-1}[L_G]$};
+    
+    % Bottom Row (Graph level)
+    \node (G1) [below=of L1] {$G$};
+    \node (G2) [below=of L2] {$G_\sigma$};
+
+    % Horizontal Arrows
+    \draw[|->] (L1) -- node {$\sigma^{-1}$} (L2);
+    \draw[->] (G1) -- node [swap] {$\varphi_\sigma$} (G2);
+
+    % Vertical Arrows
+    \draw[<->] (G1) -- node {$\lambda$} (L1);
+    \draw[<->] (G2) -- node {$\lambda$} (L2);
+\end{tikzpicture}
