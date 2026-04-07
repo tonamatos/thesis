@@ -394,17 +394,22 @@ For instance, constructing trees with arbitrary large maximum degree that are lo
 In terms of Group Theory, $\Fer(G)$ carries all of the expressive power of finite groups.
 Precisely, one can show that there is no theorem of the form ``for every finite graph $G$, the group $\Fer(G)$ has property $\varphi$,'' where $\varphi$ is a non-trivial property about groups.
 
-After Frucht's 1939 breakthrough showing that every finite group is the automorphism group of some finite graph, he extended this result to the more restrictive class of cubic graphs (graphs in which every vertex has degree 3) in 1949 (see \cite{Frucht1949}).
-This result, often referred to as Frucht's theorem, demonstrates that for any finite group $G$, there exists a cubic graph $X$ such that $\Aut(X)\simeq G$.
-
-For a cubic graph $G$, and more generally for a $k$-regular graph with $k\geq2$, $G$ is rigid,
-that is $\Fer(G)=\Aut(G)$.
-This is a direct consequence of the fact that applying a non-trivial feasible edge replacement changes the degree of at least one vertex (it increases or decreases by exactly one, depending on whether an edge was added or removed to a particular vertex).
-Put succintly:
-
-\begin{proposition}
+\begin{proposition}\label{prop:fer-is-any-group}
     For any finite group $\Gamma$, there is a graph $G$ such that $\Gamma$ is isomorphic to $\Fer(G)$.
 \end{proposition}
+
+The heavy lifting of this result is an old theorem of Frucht.
+After Frucht's 1939 breakthrough showing that every finite group is the automorphism group of some finite graph, he extended this result to the more restrictive class of cubic graphs (graphs in which every vertex has degree 3).
+
+\begin{lemma}[Frucht's theorem \cite{Frucht1949}]
+    For any finite group $\Gamma$, there exists a cubic graph $G$ such that $\Aut(G)\simeq\Gamma$.
+\end{lemma}
+
+\begin{proof}[Proof of Proposition~\ref{prop:fer-is-any-group}]
+    Let $\Gamma$ be an arbitrary finite group and $G$ a cubic graph given by Frucht's theorem.
+    Then observe that $G$ is rigid, that is $\Fer(G)=\Aut(G)\simeq\Gamma$.
+    This is a direct consequence of the fact that applying a non-trivial feasible edge replacement changes the degree of at least one vertex (it increases or decreases by exactly one, depending on whether an edge was added or removed to a particular vertex).
+\end{proof}
 
 \subsection{Local amoeba trees with large maximum degree}\label{subsec:new_recursive}
 
