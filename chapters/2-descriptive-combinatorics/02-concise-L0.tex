@@ -5,40 +5,10 @@
 Carroy, Miller, Schrittesser, and Vidny\'anszky established the $L_0$ dichotomy: there is a Borel graph of Borel chromatic number three that admits a continuous homomorphism to every analytic graph of Borel chromatic number at least three.
 Their proof relies on a transfinite analysis of terminal approximations over a decreasing $\omega_1$-sequence of analytic sets.
 
-In this section, I give a new, substantially shorter proof of this result by adapting the graph-theoretic framework recently introduced by Bernshteyn for the $G_0$ dichotomy.
+This section exhibits a new, substantially shorter proof of this result by adapting the graph-theoretic framework recently introduced by Bernshteyn for the $G_0$ dichotomy.
 The central device is a $\sigma$-ideal of \emph{small} sets of homomorphisms from finite path approximations into the target graph, where smallness is witnessed by a bounded odd-walk condition on vertex projections.
 The key lemma that largeness is preserved under the doubling operation is established via the First Reflection Theorem, replacing the original transfinite construction with a single Borel reflection argument.
 The continuous homomorphism from the canonical graph $\mathbb L_c$ into the target is then obtained as a limit of shrinking families of copies, in direct analogy with Bernshteyn's proof for $G_0$.
-
-\subsection{Introduction}\label{sec:concise-intro}
-
-Throughout this entire section, $G$ denotes an analytic graph on a Polish space $V(G)=X$.
-That is, $X$ is a separable completely metrizable topological space, and $G$ is a symmetric and irreflexive relation on $X$ which, as a subspace of $X\times X$, is the continuous image of a Polish space.
-
-Denote the \emph{Borel chromatic number} of $G$ by $\chi_B(G)$, that is, $\chi_B(G)$ is the least number of colours $k$ needed to find a Borel mapping $c\colon X\to k$ in such a way that adjacent vertices in $G$ are given different colours.
-I employ the symbol $H\to_cG$ (respectively, $H\to_BG$) to abbreviate the fact that there is a continuous (respectively Borel) homomorphism from the analytic graph $H$ to the analytic graph $G$.
-It is straightforward to show the following.
-
-\begin{fact}\label{fact:chrom_transitive}
-    If $H\to_cG$ or, more generally if $H\to_BG$, then $\chi_B(H)\leq\chi_B(G)$.
-\end{fact}
-
-Using a standard greedy algorithm argument, it is clear that any finite graph $G$ of maximum degree $\Delta$ satisfies $\chi(G)\leq\Delta+1$.
-Interestingly, a similar fact holds for Borel graphs of uniformly bounded degree.
-
-\begin{theorem}[Proposition~4.6 in \cite{kechris1999borel}]\label{prop:brooks}
-    If $G$ is a Borel graph on a Polish space all of whose degrees are bounded by the natural number $k$, then $\chi_B(G)\leq k+1$.
-\end{theorem}
-
-The following notion, taken from \cite[Theorem~35.10, p.~285]{Kechris_1995_DescriptiveSetTheory}, is a well-known fact about analytic sets.
-
-\begin{definition}\label{def:pi11-on-sigma11}
-    A collection of subsets $\Phi$ of a Polish space $X$ is said to be \emph{$\Pi^1_1$ on $\Sigma^1_1$} if for any Polish $Y$ and any $\Sigma^1_1$ set $A\subseteq Y\times X$, the set $A_\Phi:=\{y\in Y:A_y:=\{x\in X:(y,x)\in A\}\in\Phi\}$ is $\Pi^1_1$.
-\end{definition}
-
-\begin{lemma}[First Reflection Theorem]\label{lemma:first-reflection}
-    If $\Phi$ is as in the preceding definition, then for any $\Sigma^1_1$ set $A\in\Phi$, there is a Borel set $B\subseteq X$ such that $A\subseteq B$ and $B\in\Phi$.
-\end{lemma}
 
 \subsection{Finite path approximations}\label{sec:finite-path-approx}
 
@@ -51,9 +21,8 @@ Similarly, $t^n$ is the repeated concatenation of $t$ with itself, and $(i)$ den
 Next, recursively construct a family of graphs $\{L^c_n:n<\omega\}$ such that for all $n<\omega$:
 $L^c_n$ is a finite path; if $n>0$, the endpoints of $L^c_n$ are $e_i^n:=(p_0)^\smallfrown(0)^{n-1}{}^\smallfrown(i)$, for $i<2$; and
 \begin{equation}
-\text{Every vertex of }L^c_n\text{ is of the form }(p_k)^\smallfrown t\text{ for some }k\text{ and }t\in2^{\leq n}.\label{eq:L_n-condition-iii}\end{equation}
+\text{every vertex of }L^c_n\text{ is of the form }(p_k)^\smallfrown t\text{ for some }k\text{ and }t\in2^{\leq n}.\label{eq:L_n-condition-iii}\end{equation}
 Unless $t=\emptyset$, call such vertex a \emph{non-path vertex}, and call the vertices of the form $(p_k)$ the \emph{path vertices} of $L^c_n$.
-
 
 Start with $L^c_0$ as the graph consisting of a single vertex $p_0$ and no edges, and set $e^0_0=e^0_1=p_0$.
 Now suppose that $L^c_n$ has been constructed.
@@ -170,7 +139,7 @@ Notice that, for two $c,d\in\omega^\omega$ and for every $n<\omega$, the conditi
     For each $m$ and $d$, let $w^d_m\in V(L^d_{n+1})$ and $k^d_m<\omega$ be such that $\Phi(\mathcal F^d_m(w^d_m),k^d_m)$.
     
     Since $w^d_m\in V(L^d_{n+1})$, it is either a \emph{non-path vertex} of the form $u^\smallfrown(i)$ for some $u\in V(L^c_n)$ and $i<2$, or a \emph{path vertex} $p_j$ for some $0\leq j\leq d(n)$ in the joining path.
-    I claim that in either case, there exists a vertex $u^d_m\in V(L^c_n)$ and $\ell^d_m<\omega$ such that $\Phi(\mathcal F^d_m({u^d_m}^\smallfrown(i^d_m)),\ell^d_m)$ for some $i^d_m<2$ where $u^d_m{}^\smallfrown(i^d_m)$ is a non-path vertex of $L^d_{n+1}$.
+    We claim that in either case, there exists a vertex $u^d_m\in V(L^c_n)$ and $\ell^d_m<\omega$ such that $\Phi(\mathcal F^d_m({u^d_m}^\smallfrown(i^d_m)),\ell^d_m)$ for some $i^d_m<2$ where $u^d_m{}^\smallfrown(i^d_m)$ is a non-path vertex of $L^d_{n+1}$.
 
     Indeed, if $w^d_m=u^\smallfrown(i)$ is already non-path, take $u^d_m=u$, $i^d_m=i$, $\ell^d_m=k^d_m$.
     If $w^d_m=p_j$ is a path vertex of $L^d_{n+1}$, then the joining path connects $e_1^n{}^\smallfrown(0)$ to $e_1^n{}^\smallfrown(1)$ via $p_0,\dots,p_{d(n)}$.
@@ -180,7 +149,7 @@ Notice that, for two $c,d\in\omega^\omega$ and for every $n<\omega$, the conditi
     It follows that $\Phi(\mathcal F^d_m(e_1^n{}^\smallfrown(0)),\max\{0,k^d_m-j-1\})$.
     Thus, set $u^d_m=e_1^n$, $i^d_m=0$, $\ell^d_m=\max\{0,k^d_m-j-1\}$.
     
-    \begin{claim}
+    \begin{claim}\label{claim:separation_odd-walks}
         For each $m$ and $d$, there is a Borel set $B^d_m\supseteq\mathcal F^d_m({u^d_m}^\smallfrown(i^d_m))$ such that $\Phi(B^d_m,\ell^d_m)$.
     \end{claim}
 
@@ -202,7 +171,7 @@ Notice that, for two $c,d\in\omega^\omega$ and for every $n<\omega$, the conditi
     \end{claimproof}
 
     Take $$\mathcal H^d_m=\{\varphi\in\mathcal L:\varphi(u^d_m)\in B^d_m\},$$ which is also a Borel subset of $\Hom(L^c_n,G)$.
-    I claim that $\mathcal H^d_m$ is tiny.
+    We claim that $\mathcal H^d_m$ is tiny.
     Indeed, $\mathcal H^d_m(u^d_m)=\{\varphi(u^d_m):\varphi\in\mathcal L\land\varphi(u^d_m)\in B^d_m\}\subseteq B^d_m$, so $\Phi(\mathcal H^d_m(u^d_m),\ell^d_m)$.
     
     Now, the set of pairs $(u^d_m,i^d_m)$ ranges over the finite set $V(L^c_n)\times2$ (which does not depend on $d$), and $(m,d)$ range over countably many values.

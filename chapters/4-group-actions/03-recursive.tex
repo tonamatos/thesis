@@ -604,7 +604,7 @@ The key identities driving each case are:
     x \in C &\implies (y_0, x) = \rho^{-1}(y_0,\, \rho^{-1}(x))\,\rho,
     \quad \rho^{-1}(x) \in A, \\
     x \in D&\implies (y_0, x) = (y_0, x_0)(x, x_0)(y_0, x_0),
-    \quad x_0 \in C \text{ a fixed neighbor of } c.
+    \quad x_0 \in C \text{ a fixed neighbour of } c.
 \end{align*}
 
 \begin{algorithm}[ht]
@@ -625,7 +625,7 @@ The key identities driving each case are:
             \KwRet $\rho *$ \FRF{$\rho^{-1}(x)$,\,$k-1$} $* \rho^{-1}$\;
         }\Else{
             \tcp{$x \in D$}
-            Let $x_0 \in C$ be a fixed neighbor of $c$\;
+            Let $x_0 \in C$ be a fixed neighbour of $c$\;
             $F_0 \leftarrow$ \FRF{$x_0$,\,$k$}\;
             $F_1 \leftarrow$ \FRF{$x-c$,\,$k-2$} $+\, c$\tcp*{Shift all labels by $c$.}
             \KwRet $F_0 * F_1 * F_0$\;

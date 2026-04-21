@@ -2,76 +2,23 @@
 
 \section{No countable basis for Borel directed graphs of dichromatic number at least three}\label{sec:dichromatic}
 
-I prove that the Borel directed graphs whose vertex set admits a partition into two Borel acyclic sets form a $\mathbf\Sigma^1_2$-complete set; equivalently, that deciding whether a Borel directed graph has Borel dichromatic number at least~$3$ is a $\mathbf\Pi^1_2$-complete problem.
+This section proves that the Borel directed graphs whose vertex set admits a partition into two Borel acyclic sets form a $\mathbf\Sigma^1_2$-complete set; equivalently, that deciding whether a Borel directed graph has Borel dichromatic number at least~$3$ is a $\mathbf\Pi^1_2$-complete problem.
 It follows that no countable family of Borel directed graphs can serve as a basis for this class under Borel homomorphism and, more generally, that any basis must be at least as complex as~$\mathbf\Pi^1_2$.
 
 The proof lifts the classical NP-completeness reduction of Bokal, Fijavž, Juvan, Kayll, and Mohar to the Borel setting, using the coding framework of Thornton.
-Combined with a straightforward reduction from undirected to directed coloring problems, this completes the picture for finite Borel chromatic and dichromatic thresholds: for every finite $k$, the set of Borel (directed) graphs admitting a Borel $k$-(di)coloring is $\mathbf\Sigma^1_2$-complete, and in particular admits no countable basis.
+Combined with a straightforward reduction from undirected to directed colouring problems, this completes the picture for finite Borel chromatic and dichromatic thresholds: for every finite $k$, the set of Borel (directed) graphs admitting a Borel $k$-(di)colouring is $\mathbf\Sigma^1_2$-complete, and in particular admits no countable basis.
 This contrasts with the uncountable threshold, where a single-element basis exists for Borel chromatic number (Kechris--Solecki--Todorčević) and a continuum-size basis exists for Borel dichromatic number (Raghavan--Xiao).
 
 \subsection*{Acknowledgments}
 
-I thank Dilip Raghavan for suggesting that the NP-completeness proof for dichromatic number could be relevant to the Borel setting, my doctoral advisor Spencer Unger for pointing me towards Thornton's coding framework, and Riley Thornton for confirming that 2-dicoloring is not a CSP in the sense of~\cite{thornton-thesis}, advising that the approach of~\cite[Appendix~A]{thornton2022algebraic} should be followed instead, and suggesting several of the questions in Section~\ref{sec:dichrom-questions}.
+I thank Dilip Raghavan for suggesting that the NP-completeness proof for dichromatic number could be relevant to the Borel setting, my doctoral advisor Spencer Unger for pointing me towards Thornton's coding framework, and Riley Thornton for confirming that 2-dicolouring is not a CSP in the sense of~\cite{thornton-thesis}, advising that the approach of~\cite[Appendix~A]{thornton2022algebraic} should be followed instead, and suggesting several of the questions in Section~\ref{sec:dichrom-questions}.
 
-\subsection{Introduction}\label{sec:borel-dichrom-intro}
+\subsection{Main results}
 
-The \emph{dichromatic number} of a directed graph was introduced by Neumann-Lara~\cite{NeumannLara1982} as a natural directed analogue of the chromatic number.
-A \emph{dicoloring} of a directed graph~$D$ is a map $c\colon V(D)\to k$ such that every color class induces a subgraph without any directed cycles; the \emph{dichromatic number} $\vec\chi(D)$ is the least such~$k$.
-Equivalently, $\vec\chi(D)$ is the minimum number of acyclic sets into which the vertex set can be partitioned.
-
-This notion has attracted considerable attention in finite combinatorics.
-Neumann-Lara~\cite{NeumannLara1982} established several foundational results, including analogues of classical lower bounds for the chromatic number.
-Bokal, Fijavž, Juvan, Kayll, and Mohar~\cite{Bokal_2004_CircularChrom} later introduced the circular dichromatic number of a directed graph and proved that the decision problem of whether a directed graph $D$ satisfies $\vec\chi(D)\leq 2$ or not is NP-complete; this is in contrast with the usual chromatic number for (undirected) graphs, where one gets NP-completeness only after posing the question for three colors or more.
-
-\subsection{Borel chromatic and dichromatic numbers}
-
-In the Borel setting, we consider graphs and directed graphs whose vertex sets are standard Borel spaces and whose edge (or arc) relations are Borel, and we require the colorings to be Borel measurable.
-The \emph{Borel chromatic number} $\chi_B(G)$ of a Borel graph~$G$ was introduced by Kechris, Solecki, and Todorčević~\cite{kechris1999borel}, who proved the celebrated \emph{$G_0$-dichotomy}: there exists a single Borel graph~$\mathbb{G}_0$ such that
-\begin{align}\label{eq:G0-dichotomy}
-    \chi_B(G) > \aleph_0\quad
-    \Longleftrightarrow\quad
-    \mathbb{G}_0 \leq_B G,
-\end{align}
-where $\leq_B$ denotes the existence of a Borel homomorphism $\mathbb{G}_0\to G$.
-In other words, the graph~$\mathbb{G}_0$ forms a one-element \emph{basis} for the class of Borel graphs with uncountable Borel chromatic number.
-
-This dichotomy breaks down when one moves from uncountable to merely infinite Borel chromatic number.
-In \cite{Todorcevic_2021_ComplexProbBorel}, Todorčević and Vidnyánszky recently proved that the set of Borel graphs with infinite Borel chromatic number (equivalently, Borel chromatic number $\geq 4$ for closed subgraphs of the shift graph) is $\mathbf\Sigma^1_2$-complete.
-In particular, no countable family of Borel graphs can serve as a basis for this class.
-Moreover, their argument rules out the existence of a simple $G_0$-type dichotomy substituting $\aleph_0$ in \eqref{eq:G0-dichotomy} for any value in $3,4,5\dots$.
-Interestingly, when substituting the value $2$, there again is a single Borel graph that makes a dichotomy like \eqref{eq:G0-dichotomy} hold.
-This is known as the $L_0$~dichotomy and is the main result of \cite{L0paper}.
-
-Very recently, Raghavan and Xiao~\cite{RaghavanXiao2024} established a dichotomy for the \emph{Borel dichromatic number} that generalizes the $\mathbb{G}_0$-dichotomy to directed graphs: they showed that a continuum-size family of directed graphs characterizes when a Borel directed graph has uncountable Borel dichromatic number.
-This continuum-size basis consists of pairwise Borel-incomparable directed graphs, but it is unknown whether any smaller basis exists; in particular, the question of whether a \emph{countable} basis suffices is open.
-
-One can interpret the existence of a small (i.e.\ singleton, or finite, or countable) basis as a sort of measure of complexity of the associated decision problem.
-For instance, the existence of $\mathbb{G}_0$ says that deciding whether a Borel graph has uncountable Borel chromatic number is ``straightforward:'' one only has to verify one possible ill-behaved property, namely containing a homomorphic copy of $\mathbb{G}_0$, to give a positive answer; and in some sense, finding this homomorphic copy is the \emph{only} way of proving that a Borel graph has uncountable Borel chromatic number.
-In contrast, deciding whether a Borel graph has infinite Borel chromatic number is a much more complex task, as no easily describable method exists for deciding this in terms of graph homomorphisms, and so different graphs probably require wildly different proving methods, if any.
-
-The Borel dichromatic number can recover the Borel chromatic number in the following sense.
-
-\begin{remark}\label{rmk:dichrom-recovers-chrom}
-	Given an undirected graph $G$, let $\vec{G}$ denote the directed graph obtained by replacing each edge $\{u,v\}$ with two opposing arcs $(u,v)$ and $(v,u)$.
-	Then $\vec\chi_B(\vec{G}) = \chi_B(G)$.
-	Indeed, a subset of vertices is acyclic in $\vec{G}$ if and only if it is independent in~$G$: any directed cycle in $\vec{G}$ would in particular contain an arc $(u,v)$ with $\{u,v\}\in E(G)$, so a set containing both $u$ and $v$ is neither acyclic in $\vec{G}$ nor independent in~$G$; conversely, an independent set in~$G$ induces a directed graph in~$\vec{G}$ with no arcs at all, hence trivially acyclic.
-	Moreover, the map $\mathrm{code}(G)\mapsto\mathrm{code}(\vec{G})$ is $\Delta^1_1$, since it is built from the edge set using products and unions (Lemma~\ref{lemma:toolkit}(1),(3)).
-	It follows that the $\mathbf\Sigma^1_2$-completeness of Borel $k$-coloring of undirected graphs~\cite{Todorcevic_2021_ComplexProbBorel} implies the $\mathbf\Sigma^1_2$-completeness of Borel $k$-dicoloring of directed graphs, for every $k\geq 4$.
-	The case $k=2$ is not covered by this reduction (since deciding 2-colorability of undirected graphs is trivial), and is precisely the content of Proposition~\ref{prop:main}.
-\end{remark}
-
-It is natural to ask whether the Todorčević--Vidnyánszky phenomenon also occurs in the directed setting at the remaining finite threshold, or if there is a directed analog for the $L_0$ dichotomy:
-
-\begin{quote}
-\emph{Is there a countable basis for the class of Borel directed graphs with Borel dichromatic number at least~$3$?}
-\end{quote}
-
-This section gives a negative answer, thereby completing the picture for all finite thresholds of both the Borel chromatic and dichromatic numbers.
-
-I work throughout with \emph{nice codes} in the sense of Thornton~\cite{thornton2022algebraic, thornton-thesis}; see Subsection~\ref{sec:framework} for a brief review.
+We work throughout with \emph{nice codes} in the sense of Thornton~\cite{thornton2022algebraic, thornton-thesis}; see Subsection~\ref{sec:framework} for a brief review.
 
 \begin{proposition}\label{prop:main}
-	The set of nice codes for Borel directed graphs admitting a Borel $2$-dicoloring is $\mathbf\Sigma^1_2$-complete.
+	The set of nice codes for Borel directed graphs admitting a Borel $2$-dicolouring is $\mathbf\Sigma^1_2$-complete.
 	Equivalently, the set of nice codes for Borel directed graphs with Borel dichromatic number at least~$3$ is $\mathbf\Pi^1_2$-complete.
 \end{proposition}
 
@@ -79,32 +26,12 @@ I work throughout with \emph{nice codes} in the sense of Thornton~\cite{thornton
 	There is no countable family~$\mathbf{B}$ of Borel directed graphs that forms a basis for Borel directed graphs of Borel dichromatic number at least~$3$ under Borel homomorphism.
 \end{corollary}
 
-The proof of Proposition~\ref{prop:main} proceeds by adapting the classical NP-completeness reduction from 2-coloring of 3-uniform hypergraphs to 2-dicoloring of directed graphs~\cite{Bokal_2004_CircularChrom} to the Borel setting.
-The key step is verifying that this reduction is $\Delta^1_1$ in the codes, following the template established by Thornton in~\cite[Appendix~A]{thornton-thesis} for a similar result about edge 3-coloring.
-I remark that 2-dicoloring of directed graphs is \emph{not} a CSP in the sense of Thornton's algebraic framework~\cite{thornton2022algebraic}, since acyclicity is not a constraint expressible as a homomorphism to a fixed finite template; thus Proposition~\ref{prop:main} does not follow directly from Thornton's general results.
- 
-The following table summarizes the basis landscape, contrasting the undirected and directed cases at different thresholds.
+The proof of Proposition~\ref{prop:main} proceeds by adapting the classical NP-completeness reduction from 2-colouring of 3-uniform hypergraphs to 2-dicolouring of directed graphs~\cite{Bokal_2004_CircularChrom} to the Borel setting.
+The key step is verifying that this reduction is $\Delta^1_1$ in the codes, following the template established by Thornton in~\cite[Appendix~A]{thornton-thesis} for a similar result about edge 3-colouring.
+I remark that 2-dicolouring of directed graphs is \emph{not} a CSP in the sense of Thornton's algebraic framework~\cite{thornton2022algebraic}, since acyclicity is not a constraint expressible as a homomorphism to a fixed finite template; thus Proposition~\ref{prop:main} does not follow directly from Thornton's general results.
 
-\medskip
-\begin{center}
-\begin{tabular}{lll}
-	\hline
-	\textbf{Class} & \textbf{Existence of small basis} & \textbf{Reference} \\
-	\hline
-	$\chi_B(G) > \aleph_0$ & Yes (size 1: $\mathbb{G}_0$) & \cite{kechris1999borel} \\
-	$\chi_B(G) > 2$ & Yes (size 1: $\mathbb{L}_0$) & \cite{L0paper} \\
-	$\chi_B(G) > k$, $k\geq 3$ & No ($\mathbf\Pi^1_2$-complete) & \cite{Todorcevic_2021_ComplexProbBorel} \\
-	\hline
-	$\vec\chi_B(D) > \aleph_0$ & Yes (size $\mathfrak{c}$) & \cite{RaghavanXiao2024} \\
-	$\vec\chi_B(D) > k$, $k\geq 2$ & No ($\mathbf\Pi^1_2$-complete) & Prop.~\ref{prop:main}, Rmk.~\ref{rmk:dichrom-recovers-chrom} \\
-	\hline
-\end{tabular}
-\end{center}
-\medskip
-
-\noindent
 The picture reveals a notable difference between the undirected and directed settings at the uncountable threshold: a single graph suffices as a basis in the undirected case, while a continuum-size family is needed for directed graphs.
-With finitely many colors, both settings exhibit the same completeness obstruction to a countable basis, though at different thresholds: the phenomenon begins at $k=3$ for undirected graphs and already at $k=2$ for directed graphs, mirroring the classical NP-completeness landscape.
+With finitely many colours, both settings exhibit the same completeness obstruction to a countable basis, though at different thresholds: the phenomenon begins at $k=3$ for undirected graphs and already at $k=2$ for directed graphs, mirroring the classical NP-completeness landscape.
 The case $k=2$ for directed graphs, established in this paper, is the last remaining piece of this picture (see Remark~\ref{rmk:dichrom-recovers-chrom}).
 
 Several questions are posed in Section~\ref{sec:dichrom-questions}.
@@ -148,12 +75,12 @@ This lemma can typically be used as a black box: to verify that a construction i
 
 \subsection{The classical reduction}\label{sec:classical}
 
-Now, I recall the reduction from 2-coloring of 3-uniform hypergraphs to 2-dicoloring of directed graphs.
-The NP-completeness of 2-dicoloring follows by combining this reduction with the well-known NP-completeness of 2-coloring 3-uniform hypergraphs.
+Now, I recall the reduction from 2-colouring of 3-uniform hypergraphs to 2-dicolouring of directed graphs.
+The NP-completeness of 2-dicolouring follows by combining this reduction with the well-known NP-completeness of 2-colouring 3-uniform hypergraphs.
 The reduction is due to Bokal et al.~\cite{Bokal_2004_CircularChrom}; I present it in a form convenient for the Borel lifting.
 
 \begin{fact}\label{fact:hyp-np}
-	The problem of deciding whether a 3-uniform hypergraph admits a 2-coloring is NP-complete.
+	The problem of deciding whether a 3-uniform hypergraph admits a 2-colouring is NP-complete.
 \end{fact}
  
 \begin{definition}[Template gadget]\label{def:gadget}
@@ -169,7 +96,7 @@ The reduction is due to Bokal et al.~\cite{Bokal_2004_CircularChrom}; I present 
 \end{figure}
 
 \begin{lemma}[Gadget property]\label{lemma:gadget-property}
-	A map $\sigma\colon\{a,b,c\}\to 2$ extends to a 2-dicoloring of~$F$ if and only if~$\sigma$ is not constant (i.e., not all three shared vertices receive the same color).
+	A map $\sigma\colon\{a,b,c\}\to 2$ extends to a 2-dicolouring of~$F$ if and only if~$\sigma$ is not constant (i.e., not all three shared vertices receive the same colour).
 \end{lemma}
 
 \begin{proof}
@@ -177,7 +104,7 @@ The reduction is due to Bokal et al.~\cite{Bokal_2004_CircularChrom}; I present 
 \end{proof}
 
 \begin{lemma}[Classical reduction]\label{lem:classical}
-For every 3-uniform hypergraph $H$, there is a directed graph $D(H)$ such that $H$ is 2-colorable if and only if $D(H)$ is 2-dicolorable.
+For every 3-uniform hypergraph $H$, there is a directed graph $D(H)$ such that $H$ is 2-colourable if and only if $D(H)$ is 2-dicolourable.
 \end{lemma}
 
 \begin{proof}
@@ -188,13 +115,13 @@ For each $$e=(v_1,v_2,v_3)\in E_{\mathrm{sort}},$$ place a copy~$F_e$ of the tem
 The directed graph~$D(H)$ has vertex set $$V_D = V \cup \bigl\{(e,t) : e\in E_{\mathrm{sort}},\; t\in T_{\mathrm{aux}}\bigr\}$$
 and arcs given by the union of the arcs of all copies~$F_e$, with each shared label mapped to the corresponding vertex of~$V$.
 
-First, suppose that $c\colon V\to 2$ is a proper 2-coloring of the hypergraph~$H$.
-For each~$e$, the induced coloring on the shared vertices of~$F_e$ is non-constant, so by Lemma~\ref{lemma:gadget-property} it extends to a 2-dicoloring of~$F_e$.
-Since auxiliary vertices of distinct gadgets are disjoint, combining any choice of extensions with~$c$ on shared vertices gives a global 2-dicoloring of~$D(H)$.
+First, suppose that $c\colon V\to 2$ is a proper 2-colouring of the hypergraph~$H$.
+For each~$e$, the induced colouring on the shared vertices of~$F_e$ is non-constant, so by Lemma~\ref{lemma:gadget-property} it extends to a 2-dicolouring of~$F_e$.
+Since auxiliary vertices of distinct gadgets are disjoint, combining any choice of extensions with~$c$ on shared vertices gives a global 2-dicolouring of~$D(H)$.
 
-Conversely, suppose that $\psi\colon V_D\to 2$ be a 2-dicoloring of~$D(H)$ and set $\varphi = \psi\restriction_V$.
-For any $e = (v_1,v_2,v_3)\in E_{\mathrm{sort}}$, the restriction $\psi\restriction_{V(F_e)}$ is a 2-dicoloring of~$F_e$, so by the contrapositive of Lemma~\ref{lemma:gadget-property}, $\varphi(v_1),\varphi(v_2),\varphi(v_3)$ are not all equal.
-Hence $\varphi$ is a 2-coloring of~$H$.
+Conversely, suppose that $\psi\colon V_D\to 2$ be a 2-dicolouring of~$D(H)$ and set $\varphi = \psi\restriction_V$.
+For any $e = (v_1,v_2,v_3)\in E_{\mathrm{sort}}$, the restriction $\psi\restriction_{V(F_e)}$ is a 2-dicolouring of~$F_e$, so by the contrapositive of Lemma~\ref{lemma:gadget-property}, $\varphi(v_1),\varphi(v_2),\varphi(v_3)$ are not all equal.
+Hence $\varphi$ is a 2-colouring of~$H$.
 \end{proof}
 
 \begin{remark}\label{rmk:reverse-simple}
@@ -205,13 +132,13 @@ This is be important in Subsection~\ref{sec:borel}, where it means that no unifo
 \subsection{The Borel reduction}\label{sec:borel}
 
 I now verify that the construction of Subsection~\ref{sec:classical} lifts to the Borel setting.
-The argument follows the template of~\cite[Theorem~A.9]{thornton2022algebraic}, where a similar verification for edge 3-coloring is carried out.
+The argument follows the template of~\cite[Theorem~A.9]{thornton2022algebraic}, where a similar verification for edge 3-colouring is carried out.
 
 \begin{fact}[{\cite[Corollary~4.6]{thornton2022algebraic}}]\label{fact:hyp-borel}
-The set of nice codes for locally finite Borel 3-uniform hypergraphs admitting a Borel 2-coloring is $\mathbf\Sigma^1_2$-complete.
+The set of nice codes for locally finite Borel 3-uniform hypergraphs admitting a Borel 2-colouring is $\mathbf\Sigma^1_2$-complete.
 \end{fact}
 
-It therefore suffices to produce a $\Delta^1_1$ reduction from the set of codes for Borel 2-colorable 3-uniform hypergraphs to the set of codes for Borel 2-dicolorable directed graphs.
+It therefore suffices to produce a $\Delta^1_1$ reduction from the set of codes for Borel 2-colourable 3-uniform hypergraphs to the set of codes for Borel 2-dicolourable directed graphs.
 
 Now I verify that the construction is $\Delta^1_1$ in the codes.
 Let $H$ be a locally finite Borel 3-uniform hypergraph with vertex set $V\subseteq\NN$ and hyperedge set $E\subseteq V^3$.
@@ -244,35 +171,35 @@ Applying the simple-to-nice code translation from the coding framework (Definiti
 	The function that maps the code of $H$ to the code of $D(H)$ is $\Delta^1_1$.
 \end{lemma}
 
-Now I show that Borel colorability is preserved.
+Now I show that Borel colourability is preserved.
 
 \begin{claim}\label{claim:forward}
-	If $H$ is Borel 2-colorable, then $D(H)$ is Borel 2-dicolorable.
+	If $H$ is Borel 2-colourable, then $D(H)$ is Borel 2-dicolourable.
 \end{claim}
 
 \begin{proof}
-Let $c\colon V\to 2$ be a Borel 2-coloring of~$H$.
-For each $e\in E_{\mathrm{sort}}$, the restriction of~$c$ to the shared vertices of~$F_e$ is non-constant, so by the gadget property (Lemma~\ref{lemma:gadget-property}) there exists at least one extension to a 2-dicoloring of~$F_e$.
-Denote by $\CF$ the finite set of maps $T\to 2$ and define $S$ as the set of all $(e,\sigma)\in E_{\mathrm{sort}}\times\CF$ such that $\sigma$ is a 2-dicoloring of $F_e$ extending the shared-vertex colors.
-The set~$S$ is Borel since the defining condition involves only finitely many acyclicity checks and color-matching conditions, all determined by the Borel coloring~$c$ and the fixed finite template.
+Let $c\colon V\to 2$ be a Borel 2-colouring of~$H$.
+For each $e\in E_{\mathrm{sort}}$, the restriction of~$c$ to the shared vertices of~$F_e$ is non-constant, so by the gadget property (Lemma~\ref{lemma:gadget-property}) there exists at least one extension to a 2-dicolouring of~$F_e$.
+Denote by $\CF$ the finite set of maps $T\to 2$ and define $S$ as the set of all $(e,\sigma)\in E_{\mathrm{sort}}\times\CF$ such that $\sigma$ is a 2-dicolouring of $F_e$ extending the shared-vertex colours.
+The set~$S$ is Borel since the defining condition involves only finitely many acyclicity checks and colour-matching conditions, all determined by the Borel colouring~$c$ and the fixed finite template.
 Furthermore, $S$ has finite nonempty sections~$S_e$.
 By the Luzin--Novikov uniformization theorem, there is a Borel selector $e\mapsto\sigma(e)\in S_e$.
 
 Since auxiliary vertices of distinct gadgets are disjoint, the map $\psi\colon V_D\to 2$ defined by
 $$\psi(v) =\begin{cases}c(v),&v\in V;\\
 	\sigma(e)(t),&(e,t)\in E_{\mathrm{sort}}\times T_{\mathrm{aux}}\end{cases}$$
-is a well-defined Borel 2-dicoloring of~$D(H)$.
+is a well-defined Borel 2-dicolouring of~$D(H)$.
 \end{proof}
 
 \begin{claim}\label{claim:reverse}
-If $D(H)$ is Borel 2-dicolorable, then $H$ is Borel 2-colorable.
+If $D(H)$ is Borel 2-dicolourable, then $H$ is Borel 2-colourable.
 \end{claim}
 
 \begin{proof}
-Let $\psi\colon V_D\to 2$ be a Borel 2-dicoloring of~$D(H)$ and define $\varphi = \psi\restriction_V$.
+Let $\psi\colon V_D\to 2$ be a Borel 2-dicolouring of~$D(H)$ and define $\varphi = \psi\restriction_V$.
 Since $V\subseteq V_D$ is Borel, $\varphi$~is Borel.
-For any hyperedge $e=(v_1,v_2,v_3)\in E_{\mathrm{sort}}$, the gadget~$F_e$ is a directed subgraph of~$D(H)$, so $\psi\restriction_{V(F_e)}$ is a 2-dicoloring of~$F_e$, and the gadget property implies that $\varphi(v_1),\varphi(v_2),\varphi(v_3)$ are not all equal.
-Hence~$\varphi$ is a Borel 2-coloring of~$H$.
+For any hyperedge $e=(v_1,v_2,v_3)\in E_{\mathrm{sort}}$, the gadget~$F_e$ is a directed subgraph of~$D(H)$, so $\psi\restriction_{V(F_e)}$ is a 2-dicolouring of~$F_e$, and the gadget property implies that $\varphi(v_1),\varphi(v_2),\varphi(v_3)$ are not all equal.
+Hence~$\varphi$ is a Borel 2-colouring of~$H$.
 \end{proof}
 
 \begin{remark}\label{rmk:no-lf-reverse}
@@ -283,19 +210,19 @@ Local finiteness is needed only for two purposes: it is a hypothesis of Fact~\re
 I can finally prove the main result of the section.
 
 \begin{proof}[Proof of Proposition~\ref{prop:main}]
-By Fact~\ref{fact:hyp-borel}, the set of nice codes for locally finite Borel 3-uniform hypergraphs with Borel 2-colorings is $\mathbf\Sigma^1_2$-complete.
+By Fact~\ref{fact:hyp-borel}, the set of nice codes for locally finite Borel 3-uniform hypergraphs with Borel 2-colourings is $\mathbf\Sigma^1_2$-complete.
 By Lemma~\ref{lem:code-reduction}, the map $\mathrm{code}(H)\mapsto\mathrm{code}(D(H))$ is~$\Delta^1_1$.
-By Claims~\ref{claim:forward} and~\ref{claim:reverse}, $H$~is Borel 2-colorable if and only if $D(H)$~is Borel 2-dicolorable.
-Thus the set of nice codes for Borel 2-dicolorable directed graphs is $\mathbf\Sigma^1_2$-hard.
+By Claims~\ref{claim:forward} and~\ref{claim:reverse}, $H$~is Borel 2-colourable if and only if $D(H)$~is Borel 2-dicolourable.
+Thus the set of nice codes for Borel 2-dicolourable directed graphs is $\mathbf\Sigma^1_2$-hard.
 
-For the upper bound, note that a directed graph~$D$ (given by a nice code) admits a Borel 2-dicoloring if and only if there exists a nice code~$e_c$ such that $\DD_{e_c}$ defines a valid 2-dicoloring of~$D$.
-The condition ``$\DD_{e_c}$ is a 2-dicoloring'' is $\Pi^1_1$ in the codes $e_c$ and $e_D$, as it requires totality and that each color class induces no directed cycle, both of which are universal conditions.
+For the upper bound, note that a directed graph~$D$ (given by a nice code) admits a Borel 2-dicolouring if and only if there exists a nice code~$e_c$ such that $\DD_{e_c}$ defines a valid 2-dicolouring of~$D$.
+The condition ``$\DD_{e_c}$ is a 2-dicolouring'' is $\Pi^1_1$ in the codes $e_c$ and $e_D$, as it requires totality and that each colour class induces no directed cycle, both of which are universal conditions.
 The existential quantification over~$e_c$ gives a $\Sigma^1_2$ condition.
-Hence the set of codes for Borel 2-dicolorable directed graphs is $\mathbf\Sigma^1_2$-complete, and its complement, which are codes for directed graphs with $\vec\chi_B(D)\geq 3$, is $\mathbf\Pi^1_2$-complete.
+Hence the set of codes for Borel 2-dicolourable directed graphs is $\mathbf\Sigma^1_2$-complete, and its complement, which are codes for directed graphs with $\vec\chi_B(D)\geq 3$, is $\mathbf\Pi^1_2$-complete.
 \end{proof}
 
 \begin{remark}\label{rmk:sigma-pi-convention}
-The convention used in~\cite{Todorcevic_2021_ComplexProbBorel} and~\cite{thornton2022algebraic} is to state the $\mathbf\Sigma^1_2$-completeness of the class of graphs \emph{admitting} a coloring.
+The convention used in~\cite{Todorcevic_2021_ComplexProbBorel} and~\cite{thornton2022algebraic} is to state the $\mathbf\Sigma^1_2$-completeness of the class of graphs \emph{admitting} a colouring.
 We follow this convention.
 \end{remark}
 
@@ -323,6 +250,6 @@ must define a $\mathbf\Pi^1_2$-complete set, since the left-hand side is $\mathb
 If $\mathbf{B}\in\mathbf\Sigma^1_2$ (viewed as a subset of the code space), then ``$H\in\mathbf{B}$'' is a $\mathbf\Sigma^1_2$ condition on the code of~$H$, and ``there exists a Borel homomorphism $H\to D$'' is $\mathbf\Sigma^1_2$ in the codes of~$H$ and~$D$ (as in the proof of Corollary~\ref{cor:no-basis}).
 The conjunction of two $\mathbf\Sigma^1_2$ conditions is $\mathbf\Sigma^1_2$, and existential quantification preserves $\mathbf\Sigma^1_2$, so the right-hand side would be $\mathbf\Sigma^1_2$ in the code of~$D$.
 But this contradicts $\mathbf\Pi^1_2$-completeness of the left-hand side, since $\mathbf\Sigma^1_2\neq\mathbf\Pi^1_2$.
-Hence $\mathbf{B}\notin\mathbf\Sigma^1_2$: any basis must be at least $\mathbf\Pi^1_2$-hard as a subset of the code space, and is therefore at least as complex to describe as the set of all directed graphs without a Borel acyclic 2-coloring.
+Hence $\mathbf{B}\notin\mathbf\Sigma^1_2$: any basis must be at least $\mathbf\Pi^1_2$-hard as a subset of the code space, and is therefore at least as complex to describe as the set of all directed graphs without a Borel acyclic 2-colouring.
 The separation $\mathbf\Sigma^1_2\neq\mathbf\Pi^1_2$ used here follows from $\Pi^1_1$-determinacy, which is provable from standard large cardinal hypotheses.
 \end{remark}
